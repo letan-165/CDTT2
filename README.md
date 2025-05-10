@@ -1,4 +1,4 @@
-# CDTT2
+# E-learning project
 
 Excel
 
