@@ -13,3 +13,5 @@ Trang preview hoạt động: https://www.figma.com/proto/YOuqebGReo72vYxa698rRa
 Web:
 Trang dev: https://www.figma.com/design/5dnOPTMy7rCld4K1h4sFER/web-E-Learning?node-id=0-1&m=dev&t=Y2bXQ3w4AydPFrbd-1
 Trang preview hoạt động: https://www.figma.com/proto/5dnOPTMy7rCld4K1h4sFER/web-E-Learning?node-id=0-1&t=Y2bXQ3w4AydPFrbd-1
+##Diagram
+https://drive.google.com/file/d/1joneCKRsnK7bKdCPZTuWSUeFF2qcE3o_/view?usp=sharing
