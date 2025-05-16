@@ -30,7 +30,7 @@ public class UserService {
     UserMapper userMapper;
 
     public UserResponse signUp(UserSignUpRequest request) {
-        if(userRepository.existsByname(request.getName()))
+        if(userRepository.existsByName(request.getName()))
             throw new AppException(ErrorCode.USER_EXIST);
 
         Role role = roleRepository.findById(request.getRole())
@@ -43,4 +43,21 @@ public class UserService {
         return userMapper.toUserResponse(
                 userRepository.save(user));
     }
+
+    public UserResponse findById(String userID) {
+        User user = userRepository.findById(userID)
+                .orElseThrow(()->new AppException(ErrorCode.USER_NO_EXIST));
+        return userMapper.toUserResponse(user);
+    }
+
+    public UserResponse findByName(String name) {
+        User user = userRepository.findByName(name)
+                .orElseThrow(()->new AppException(ErrorCode.USER_NO_EXIST));
+        return userMapper.toUserResponse(user);
+    }
+
+
+
+
+
 }

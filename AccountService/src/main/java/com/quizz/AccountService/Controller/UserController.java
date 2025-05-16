@@ -25,4 +25,20 @@ public class UserController {
                 .result(userService.signUp(request))
                 .build();
     }
+
+    @GetMapping("/public/id={userID}")
+    ApiResponse<UserResponse> findByID(@PathVariable String userID){
+        return ApiResponse.<UserResponse>builder()
+                .message("Tìm người dùng dựa vào ID:  "+userID)
+                .result(userService.findById(userID))
+                .build();
+    }
+
+    @GetMapping("/public/name={name}")
+    ApiResponse<UserResponse> findByName(@PathVariable String name){
+        return ApiResponse.<UserResponse>builder()
+                .message("Tìm người dùng dựa vào tên: "+name)
+                .result(userService.findByName(name))
+                .build();
+    }
 }
