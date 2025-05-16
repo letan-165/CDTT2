@@ -3,15 +3,15 @@ package com.quizz.AccountService.Controller;
 import com.nimbusds.jose.JOSEException;
 import com.quizz.AccountService.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
+import com.quizz.AccountService.DTO.Request.TokenRequest;
 import com.quizz.AccountService.Service.AuthService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
 
 @RestController
 @RequestMapping("/auth")
@@ -26,6 +26,14 @@ public class AuthController {
         return ApiResponse.<String>builder()
                 .message("Xác nhận đăng nhập tài khoản: "+request.getUsername())
                 .result(authService.login(request))
+                .build();
+    }
+
+    @GetMapping("/public/findUserID")
+    ApiResponse<String> findUserID(@RequestBody TokenRequest request) {
+        return ApiResponse.<String>builder()
+                .message("Tìm userID từ token: "+request.getToken())
+                .result(authService.findUserID(request.getToken()))
                 .build();
     }
 

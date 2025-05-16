@@ -3,6 +3,7 @@ package com.quizz.AccountService.Service;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
 import com.quizz.AccountService.Entity.User;
 import com.quizz.AccountService.Exception.AppException;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -46,6 +48,26 @@ public class AuthService {
         return generate(user);
     }
 
+    public String findUserID(String token) {
+        String userID = null;
+        try {
+            SignedJWT signedJWT = SignedJWT.parse(token);
+             userID = signedJWT.getJWTClaimsSet().getSubject();
+        } catch (ParseException e) {
+            throw new AppException(ErrorCode.PARSE_TOKEN_FAIL);
+        }
+
+        if(userRepository.existsById(userID))
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+
+        return userID;
+    }
+
+
+
+
+
+    //Create Token
     public String generate(User user) throws JOSEException {
         JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
                 .jwtID(UUID.randomUUID().toString())
