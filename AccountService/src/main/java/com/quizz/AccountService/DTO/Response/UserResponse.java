@@ -18,7 +18,5 @@ public class UserResponse {
     String name;
     String gmail;
     String phone;
-
-    @Builder.Default
-    List<Role> roles = new ArrayList<>(Collections.emptyList());
+    List<String> roles;
 }
