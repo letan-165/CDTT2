@@ -29,7 +29,7 @@ public class SecurityConfig {
     @Value("${key.jwt.value}")
     String KEY;
 
-    String[] publicEntryPoint = {"/user/public/**","/auth/public/**"};
+    String[] publicEntryPoint = {"/user/public/**","/auth/public/**","/**"};
 
 
 

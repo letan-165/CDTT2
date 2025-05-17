@@ -3,12 +3,15 @@ package com.quizz.AccountService.Controller;
 import com.quizz.AccountService.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
+import com.quizz.AccountService.Entity.User;
 import com.quizz.AccountService.Service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -17,6 +20,13 @@ import org.springframework.web.bind.annotation.*;
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class UserController {
     UserService userService;
+
+    @GetMapping()
+    ApiResponse<List<User>> findAll(){
+        return ApiResponse.<List<User>>builder()
+                .result(userService.findAll())
+                .build();
+    }
 
     @PostMapping("/public")
     ApiResponse<UserResponse> signUp(@RequestBody UserSignUpRequest request){
