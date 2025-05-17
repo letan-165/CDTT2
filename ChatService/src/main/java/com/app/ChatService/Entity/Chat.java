@@ -17,7 +17,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Chat {
     @Id
-    String id;
+    String chatID;
     String user;
     String user2;
     List<ChatMessageDTO> messages = new ArrayList<>();

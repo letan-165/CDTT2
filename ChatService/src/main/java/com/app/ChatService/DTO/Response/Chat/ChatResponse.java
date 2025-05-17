@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ChatResponse {
-    String id;
+    String chatID;
     String user;
     String user2;
     List<ChatMessageDTO> messages;

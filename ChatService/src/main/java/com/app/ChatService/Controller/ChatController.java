@@ -39,7 +39,7 @@ public class ChatController {
     public void recall(RecallMessageRequest request, Principal principal) {
         String userID = principal.getName();
 
-        ChatResponse chatResponse = chatService.recallMessage(request.getId(), userID, request.getIndex());
+        ChatResponse chatResponse = chatService.recallMessage(request.getChatID(), userID, request.getIndex());
 
         messagingTemplate.convertAndSendToUser(chatResponse.getUser(), "/queue/messages", chatResponse);
         messagingTemplate.convertAndSendToUser(chatResponse.getUser2(), "/queue/messages", chatResponse);
