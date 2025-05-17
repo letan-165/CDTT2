@@ -70,7 +70,7 @@ public class ChatService {
 
         chat.getMessages().add(ChatMessageDTO.builder()
                 .index(index+1)
-                .instant(Instant.now())
+                .time(Instant.now())
                 .sender(sender)
                 .content(request.getContent())
                 .build());

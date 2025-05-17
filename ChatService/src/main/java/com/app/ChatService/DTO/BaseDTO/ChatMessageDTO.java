@@ -14,5 +14,5 @@ public class ChatMessageDTO {
     Long index;
     String sender;
     String content;
-    Instant instant;
+    Instant time;
 }
