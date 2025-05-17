@@ -29,11 +29,11 @@ public class AuthController {
                 .build();
     }
 
-    @GetMapping("/public/findUserID")
-    ApiResponse<String> findUserID(@RequestBody TokenRequest request) {
+    @PostMapping("/public/findName")
+    ApiResponse<String> findName(@RequestBody TokenRequest request) {
         return ApiResponse.<String>builder()
-                .message("Tìm userID từ token: "+request.getToken())
-                .result(authService.findUserID(request.getToken()))
+                .message("Tìm tên người dùng từ token: "+request.getToken())
+                .result(authService.findName(request.getToken()))
                 .build();
     }
 

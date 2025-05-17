@@ -48,19 +48,19 @@ public class AuthService {
         return generate(user);
     }
 
-    public String findUserID(String token) {
-        String userID = null;
+    public String findName(String token) {
+        String name = null;
         try {
             SignedJWT signedJWT = SignedJWT.parse(token);
-             userID = signedJWT.getJWTClaimsSet().getSubject();
+            name = signedJWT.getJWTClaimsSet().getSubject();
         } catch (ParseException e) {
             throw new AppException(ErrorCode.PARSE_TOKEN_FAIL);
         }
 
-        if(userRepository.existsById(userID))
+        if(!userRepository.existsByName(name))
             throw new AppException(ErrorCode.USER_NO_EXIST);
 
-        return userID;
+        return name;
     }
 
 
@@ -73,8 +73,8 @@ public class AuthService {
                 .jwtID(UUID.randomUUID().toString())
                 .issuer("QUIZZ")
                 .subject(user.getName())
-                .expirationTime(new Date())
-                .issueTime(new Date(Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()))
+                .issueTime(Date.from(Instant.now()))
+                .expirationTime(Date.from(Instant.now().plus(1,ChronoUnit.HOURS)))
                 .claim("scope", buildScope(user))
                 .build();
 
