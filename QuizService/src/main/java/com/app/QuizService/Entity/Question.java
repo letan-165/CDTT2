@@ -13,8 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Question {
-    String questionID;
+    int questionID;
     String content;
     List<String> options;
     List<String> corrects;
+    List<String> answer;
 }

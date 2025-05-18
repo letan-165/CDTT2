@@ -18,7 +18,6 @@ public class Quiz {
     @Id
     String quizID;
     String teacherID;
-    List<String> students;
     String title;
     String topic;
     String description;

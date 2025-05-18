@@ -1,11 +1,11 @@
 package com.app.QuizService.Entity;
 
-import com.app.QuizService.DTO.BaseDTO.Result;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.util.List;
 
 @Document
@@ -14,8 +14,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Submission {
+public class Result {
     @Id
+    String resultID;
+    Quiz quiz;
     String studentID;
-    List<Result> results;
+    int score;
+    Instant finish;
 }
