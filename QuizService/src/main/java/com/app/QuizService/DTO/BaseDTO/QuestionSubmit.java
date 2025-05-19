@@ -3,6 +3,7 @@ package com.app.QuizService.DTO.BaseDTO;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -12,5 +13,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class QuestionSubmit {
     int questionID;
-    List<Integer> answer;
+
+    @Builder.Default
+    List<Integer> answer = new ArrayList<>();
 }

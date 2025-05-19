@@ -15,6 +15,8 @@ public class ResultResponse {
     String resultID;
     Quiz quiz;
     String studentID;
-    int score;
-    Instant finish;
+    int totalCorrectAnswers;
+    double score;
+    Instant startTime;
+    Instant endTime;
 }

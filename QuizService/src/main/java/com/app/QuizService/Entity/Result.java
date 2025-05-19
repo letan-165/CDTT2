@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.Instant;
 
 @Document
-@Builder
+@Builder(toBuilder = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +18,8 @@ public class Result {
     String resultID;
     Quiz quiz;
     String studentID;
-    int score;
-    Instant finish;
+    int totalCorrectAnswers;
+    double score;
+    Instant startTime;
+    Instant endTime;
 }
