@@ -14,5 +14,5 @@ public class QuestionResponse {
     int questionID;
     String content;
     List<String> options;
-    List<String> corrects;
+    List<Integer> corrects;
 }

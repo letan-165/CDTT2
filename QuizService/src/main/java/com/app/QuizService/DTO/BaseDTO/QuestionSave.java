@@ -12,5 +12,5 @@ import java.util.List;
 public class QuestionSave {
     String content;
     List<String> options;
-    List<String> corrects;
+    List<Integer> corrects;
 }

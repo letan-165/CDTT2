@@ -12,5 +12,5 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class QuestionSubmit {
     int questionID;
-    List<String> answer;
+    List<Integer> answer;
 }

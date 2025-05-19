@@ -14,6 +14,6 @@ public class  Question {
     int questionID;
     String content;
     List<String> options;
-    List<String> corrects;
-    List<String> answer;
+    List<Integer> corrects;
+    List<Integer> answer;
 }
