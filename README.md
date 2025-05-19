@@ -15,3 +15,5 @@ Trang dev: https://www.figma.com/design/5dnOPTMy7rCld4K1h4sFER/web-E-Learning?no
 Trang preview hoạt động: https://www.figma.com/proto/5dnOPTMy7rCld4K1h4sFER/web-E-Learning?node-id=0-1&t=Y2bXQ3w4AydPFrbd-1
 ## Diagram
 ### https://app.diagrams.net/#G1joneCKRsnK7bKdCPZTuWSUeFF2qcE3o_#%7B%22pageId%22%3A%22Cs-Y9OvcGJfCXqtlrE38%22%7D
+## Document
+### https://docs.google.com/document/d/1LHdampYaRbf8ucZoR2ouAIZe6X3ZGmQR7QVdGgBendQ/edit?usp=sharing
