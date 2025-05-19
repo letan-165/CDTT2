@@ -1,30 +1,24 @@
-package com.app.QuizService.Entity;
+package com.app.QuizService.DTO.Request;
 
-import com.app.QuizService.DTO.BaseDTO.Question;
+import com.app.QuizService.DTO.BaseDTO.QuestionSave;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
-import java.util.Map;
 
-@Document
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Quiz {
-    @Id
-    String quizID;
+public class SaveQuizRequest {
     String teacherID;
     String title;
     String topic;
     String description;
-    Map<Integer,Question> questions;
+    List<QuestionSave> questions;
     Instant startTime;
     Instant endTime;
     Duration duration;
