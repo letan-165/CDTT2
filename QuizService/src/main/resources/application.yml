@@ -1,7 +1,7 @@
 server:
-  port: 8080
+  port: 8082
   servlet:
-    context-path: /account_service
+    context-path: /quiz_service
 
 
 spring:
@@ -9,6 +9,9 @@ spring:
     mongodb:
       uri: ${MONGODB_URL:mongodb://root:root@localhost:27017/QUIZZ?authSource=admin}
 
+app:
+  service:
+    account: ${ACCOUNT_URL:http://localhost:8080}/account_service
 
 key:
   jwt:
