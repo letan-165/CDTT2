@@ -12,6 +12,10 @@ spring:
     hibernate:
       ddl-auto: update
 
+app:
+  services:
+    notification: ${NOTIFICATION_URL:http://localhost:8083}/notification_service
+
 
 key:
   jwt:

@@ -7,26 +7,31 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
 import com.quizz.AccountService.DTO.Request.TokenRequest;
+import com.quizz.AccountService.Entity.Token;
 import com.quizz.AccountService.Entity.User;
 import com.quizz.AccountService.Exception.AppException;
 import com.quizz.AccountService.Exception.ErrorCode;
+import com.quizz.AccountService.Repository.TokenRepository;
 import com.quizz.AccountService.Repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.text.ParseException;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.StringJoiner;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
@@ -37,6 +42,7 @@ public class AuthService {
     String KEY;
     UserRepository userRepository;
     PasswordEncoder passwordEncoder;
+    TokenRepository tokenRepository;
 
     public String login(LoginRequest request) throws JOSEException {
         User user = userRepository.findByName(request.getUsername())
@@ -69,35 +75,51 @@ public class AuthService {
         SignedJWT jwt = SignedJWT.parse(request.getToken());
         var expiryTime = jwt.getJWTClaimsSet().getExpirationTime();
         JWSVerifier jwsVerifier = new MACVerifier(KEY.getBytes());
-        boolean check = jwt.verify(jwsVerifier);
 
-        if(!check && expiryTime.after(Date.from(Instant.now())))
+        boolean isVerify = jwt.verify(jwsVerifier);
+        boolean isTime = expiryTime.after(Date.from(Instant.now()));
+        boolean isExists = tokenRepository.existsById(jwt.getJWTClaimsSet().getJWTID());
+
+
+        if(!isVerify || !isTime || !isExists)
             throw new AppException(ErrorCode.AUTHENTICATION);
 
         return true;
     }
 
-
-
+    public Boolean logout(TokenRequest request) throws ParseException, JOSEException {
+        instropect(request);//Exception
+        SignedJWT jwt = SignedJWT.parse(request.getToken());
+        tokenRepository.deleteById(jwt.getJWTClaimsSet().getJWTID());
+        return true;
+    }
 
 
     //Create Token
     public String generate(User user) throws JOSEException {
+        int duration = 30;
         JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
                 .jwtID(UUID.randomUUID().toString())
                 .issuer("QUIZZ")
                 .subject(user.getName())
                 .issueTime(Date.from(Instant.now()))
-                .expirationTime(Date.from(Instant.now().plus(1,ChronoUnit.HOURS)))
+                .expirationTime(Date.from(Instant.now().plus(duration,ChronoUnit.SECONDS)))
                 .claim("scope", buildScope(user))
                 .build();
 
         JWSHeader jwsHeader = new JWSHeader(JWSAlgorithm.HS256);
         Payload payload = new Payload(jwtClaimsSet.toJSONObject());
         JWSObject jwsObject = new JWSObject(jwsHeader,payload);
-
         jwsObject.sign(new MACSigner(KEY.getBytes()));
-        return jwsObject.serialize();
+        String token = jwsObject.serialize();
+
+        tokenRepository.save(Token.builder()
+                        .tokenID(jwtClaimsSet.getJWTID())
+                        .value(token)
+                        .expiryTime(duration)
+                .build());
+
+        return token;
     }
 
     public String buildScope(User user){

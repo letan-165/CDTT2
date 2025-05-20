@@ -44,4 +44,11 @@ public class AuthController {
                 .build();
     }
 
+    @PostMapping("/public/logout")
+    public ApiResponse<Boolean> logout(@RequestBody TokenRequest request) throws ParseException, JOSEException {
+        return ApiResponse.<Boolean>builder()
+                .result(authService.logout(request))
+                .build();
+    }
+
 }
