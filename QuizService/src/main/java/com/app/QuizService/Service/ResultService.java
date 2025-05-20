@@ -1,15 +1,15 @@
 package com.app.QuizService.Service;
 
 import com.app.QuizService.DTO.BaseDTO.Question;
-import com.app.QuizService.DTO.BaseDTO.QuestionSubmit;
 import com.app.QuizService.DTO.Request.JoinQuizRequest;
-import com.app.QuizService.DTO.Request.SaveQuizRequest;
 import com.app.QuizService.DTO.Request.SubmitQuizRequest;
 import com.app.QuizService.DTO.Response.Statistics.StatisticsResponse;
 import com.app.QuizService.DTO.Response.TodoQuiz.ResultResponse;
 import com.app.QuizService.DTO.Response.TodoQuiz.SubmitQuizResponse;
 import com.app.QuizService.Entity.Quiz;
 import com.app.QuizService.Entity.Result;
+import com.app.QuizService.Exception.AppException;
+import com.app.QuizService.Exception.ErrorCode;
 import com.app.QuizService.Mapper.QuestionMapper;
 import com.app.QuizService.Mapper.ResultMapper;
 import com.app.QuizService.Repository.HttpClient.UserClient;
@@ -22,10 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -52,7 +49,7 @@ public class ResultService {
     public SubmitQuizResponse join(JoinQuizRequest request){
         userClient.findById(request.getStudentID());
         Quiz quiz = quizRepository.findById(request.getQuizID())
-                .orElseThrow(()-> new RuntimeException("Lỗi bài quiz không tồn tại trong hệ thống"));
+                .orElseThrow(()-> new AppException(ErrorCode.QUIZ_NO_EXISTS));
 
         Result result = Result.builder()
                 .quiz(quiz)
@@ -67,7 +64,7 @@ public class ResultService {
 
     public SubmitQuizResponse submit(SubmitQuizRequest request){
         Result result = resultRepository.findById(request.getResultID())
-                .orElseThrow(()->new RuntimeException("Lỗi kết quả chưa được khởi tạo trong hệ thống"));
+                .orElseThrow(()->new AppException(ErrorCode.RESULT_NO_EXISTS));
 
         request.getQuestions().forEach(questionRequest ->{
             Quiz quiz = result.getQuiz();
@@ -76,7 +73,7 @@ public class ResultService {
             var answers = questionRequest.getAnswer();
             answers.forEach(answer-> {
                 if(answer >= quiz.getQuestions().size() || answer < 0)
-                    throw new RuntimeException("Lỗi thứ tự đáp án không hợp lệ");
+                    throw new AppException(ErrorCode.CORRECT_INVALID);
             });
             //Update answer
             question.setAnswer(answers);
@@ -98,7 +95,7 @@ public class ResultService {
 
     public ResultResponse finish(String resultID){
         Result result = resultRepository.findById(resultID)
-                .orElseThrow(()->new RuntimeException("Lỗi kết quả chưa được khởi tạo trong hệ thống"));
+                .orElseThrow(()->new AppException(ErrorCode.RESULT_NO_EXISTS));
 
         int totalCorrectAnswers = (int) result.getQuiz().getQuestions().values().stream()
                 .filter(this::checkResult)
@@ -114,12 +111,28 @@ public class ResultService {
         return resultMapper.toResultResponse(response);
     }
 
-    public List<ResultResponse> findByID(String quizID, String studentID){
-        return new ArrayList<>();
+    public ResultResponse findByID(String resultID){
+        Result result = resultRepository.findById(resultID)
+                .orElseThrow(()->new AppException(ErrorCode.RESULT_NO_EXISTS));
+        return resultMapper.toResultResponse(resultRepository.save(result));
     }
 
     public StatisticsResponse statistic(String quizID){
-        return new StatisticsResponse();
+        Quiz quiz = quizRepository.findById(quizID)
+                .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));
+
+        var results = resultRepository.findAll();
+
+        var response = results.stream()
+                .filter(result->result.getQuiz().getQuizID().equals(quizID))
+                .map(resultMapper::toStatisticsResultResponse)
+                .toList();
+
+
+        return StatisticsResponse.builder()
+                .quizID(quizID)
+                .results(response)
+                .build();
     }
 
 

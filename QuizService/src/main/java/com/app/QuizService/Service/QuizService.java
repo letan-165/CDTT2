@@ -5,6 +5,8 @@ import com.app.QuizService.DTO.BaseDTO.QuestionSave;
 import com.app.QuizService.DTO.Request.SaveQuizRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.Entity.Quiz;
+import com.app.QuizService.Exception.AppException;
+import com.app.QuizService.Exception.ErrorCode;
 import com.app.QuizService.Mapper.QuestionMapper;
 import com.app.QuizService.Mapper.QuizMapper;
 import com.app.QuizService.Repository.HttpClient.UserClient;
@@ -39,7 +41,7 @@ public class QuizService {
             int size = questionSave.getOptions().size();
             questionSave.getCorrects().forEach(correct -> {
                 if(correct >= size || correct < 0)
-                    throw new RuntimeException("Thứ tự câu đúng không hợp lệ");
+                    throw new AppException(ErrorCode.CORRECT_INVALID);
             });
         });
 

@@ -48,15 +48,15 @@ public class ResultController {
                 .build();
     }
 
-    @GetMapping("/result/quiz/{quizID}/student/{studentID}")
-    ApiResponse<List<ResultResponse>>findByID(@PathVariable String quizID, String studentID){
-        return ApiResponse.<List<ResultResponse>>builder()
-                .message("Lấy kết quả "+ quizID +" của "+ studentID)
-                .result(resultService.findByID(quizID,studentID))
+    @GetMapping("/{resultID}")
+    ApiResponse<ResultResponse>findByID(@PathVariable String resultID){
+        return ApiResponse.<ResultResponse>builder()
+                .message("Lấy kết quả "+ resultID)
+                .result(resultService.findByID(resultID))
                 .build();
     }
 
-    @GetMapping("/result/quiz/{quizID}/results/statistics")
+    @GetMapping("/quiz/{quizID}/statistics")
     ApiResponse<StatisticsResponse>statistics(@PathVariable String quizID){
         return ApiResponse.<StatisticsResponse>builder()
                 .message("Thống kê kết quả của quiz: "+quizID)

@@ -11,5 +11,6 @@ import lombok.experimental.FieldDefaults;
 public class StatisticsResultResponse {
     String resultID;
     String studentID;
-    int score;
+    int totalCorrectAnswers;
+    double score;
 }
