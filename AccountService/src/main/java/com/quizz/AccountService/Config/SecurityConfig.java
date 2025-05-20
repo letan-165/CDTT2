@@ -29,9 +29,6 @@ public class SecurityConfig {
     @Value("${key.jwt.value}")
     String KEY;
 
-
-
-
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -42,21 +39,12 @@ public class SecurityConfig {
 
                 .oauth2ResourceServer(oath -> oath
                         .jwt(jwt -> jwt
-                                .decoder(jwtDecoder()).jwtAuthenticationConverter(jwtAuthenticationConverter()))
+                                .decoder(new JwtDecoderCustom()).jwtAuthenticationConverter(jwtAuthenticationConverter()))
                         .authenticationEntryPoint(new AuthEntryPointCustom()))
 
                 .csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
-    }
-
-    @Bean
-    JwtDecoder jwtDecoder() {
-        SecretKeySpec spec = new SecretKeySpec(KEY.getBytes(),"HS256");
-        return NimbusJwtDecoder
-                .withSecretKey(spec)
-                .macAlgorithm(MacAlgorithm.HS256)
-                .build();
     }
 
     @Bean
