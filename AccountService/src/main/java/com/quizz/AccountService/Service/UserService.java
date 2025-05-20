@@ -1,5 +1,6 @@
 package com.quizz.AccountService.Service;
 
+import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
 import com.quizz.AccountService.Entity.Role;
@@ -8,6 +9,7 @@ import com.quizz.AccountService.Enum.TypeRole;
 import com.quizz.AccountService.Exception.AppException;
 import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Mapper.UserMapper;
+import com.quizz.AccountService.Repository.OtpRepository;
 import com.quizz.AccountService.Repository.RoleRepository;
 import com.quizz.AccountService.Repository.UserRepository;
 import lombok.AccessLevel;
@@ -27,6 +29,7 @@ import java.util.Optional;
 public class UserService {
     UserRepository userRepository;
     RoleRepository roleRepository;
+    OtpService otpService;
     PasswordEncoder passwordEncoder;
     UserMapper userMapper;
 
@@ -35,6 +38,8 @@ public class UserService {
     }
 
     public UserResponse signUp(UserSignUpRequest request) {
+        otpService.verify(request.getGmail(), request.getOtp());
+
         if(userRepository.existsByName(request.getName()))
             throw new AppException(ErrorCode.USER_EXIST);
 
@@ -59,6 +64,14 @@ public class UserService {
         User user = userRepository.findByName(name)
                 .orElseThrow(()->new AppException(ErrorCode.USER_NO_EXIST));
         return userMapper.toUserResponse(user);
+    }
+
+    public UserResponse forgotPassword(ForgotPassRequest request) {
+        User user = userRepository.findByName(request.getUsername())
+                .orElseThrow(()->new AppException(ErrorCode.USER_NO_EXIST));
+        otpService.verify(user.getGmail(), request.getOtp());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        return userMapper.toUserResponse(userRepository.save(user));
     }
 
 

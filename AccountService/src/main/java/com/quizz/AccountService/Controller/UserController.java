@@ -1,6 +1,7 @@
 package com.quizz.AccountService.Controller;
 
 import com.quizz.AccountService.DTO.ApiResponse;
+import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
 import com.quizz.AccountService.Entity.User;
@@ -21,7 +22,7 @@ import java.util.List;
 public class UserController {
     UserService userService;
 
-    @GetMapping()
+    @GetMapping
     ApiResponse<List<User>> findAll(){
         return ApiResponse.<List<User>>builder()
                 .result(userService.findAll())
@@ -49,6 +50,14 @@ public class UserController {
         return ApiResponse.<UserResponse>builder()
                 .message("Tìm người dùng dựa vào tên: "+name)
                 .result(userService.findByName(name))
+                .build();
+    }
+
+    @PutMapping("/public/forgotPassword")
+    ApiResponse<UserResponse> forgotPassword(@RequestBody ForgotPassRequest request){
+        return ApiResponse.<UserResponse>builder()
+                .message("Người dùng "+request.getUsername() +"quên mật khẩu")
+                .result(userService.forgotPassword(request))
                 .build();
     }
 }

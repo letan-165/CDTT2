@@ -8,11 +8,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserSignUpRequest {
-    String name;
+public class ForgotPassRequest {
+    String username;
     String password;
-    String gmail;
-    String phone;
     int otp;
-    String role;
 }
