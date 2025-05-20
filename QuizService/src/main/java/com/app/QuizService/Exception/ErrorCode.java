@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatusCode;
 @AllArgsConstructor
 @Getter
 public enum ErrorCode {
+    DURATION_FIELD_INVALID(1017,"Khoảng cách giữa 2 thời gian nhỏ hơn tổng thời gian làm bài", HttpStatus.BAD_REQUEST),
+    BETWEEN_TIME_INVALID(1016,"Thời gian bắt đầu nằm sau thời gian kết thúc", HttpStatus.BAD_REQUEST),
+    FIELD_TIME_NOTNULL(1015,"Các giá trị thời gian chưa nhập đầy đủ", HttpStatus.BAD_REQUEST),
     RESULT_NO_EXISTS(1014,"Lỗi kết quả chưa được khởi tạo trong hệ thống", HttpStatus.BAD_REQUEST),
     QUIZ_NO_EXISTS(1013,"Lỗi bài quiz không tồn tại trong hệ thống", HttpStatus.BAD_REQUEST),
     CORRECT_INVALID(1012,"Thứ tự câu đúng không hợp lệ", HttpStatus.BAD_REQUEST),

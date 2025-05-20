@@ -11,14 +11,14 @@ public class QuizTimeValidator implements ConstraintValidator<ValidQuizTime, Sav
     @Override
     public boolean isValid(SaveQuizRequest request, ConstraintValidatorContext context) {
         if (request.getStartTime() == null || request.getEndTime() == null || request.getDuration() == null)
-            return fail(context,"Các giá trị thời gian chưa nhập đầy đủ");
+            return fail(context,"FIELD_TIME_NOTNULL");
 
         if (request.getStartTime().isAfter(request.getEndTime()))
-            return fail(context,"Thời gian bắt đầu nằm sau thời gian kết thúc");
+            return fail(context,"BETWEEN_TIME_INVALID");
 
         Duration expectedDuration = Duration.between(request.getStartTime(), request.getEndTime());
         if(expectedDuration.compareTo(request.getDuration()) < 0)
-            return fail(context,"Khoảng cách giữa 2 thời gian nhỏ hơn tổng thời gian làm bài");
+            return fail(context,"DURATION_FIELD_INVALID");
 
         return true;
     }
