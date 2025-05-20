@@ -36,9 +36,12 @@ public class ChatService {
 
 
     Chat createChat(String user1,String user2){
-        userClient.findByName(user1);
-        userClient.findByName(user2);
-
+        try {
+            userClient.findByName(user1);
+            userClient.findByName(user2);
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+        }
 
         return chatRepository.save(Chat.builder()
                 .user(user1)

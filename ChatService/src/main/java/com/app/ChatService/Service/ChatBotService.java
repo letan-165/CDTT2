@@ -38,7 +38,11 @@ public class ChatBotService {
     String keyChatBot;
 
     public ChatBot createChatBot(String name){
-        userClient.findByName(name);
+        try {
+            userClient.findByName(name);
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+        }
 
         return chatBotRepository.save(ChatBot.builder()
                 .user(name)
@@ -71,9 +75,13 @@ public class ChatBotService {
         return chatBotRepository.save(chatBot);
     };
 
-    public void deleteChatBot(String userID){
-        userClient.findByName(userID);
-        chatBotRepository.deleteById(userID);
+    public void deleteChatBot(String name){
+        try {
+            userClient.findByName(name);
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+        }
+        chatBotRepository.deleteById(name);
     }
 
 

@@ -47,7 +47,11 @@ public class ResultService {
     }
 
     public SubmitQuizResponse join(JoinQuizRequest request){
-        userClient.findById(request.getStudentID());
+        try{
+            userClient.findById(request.getStudentID());
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+        }
         Quiz quiz = quizRepository.findById(request.getQuizID())
                 .orElseThrow(()-> new AppException(ErrorCode.QUIZ_NO_EXISTS));
 

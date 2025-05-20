@@ -36,7 +36,11 @@ public class QuizService {
     UserClient userClient;
 
     public QuizResponse save(SaveQuizRequest request){
-        userClient.findById(request.getTeacherID());
+        try{
+            userClient.findById(request.getTeacherID());
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+        }
         request.getQuestions().forEach(questionSave -> {
             int size = questionSave.getOptions().size();
             questionSave.getCorrects().forEach(correct -> {
@@ -50,7 +54,12 @@ public class QuizService {
     }
 
     public List<QuizResponse> statisticsTopic(String teacherID, String topic){
-        userClient.findById(teacherID);
+        try{
+            userClient.findById(teacherID);
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+        }
+
         var quizzes = quizRepository.findByTeacherIDAndTopic(teacherID,topic);
         return quizzes.stream()
                 .map(quizMapper::toQuizResponse)

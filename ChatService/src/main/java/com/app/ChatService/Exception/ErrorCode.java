@@ -12,6 +12,7 @@ public enum ErrorCode {
     CHAT_NO_EXISTS(1009,"Chat giữa 2 người dùng chưa được khởi tạo", HttpStatus.BAD_REQUEST),
     USERID_DUPLICATE(1008,"Trùng lặp id người dùng khi gửi tin nhắn", HttpStatus.BAD_REQUEST),
     CHATBOT_NO_EXISTS(1007,"ChatBot chưa được khởi tạo", HttpStatus.BAD_REQUEST),
+    USER_NO_EXIST(1003,"Lỗi không tìm thấy người dùng (user)", HttpStatus.BAD_REQUEST),
     AUTHENTICATION(1002,"Lỗi xác thực không đúng", HttpStatus.UNAUTHORIZED),
     AUTHORIZED(1001,"Lỗi không có quyền", HttpStatus.FORBIDDEN),
     OTHER_ERROL(9999,"Lỗi mới chưa định nghĩa", HttpStatus.INTERNAL_SERVER_ERROR),;
