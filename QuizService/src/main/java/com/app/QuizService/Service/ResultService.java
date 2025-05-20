@@ -74,13 +74,13 @@ public class ResultService {
             Quiz quiz = result.getQuiz();
             //Give question from ID request
             Question question = quiz.getQuestions().get(questionRequest.getQuestionID());
-            var answers = questionRequest.getAnswer();
+            var answers = questionRequest.getAnswers();
             answers.forEach(answer-> {
                 if(answer >= quiz.getQuestions().size() || answer < 0)
                     throw new AppException(ErrorCode.CORRECT_INVALID);
             });
             //Update answer
-            question.setAnswer(answers);
+            question.setAnswers(answers);
             result.getQuiz().getQuestions()
                     .put(questionRequest.getQuestionID(),question);
         });
@@ -89,7 +89,7 @@ public class ResultService {
     }
 
     boolean checkResult(Question question){
-        var answers = question.getAnswer();
+        var answers = question.getAnswers();
         var corrects = question.getCorrects();
         if(answers.size() != corrects.size())
             return false;

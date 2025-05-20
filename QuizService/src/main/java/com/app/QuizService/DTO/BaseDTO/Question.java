@@ -15,5 +15,5 @@ public class  Question {
     String content;
     List<String> options;
     List<Integer> corrects;
-    List<Integer> answer;
+    List<Integer> answers;
 }
