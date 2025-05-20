@@ -37,4 +37,11 @@ public class AuthController {
                 .build();
     }
 
+    @PostMapping("/instropect")
+    public ApiResponse<Boolean> instropect(@RequestBody TokenRequest request) throws ParseException, JOSEException {
+        return ApiResponse.<Boolean>builder()
+                .result(authService.instropect(request))
+                .build();
+    }
+
 }

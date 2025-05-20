@@ -2,9 +2,11 @@ package com.quizz.AccountService.Service;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
+import com.quizz.AccountService.DTO.Request.TokenRequest;
 import com.quizz.AccountService.Entity.User;
 import com.quizz.AccountService.Exception.AppException;
 import com.quizz.AccountService.Exception.ErrorCode;
@@ -61,6 +63,18 @@ public class AuthService {
             throw new AppException(ErrorCode.USER_NO_EXIST);
 
         return name;
+    }
+
+    public Boolean instropect(TokenRequest request) throws ParseException, JOSEException {
+        SignedJWT jwt = SignedJWT.parse(request.getToken());
+        var expiryTime = jwt.getJWTClaimsSet().getExpirationTime();
+        JWSVerifier jwsVerifier = new MACVerifier(KEY.getBytes());
+        boolean check = jwt.verify(jwsVerifier);
+
+        if(!check && expiryTime.after(Date.from(Instant.now())))
+            throw new AppException(ErrorCode.AUTHENTICATION);
+
+        return true;
     }
 
 

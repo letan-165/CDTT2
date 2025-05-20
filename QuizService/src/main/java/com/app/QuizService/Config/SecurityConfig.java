@@ -27,15 +27,12 @@ public class SecurityConfig {
     @Value("${key.jwt.value}")
     String KEY;
 
-    String[] publicEntryPoint = {"/**"};
-
-
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(publicEntryPoint)
+                        .requestMatchers("/**")
                         .permitAll().anyRequest()
                         .authenticated())
 

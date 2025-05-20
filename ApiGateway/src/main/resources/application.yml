@@ -1,0 +1,32 @@
+server:
+  port: 8888
+
+app:
+  api-prefix: /api/v1
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: account_service
+          uri: ${ACCOUNT_URL:http://localhost:8080}
+          predicates:
+            - Path=${app.api-prefix}/account_service/**
+          filters:
+            - StripPrefix=2
+
+        - id: chat_service
+          uri: ${CHAT_URL:http://localhost:8081}
+          predicates:
+            - Path=${app.api-prefix}/chat_service/**
+          filters:
+            - StripPrefix=2
+
+        - id: quiz_service
+          uri: ${QUIZ_URL:http://localhost:8082}
+          predicates:
+            - Path=${app.api-prefix}/quiz_service/**
+          filters:
+            - StripPrefix=2
