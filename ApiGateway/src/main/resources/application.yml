@@ -30,3 +30,10 @@ spring:
             - Path=${app.api-prefix}/quiz_service/**
           filters:
             - StripPrefix=2
+
+        - id: notification_service
+          uri: ${NOTIFICATION_URL:http://localhost:8083}
+          predicates:
+            - Path=${app.api-prefix}/notification_service/**
+          filters:
+            - StripPrefix=2
