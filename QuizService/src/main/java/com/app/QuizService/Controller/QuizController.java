@@ -21,7 +21,7 @@ import java.util.List;
 public class QuizController {
     QuizService quizService;
 
-    @PostMapping
+    @PostMapping("/public")
     ApiResponse<QuizResponse>save(@Valid @RequestBody SaveQuizRequest request){
         return ApiResponse.<QuizResponse>builder()
                 .message("Khởi tạo quiz của: "+request.getTeacherID())
@@ -29,7 +29,7 @@ public class QuizController {
                 .build();
     }
 
-    @GetMapping("/{teacherID}/statistics")
+    @GetMapping("/public/{teacherID}/statistics")
     ApiResponse<List<QuizResponse>>statisticsTopic(@PathVariable String teacherID,@RequestParam String topic){
         return ApiResponse.<List<QuizResponse>>builder()
                 .message("Thống kê chủ đề "+ topic +" của "+ teacherID)

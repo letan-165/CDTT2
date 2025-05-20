@@ -24,7 +24,7 @@ import java.util.List;
 public class ResultController {
     ResultService resultService;
 
-    @PostMapping("/join")
+    @PostMapping("/public/join")
     ApiResponse<SubmitQuizResponse>join(@RequestBody JoinQuizRequest request){
         return ApiResponse.<SubmitQuizResponse>builder()
                 .message(request.getStudentID()+" đã tham gia quiz "+request.getQuizID())
@@ -32,7 +32,7 @@ public class ResultController {
                 .build();
     }
 
-    @PutMapping("/submit")
+    @PutMapping("/public/submit")
     ApiResponse<SubmitQuizResponse>submit(@RequestBody SubmitQuizRequest request){
         return ApiResponse.<SubmitQuizResponse>builder()
                 .message("Xác nhận câu trả lời của " + request.getResultID())
@@ -40,7 +40,7 @@ public class ResultController {
                 .build();
     }
 
-    @PutMapping("/{resultID}/finish")
+    @PutMapping("/public/{resultID}/finish")
     ApiResponse<ResultResponse> finish(@PathVariable String resultID){
         return ApiResponse.<ResultResponse>builder()
                 .message("Xác nhận kết thúc quiz của: "+resultID)
@@ -48,7 +48,7 @@ public class ResultController {
                 .build();
     }
 
-    @GetMapping("/{resultID}")
+    @GetMapping("/public/{resultID}")
     ApiResponse<ResultResponse>findByID(@PathVariable String resultID){
         return ApiResponse.<ResultResponse>builder()
                 .message("Lấy kết quả "+ resultID)
@@ -56,7 +56,7 @@ public class ResultController {
                 .build();
     }
 
-    @GetMapping("/quiz/{quizID}/statistics")
+    @GetMapping("/public/quiz/{quizID}/statistics")
     ApiResponse<StatisticsResponse>statistics(@PathVariable String quizID){
         return ApiResponse.<StatisticsResponse>builder()
                 .message("Thống kê kết quả của quiz: "+quizID)
