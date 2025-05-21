@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatusCode;
 @AllArgsConstructor
 @Getter
 public enum ErrorCode {
-    EMAIL_INVALID(1019,"Xác thực otp không hợp lệ", HttpStatus.BAD_REQUEST),
+    EMAIL_INVALID(1019,"Xác thực emai không hợp lệ", HttpStatus.BAD_REQUEST),
     OTP_INVALID(1018,"Xác thực otp không hợp lệ", HttpStatus.BAD_REQUEST),
     PARSE_TOKEN_FAIL(1007,"Lỗi định dạng token không hợp lệ", HttpStatus.BAD_REQUEST),
     ROLE_INVALID(1006,"Lỗi vai trò người dùng (role) không hợp lệ", HttpStatus.BAD_REQUEST),

@@ -16,7 +16,7 @@ import java.util.List;
 public class UserResponse {
     String userID;
     String name;
-    String gmail;
+    String email;
     String phone;
     List<String> roles;
 }

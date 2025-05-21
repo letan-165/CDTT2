@@ -38,7 +38,7 @@ public class UserService {
     }
 
     public UserResponse signUp(UserSignUpRequest request) {
-        otpService.verify(request.getGmail(), request.getOtp());
+        otpService.verify(request.getEmail(), request.getOtp());
 
         if(userRepository.existsByName(request.getName()))
             throw new AppException(ErrorCode.USER_EXIST);
@@ -69,7 +69,10 @@ public class UserService {
     public UserResponse forgotPassword(ForgotPassRequest request) {
         User user = userRepository.findByName(request.getUsername())
                 .orElseThrow(()->new AppException(ErrorCode.USER_NO_EXIST));
-        otpService.verify(user.getGmail(), request.getOtp());
+        if(!user.getEmail().equals(request.getEmail()))
+            throw new AppException(ErrorCode.EMAIL_INVALID);
+
+        otpService.verify(user.getEmail(), request.getOtp());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         return userMapper.toUserResponse(userRepository.save(user));
     }

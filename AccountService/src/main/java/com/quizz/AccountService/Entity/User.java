@@ -22,7 +22,7 @@ public class User {
     String userID;
     String name;
     String password;
-    String gmail;
+    String email;
     String phone;
 
     @ManyToMany

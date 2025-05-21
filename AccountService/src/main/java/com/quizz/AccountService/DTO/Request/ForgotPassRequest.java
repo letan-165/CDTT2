@@ -11,5 +11,6 @@ import lombok.experimental.FieldDefaults;
 public class ForgotPassRequest {
     String username;
     String password;
+    String email;
     int otp;
 }
