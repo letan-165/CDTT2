@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -132,11 +133,17 @@ public class ResultService {
                 .map(resultMapper::toStatisticsResultResponse)
                 .toList();
 
-
         return StatisticsResponse.builder()
                 .quizID(quizID)
                 .results(response)
                 .build();
+    }
+
+    public List<ResultResponse> statisticStudents(String studentID){
+        var resultsByStudent = resultRepository.findAllByStudentID(studentID);
+        return resultsByStudent.stream()
+                .map(resultMapper::toResultResponse)
+                .toList();
     }
 
 

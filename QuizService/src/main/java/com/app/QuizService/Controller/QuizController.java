@@ -29,7 +29,7 @@ public class QuizController {
                 .build();
     }
 
-    @GetMapping("/public/{teacherID}/statistics")
+    @GetMapping("/public/teacher/{teacherID}/statistics")
     ApiResponse<List<QuizResponse>>statisticsTopic(@PathVariable String teacherID,@RequestParam String topic){
         return ApiResponse.<List<QuizResponse>>builder()
                 .message("Thống kê chủ đề "+ topic +" của "+ teacherID)
