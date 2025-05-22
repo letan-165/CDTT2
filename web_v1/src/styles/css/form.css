@@ -1,0 +1,156 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to right, #e0e0e0 50%, #00b300 50%);
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  display: flex;
+  width: 900px;
+  height: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.form-left {
+  background-color: #24A607;
+  width: 450px;
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  margin-bottom: 30px;
+  align-self: center;
+}
+
+.form-header h2 {
+  padding-top: 20px;
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-left h2 {
+  margin-bottom: 30px;
+}
+
+.form-left label {
+  margin-top: 10px;
+  padding-top: 15px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.form-left input {
+  padding: 5px;
+  margin: 5px 0 15px;
+  border: none;
+  border-bottom: 5px solid white;
+  background: transparent;
+  color: white;
+}
+
+.form-links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 50px;
+  padding: 0px 15px 0px 20px;
+}
+
+.form-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-left button {
+  padding: 15px;
+  width: 180px;
+  background-color: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+  font-size: 15px;
+}
+.form-left ::placeholder{
+  color: #e0e0e0;
+  font-size: 15px;
+}
+
+
+
+
+/*---------------------------------------------------*/
+.form-right {
+  background-color: #1D1433;
+  width: 550px;
+  /*flex: 1;*/
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-right img {
+  width: 450px;
+  height: auto;
+}
+
+.form-right h1 {
+  margin: 20px 0 10px;
+}
+
+.form-right p {
+  font-size: 14px;
+}
+
+
+/*-------------------------------------------------------*/
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 0px 15px 0px 20px;
+}
+
+.form-group input {
+  padding: 0px 35px 0px 1px; 
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 20px;
+  height: 40px; 
+}
+
+.input-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none; 
+}
