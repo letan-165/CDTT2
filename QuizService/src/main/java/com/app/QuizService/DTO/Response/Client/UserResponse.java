@@ -15,5 +15,5 @@ public class UserResponse {
     String name;
     String phone;
     String gmail;
-    List<String> roles;
+    String role;
 }
