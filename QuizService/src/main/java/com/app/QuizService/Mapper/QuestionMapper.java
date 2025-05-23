@@ -5,6 +5,7 @@ import com.app.QuizService.DTO.BaseDTO.QuestionSave;
 import com.app.QuizService.DTO.BaseDTO.QuestionSubmit;
 import com.app.QuizService.DTO.Request.SubmitQuizRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuestionResponse;
+import com.app.QuizService.Entity.Elastic.SearchQuiz;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

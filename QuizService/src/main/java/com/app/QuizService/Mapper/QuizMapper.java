@@ -5,6 +5,7 @@ import com.app.QuizService.DTO.BaseDTO.QuestionSave;
 import com.app.QuizService.DTO.Request.SaveQuizRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuestionResponse;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
+import com.app.QuizService.Entity.Elastic.SearchQuiz;
 import com.app.QuizService.Entity.Quiz;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -28,6 +29,8 @@ public abstract class QuizMapper {
 
     @Mapping(target = "questions", source = "questions", qualifiedByName = "toMapQuestions")
     public abstract Quiz toQuiz(SaveQuizRequest request);
+
+    public abstract SearchQuiz toSearchQuiz(Quiz quiz);
 
     @Named("toListQuestions")
     List<QuestionResponse> toListQuestions(Map<Integer, Question> questions){

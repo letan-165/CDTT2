@@ -19,7 +19,7 @@ import java.util.List;
 public class SaveQuizRequest {
     String teacherID;
     String title;
-    String topic;
+    List<String> topics;
     String description;
     List<QuestionSave> questions;
     Instant startTime;

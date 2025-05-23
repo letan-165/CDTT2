@@ -16,7 +16,7 @@ public class QuizResponse {
     String quizID;
     String teacherID;
     String title;
-    String topic;
+    List<String> topics;
     String description;
     List<QuestionResponse> questions;
     Instant startTime;

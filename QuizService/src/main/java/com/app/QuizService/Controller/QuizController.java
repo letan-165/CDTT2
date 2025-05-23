@@ -2,7 +2,9 @@ package com.app.QuizService.Controller;
 
 import com.app.QuizService.DTO.ApiResponse;
 import com.app.QuizService.DTO.Request.SaveQuizRequest;
+import com.app.QuizService.DTO.Request.SearchRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
+import com.app.QuizService.Entity.Elastic.SearchQuiz;
 import com.app.QuizService.Service.QuizService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -29,11 +31,22 @@ public class QuizController {
                 .build();
     }
 
-    @GetMapping("/public/teacher/{teacherID}/statistics")
-    ApiResponse<List<QuizResponse>>statisticsTopic(@PathVariable String teacherID,@RequestParam String topic){
-        return ApiResponse.<List<QuizResponse>>builder()
-                .message("Thống kê chủ đề "+ topic +" của "+ teacherID)
-                .result(quizService.statisticsTopic(teacherID,topic))
+    @PostMapping("/public/title/search")
+    ApiResponse<List<SearchQuiz>>statisticsTitle(@RequestBody SearchRequest request){
+        return ApiResponse.<List<SearchQuiz>>builder()
+                .message("Thống kê tiêu đề "+ request.getSearch())
+                .result(quizService.searchTagTitle(request.getSearch()))
                 .build();
     }
+
+    @PostMapping("/public/topic/search")
+    ApiResponse<List<String>>statisticsTopic(@RequestBody SearchRequest request){
+        return ApiResponse.<List<String>>builder()
+                .message("Thống kê chủ đề "+ request.getSearch())
+                .result(quizService.searchTagTopic(request.getSearch()))
+                .build();
+    }
+
+
+
 }

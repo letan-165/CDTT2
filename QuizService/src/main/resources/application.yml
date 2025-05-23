@@ -9,6 +9,11 @@ spring:
     mongodb:
       uri: ${MONGODB_URL:mongodb://root:root@localhost:27017/QUIZZ?authSource=admin}
 
+    elasticsearch:
+      uris: http://localhost:9200
+
+
+
 app:
   service:
     account: ${ACCOUNT_URL:http://localhost:8080}/account_service

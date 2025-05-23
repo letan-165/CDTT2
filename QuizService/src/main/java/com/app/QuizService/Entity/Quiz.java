@@ -22,7 +22,7 @@ public class Quiz {
     String quizID;
     String teacherID;
     String title;
-    String topic;
+    List<String> topics;
     String description;
     Map<Integer,Question> questions;
     Instant startTime;
