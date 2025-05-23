@@ -80,7 +80,6 @@ public class AuthService {
         boolean isTime = expiryTime.after(Date.from(Instant.now()));
         boolean isExists = tokenRepository.existsById(jwt.getJWTClaimsSet().getJWTID());
 
-
         if(!isVerify || !isTime || !isExists)
             throw new AppException(ErrorCode.AUTHENTICATION);
 
@@ -124,14 +123,11 @@ public class AuthService {
 
     public String buildScope(User user){
         StringJoiner stringJoiner = new StringJoiner(" ");
-        if (!CollectionUtils.isEmpty(user.getRoles())) {
-            user.getRoles().forEach(role -> {
-                stringJoiner.add(role.getName());
-                if (!CollectionUtils.isEmpty(role.getPermissions())) {
-                    role.getPermissions().forEach(permission -> stringJoiner.add(permission.getName()));
-                }
-            });
+        stringJoiner.add(user.getRole().getName());
+        if (!CollectionUtils.isEmpty(user.getRole().getPermissions())) {
+            user.getRole().getPermissions().forEach(permission -> stringJoiner.add(permission.getName()));
         }
+
         return stringJoiner.toString();
     }
 }

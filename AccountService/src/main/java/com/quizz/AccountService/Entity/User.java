@@ -25,7 +25,6 @@ public class User {
     String email;
     String phone;
 
-    @ManyToMany
-    @Builder.Default
-    List<Role> roles = new ArrayList<>(Collections.emptyList());
+    @ManyToOne
+    Role role;
 }

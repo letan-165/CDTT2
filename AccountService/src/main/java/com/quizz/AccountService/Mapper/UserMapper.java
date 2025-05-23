@@ -12,13 +12,14 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
+    @Mapping(target = "role", ignore = true)
     User toUser(UserSignUpRequest request);
 
-    @Mapping(target = "roles",source = "roles", qualifiedByName = "toRoleName")
+    @Mapping(target = "role",source = "role", qualifiedByName = "toRoleName")
     UserResponse toUserResponse(User user);
 
     @Named("toRoleName")
-     default List<String> toRoleName(List<Role> roles) {
-        return roles.stream().map(Role::getName).toList();
+     default String toRoleName(Role role) {
+        return role.getName();
     }
 }

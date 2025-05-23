@@ -18,5 +18,5 @@ public class UserResponse {
     String name;
     String email;
     String phone;
-    List<String> roles;
+    String role;
 }

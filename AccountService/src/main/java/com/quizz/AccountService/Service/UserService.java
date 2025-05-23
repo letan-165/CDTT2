@@ -47,7 +47,7 @@ public class UserService {
                 .orElseThrow(()-> new AppException(ErrorCode.ROLE_INVALID));
 
         User user = userMapper.toUser(request);
-        user.getRoles().add(role);
+        user.setRole(role);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         return userMapper.toUserResponse(
