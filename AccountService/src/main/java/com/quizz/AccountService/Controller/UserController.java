@@ -4,7 +4,7 @@ import com.quizz.AccountService.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
-import com.quizz.AccountService.Entity.User;
+import com.quizz.AccountService.Entity.MySql.User;
 import com.quizz.AccountService.Service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +37,7 @@ public class UserController {
                 .build();
     }
 
-    @GetMapping("/public/id={userID}")
+    @GetMapping("/public/id/{userID}")
     ApiResponse<UserResponse> findByID(@PathVariable String userID){
         return ApiResponse.<UserResponse>builder()
                 .message("Tìm người dùng dựa vào ID:  "+userID)
@@ -45,7 +45,7 @@ public class UserController {
                 .build();
     }
 
-    @GetMapping("/public/name={name}")
+    @GetMapping("/public/name/{name}")
     ApiResponse<UserResponse> findByName(@PathVariable String name){
         return ApiResponse.<UserResponse>builder()
                 .message("Tìm người dùng dựa vào tên: "+name)

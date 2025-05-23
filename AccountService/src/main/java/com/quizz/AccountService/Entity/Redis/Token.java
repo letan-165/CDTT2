@@ -1,4 +1,4 @@
-package com.quizz.AccountService.Entity;
+package com.quizz.AccountService.Entity.Redis;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -6,18 +6,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
 
-@RedisHash(value = "otp")
+@RedisHash(value = "token")
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Otp {
+public class Token {
     @Id
-    String email;
-    int value;
+    String tokenID;
+    String value;
 
     @TimeToLive
     int expiryTime;
-
 }

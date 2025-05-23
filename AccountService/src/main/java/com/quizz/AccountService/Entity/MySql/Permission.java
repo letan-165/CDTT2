@@ -1,4 +1,4 @@
-package com.quizz.AccountService.Entity;
+package com.quizz.AccountService.Entity.MySql;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,6 +1,6 @@
-package com.quizz.AccountService.Repository;
+package com.quizz.AccountService.Repository.MySql;
 
-import com.quizz.AccountService.Entity.Permission;
+import com.quizz.AccountService.Entity.MySql.Permission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

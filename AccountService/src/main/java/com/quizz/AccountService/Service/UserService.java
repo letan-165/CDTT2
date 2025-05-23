@@ -3,15 +3,13 @@ package com.quizz.AccountService.Service;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
-import com.quizz.AccountService.Entity.Role;
-import com.quizz.AccountService.Entity.User;
-import com.quizz.AccountService.Enum.TypeRole;
+import com.quizz.AccountService.Entity.MySql.Role;
+import com.quizz.AccountService.Entity.MySql.User;
 import com.quizz.AccountService.Exception.AppException;
 import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Mapper.UserMapper;
-import com.quizz.AccountService.Repository.OtpRepository;
-import com.quizz.AccountService.Repository.RoleRepository;
-import com.quizz.AccountService.Repository.UserRepository;
+import com.quizz.AccountService.Repository.MySql.RoleRepository;
+import com.quizz.AccountService.Repository.MySql.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -76,9 +73,5 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         return userMapper.toUserResponse(userRepository.save(user));
     }
-
-
-
-
 
 }

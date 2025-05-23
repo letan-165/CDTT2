@@ -2,13 +2,11 @@ package com.quizz.AccountService.Mapper;
 
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
-import com.quizz.AccountService.Entity.Role;
-import com.quizz.AccountService.Entity.User;
+import com.quizz.AccountService.Entity.MySql.Role;
+import com.quizz.AccountService.Entity.MySql.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

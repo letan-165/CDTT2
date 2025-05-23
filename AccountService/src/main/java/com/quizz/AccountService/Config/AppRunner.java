@@ -1,10 +1,9 @@
 package com.quizz.AccountService.Config;
 
-import com.quizz.AccountService.Entity.Permission;
-import com.quizz.AccountService.Entity.Role;
+import com.quizz.AccountService.Entity.MySql.Role;
 import com.quizz.AccountService.Enum.TypeRole;
-import com.quizz.AccountService.Repository.PermissionRepository;
-import com.quizz.AccountService.Repository.RoleRepository;
+import com.quizz.AccountService.Repository.MySql.PermissionRepository;
+import com.quizz.AccountService.Repository.MySql.RoleRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

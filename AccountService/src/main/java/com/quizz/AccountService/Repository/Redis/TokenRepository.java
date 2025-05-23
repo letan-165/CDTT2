@@ -1,6 +1,6 @@
-package com.quizz.AccountService.Repository;
+package com.quizz.AccountService.Repository.Redis;
 
-import com.quizz.AccountService.Entity.Token;
+import com.quizz.AccountService.Entity.Redis.Token;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,14 +1,9 @@
-package com.quizz.AccountService.Entity;
+package com.quizz.AccountService.Entity.MySql;
 
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Builder

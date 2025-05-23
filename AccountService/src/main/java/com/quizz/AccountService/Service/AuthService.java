@@ -7,12 +7,13 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
 import com.quizz.AccountService.DTO.Request.TokenRequest;
-import com.quizz.AccountService.Entity.Token;
-import com.quizz.AccountService.Entity.User;
+import com.quizz.AccountService.Entity.Redis.Token;
+import com.quizz.AccountService.Entity.MySql.User;
 import com.quizz.AccountService.Exception.AppException;
 import com.quizz.AccountService.Exception.ErrorCode;
-import com.quizz.AccountService.Repository.TokenRepository;
-import com.quizz.AccountService.Repository.UserRepository;
+import com.quizz.AccountService.Mapper.UserMapper;
+import com.quizz.AccountService.Repository.Redis.TokenRepository;
+import com.quizz.AccountService.Repository.MySql.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -24,7 +25,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.text.ParseException;
-import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -40,7 +40,13 @@ public class AuthService {
     @NonFinal
     @Value("${key.jwt.value}")
     String KEY;
+
+    @NonFinal
+    @Value("${app.time.expiryTime}")
+    int expiryTime;
+
     UserRepository userRepository;
+    UserMapper userMapper;
     PasswordEncoder passwordEncoder;
     TokenRepository tokenRepository;
 
@@ -52,7 +58,6 @@ public class AuthService {
 
         if(!check)
             throw new AppException(ErrorCode.PASSWORD_LOGIN_FAIL);
-
         return generate(user);
     }
 
@@ -96,13 +101,12 @@ public class AuthService {
 
     //Create Token
     public String generate(User user) throws JOSEException {
-        int duration = 30;
         JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
                 .jwtID(UUID.randomUUID().toString())
                 .issuer("QUIZZ")
                 .subject(user.getName())
                 .issueTime(Date.from(Instant.now()))
-                .expirationTime(Date.from(Instant.now().plus(duration,ChronoUnit.SECONDS)))
+                .expirationTime(Date.from(Instant.now().plus(expiryTime,ChronoUnit.SECONDS)))
                 .claim("scope", buildScope(user))
                 .build();
 
@@ -115,7 +119,7 @@ public class AuthService {
         tokenRepository.save(Token.builder()
                         .tokenID(jwtClaimsSet.getJWTID())
                         .value(token)
-                        .expiryTime(duration)
+                        .expiryTime(expiryTime)
                 .build());
 
         return token;
