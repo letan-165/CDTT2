@@ -72,4 +72,12 @@ public class ResultController {
                 .build();
     }
 
+    @GetMapping("/public/student/{studentID}/week/{lastWeek}/statistics")
+    ApiResponse<List<Integer>>statisticStudentResultTimes(@PathVariable String studentID,@PathVariable int lastWeek){
+        return ApiResponse.<List<Integer>>builder()
+                .message("Thống kê kết quả của học sinh:"+studentID)
+                .result(resultService.statisticStudentResultTimes(studentID,lastWeek))
+                .build();
+    }
+
 }

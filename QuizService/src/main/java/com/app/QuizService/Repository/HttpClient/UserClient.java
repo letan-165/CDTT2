@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "user", url = "${app.service.account}")
 public interface UserClient {
-    @GetMapping(value = "/user/public/id={userID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/user/public/id/{userID}", produces = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<UserResponse> findById (@PathVariable String userID);
 
-    @GetMapping(value = "/user/public/name={name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/user/public/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<UserResponse> findByName (@PathVariable String name);
 
 }

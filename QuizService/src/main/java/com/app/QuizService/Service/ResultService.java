@@ -21,7 +21,10 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -70,6 +73,10 @@ public class ResultService {
     public SubmitQuizResponse submit(SubmitQuizRequest request){
         Result result = resultRepository.findById(request.getResultID())
                 .orElseThrow(()->new AppException(ErrorCode.RESULT_NO_EXISTS));
+
+        if(Instant.now().isBefore(result.getQuiz().getStartTime()))
+            throw new AppException(ErrorCode.TIME_TODO_INVALID);
+
 
         request.getQuestions().forEach(questionRequest ->{
             Quiz quiz = result.getQuiz();
@@ -145,6 +152,42 @@ public class ResultService {
                 .map(resultMapper::toResultResponse)
                 .toList();
     }
+
+    public List<Integer> statisticStudentResultTimes(String studentID,int lastWeek){
+        List<Integer> totalTimeLearnOnWeek = new ArrayList<>();
+        var resultsByStudent = resultRepository.findAllByStudentID(studentID);
+        ZonedDateTime monday = Instant.now()
+                .atZone(ZoneId.systemDefault())
+                .with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
+                .minusWeeks(lastWeek)
+                .with(LocalTime.MIDNIGHT);
+
+        var resultOnWeeks = resultsByStudent.stream()
+                .filter(result -> result.getStartTime().isAfter(monday.toInstant())
+                        && result.getEndTime().isBefore(monday.plusDays(7).toInstant()))
+                .toList();
+
+
+        for(int i = 0; i < 7; i++){
+            Instant day = monday.plusDays(i).toInstant();
+
+            totalTimeLearnOnWeek.add(resultOnWeeks.stream()
+                    .filter(result -> checkDayTime(result.getStartTime(),day))
+                    .mapToInt(result-> Math.toIntExact(Duration.between(result.getStartTime(), result.getEndTime()).toMinutes()))
+                    .sum());
+        }
+
+        return totalTimeLearnOnWeek;
+    }
+
+    boolean checkDayTime(Instant instant1,Instant instant2){
+        ZoneId zone = ZoneId.systemDefault();
+        LocalDate date1 = instant1.atZone(zone).toLocalDate();
+        LocalDate date2 = instant2.atZone(zone).toLocalDate();
+        return date1.getDayOfMonth() == date2.getDayOfMonth();
+    }
+
+
 
 
 
