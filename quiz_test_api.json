@@ -154,6 +154,91 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "listUserLock",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/account_service/user/public/lock",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"account_service",
+										"user",
+										"public",
+										"lock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SaveLock",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userID\":\"77e95c7e-a519-4d77-8bcf-e7b225bf7990\",\r\n    \"expiryTime\": 60\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/account_service/user/public/lock",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"account_service",
+										"user",
+										"public",
+										"lock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteLock",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/account_service/user/public/lock/77e95c7e-a519-4d77-8bcf-e7b225bf7990",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"account_service",
+										"user",
+										"public",
+										"lock",
+										"77e95c7e-a519-4d77-8bcf-e7b225bf7990"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},

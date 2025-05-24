@@ -2,9 +2,11 @@ package com.quizz.AccountService.Controller;
 
 import com.quizz.AccountService.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
+import com.quizz.AccountService.DTO.Request.SaveLockUserRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
 import com.quizz.AccountService.Entity.MySql.User;
+import com.quizz.AccountService.Entity.Redis.LockUser;
 import com.quizz.AccountService.Service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +25,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/public")
-    ApiResponse<List<User>> findAll(){
-        return ApiResponse.<List<User>>builder()
+    ApiResponse<List<UserResponse>> findAll(){
+        return ApiResponse.<List<UserResponse>>builder()
                 .result(userService.findAll())
                 .build();
     }
@@ -58,6 +60,31 @@ public class UserController {
         return ApiResponse.<UserResponse>builder()
                 .message("Người dùng "+request.getUsername() +"quên mật khẩu")
                 .result(userService.forgotPassword(request))
+                .build();
+    }
+
+    //USerLock
+    @GetMapping("/public/lock")
+    ApiResponse<List<LockUser>> findAllLock(){
+        return ApiResponse.<List<LockUser>>builder()
+                .message("Danh sách ngươi dùng bị khóa tam thời")
+                .result(userService.findAllLock())
+                .build();
+    }
+
+    @PostMapping("/public/lock")
+    ApiResponse<LockUser> saveLockUser(@RequestBody SaveLockUserRequest request){
+        return ApiResponse.<LockUser>builder()
+                .message("Khởi tạo người dùng bị khóa: "+request.getUserID())
+                .result(userService.saveLockUser(request))
+                .build();
+    }
+
+    @DeleteMapping("/public/lock/{userID}")
+    ApiResponse<Boolean> deleteLockUser(@PathVariable String userID){
+        return ApiResponse.<Boolean>builder()
+                .message("Mở khóa người dùng: "+userID)
+                .result(userService.deleteLockUser(userID))
                 .build();
     }
 }

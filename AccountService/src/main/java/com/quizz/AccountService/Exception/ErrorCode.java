@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatusCode;
 @AllArgsConstructor
 @Getter
 public enum ErrorCode {
+    USER_LOCK(1021,"Tài khoản hiện đang bị khóa tạm thời", HttpStatus.BAD_REQUEST),
+    USER_NO_LOCK(1020,"Tài khoản không nằm trong danh sách bị khóa", HttpStatus.BAD_REQUEST),
     EMAIL_INVALID(1019,"Xác thực emai không hợp lệ", HttpStatus.BAD_REQUEST),
     OTP_INVALID(1018,"Xác thực otp không hợp lệ", HttpStatus.BAD_REQUEST),
     PARSE_TOKEN_FAIL(1007,"Lỗi định dạng token không hợp lệ", HttpStatus.BAD_REQUEST),

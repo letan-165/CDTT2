@@ -1,15 +1,18 @@
 package com.quizz.AccountService.Service;
 
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
+import com.quizz.AccountService.DTO.Request.SaveLockUserRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
 import com.quizz.AccountService.Entity.MySql.Role;
 import com.quizz.AccountService.Entity.MySql.User;
+import com.quizz.AccountService.Entity.Redis.LockUser;
 import com.quizz.AccountService.Exception.AppException;
 import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Mapper.UserMapper;
 import com.quizz.AccountService.Repository.MySql.RoleRepository;
 import com.quizz.AccountService.Repository.MySql.UserRepository;
+import com.quizz.AccountService.Repository.Redis.LockUserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -29,9 +32,12 @@ public class UserService {
     OtpService otpService;
     PasswordEncoder passwordEncoder;
     UserMapper userMapper;
+    LockUserRepository lockUserRepository;
 
-    public List<User> findAll(){
-        return userRepository.findAll();
+    public List<UserResponse> findAll(){
+        return userRepository.findAll().stream()
+                .map(userMapper::toUserResponse)
+                .toList();
     }
 
     public UserResponse signUp(UserSignUpRequest request) {
@@ -71,5 +77,37 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         return userMapper.toUserResponse(userRepository.save(user));
     }
+
+
+    //UserLock
+
+    public List<LockUser> findAllLock() {
+        return (List<LockUser>) lockUserRepository.findAll();
+    }
+
+    public LockUser saveLockUser(SaveLockUserRequest request) {
+        User user = userRepository.findById(request.getUserID())
+                .orElseThrow(()->new AppException(ErrorCode.USER_NO_EXIST));
+
+        LockUser lockUser = userMapper.toLockUser(user);
+        lockUser.setExpiryTime(request.getExpiryTime());
+        lockUserRepository.save(lockUser);
+
+        return lockUserRepository.save(lockUser);
+    }
+
+    public Boolean deleteLockUser(String userID) {
+        if(!userRepository.existsById(userID))
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+
+        if(!lockUserRepository.existsById(userID))
+            throw new AppException(ErrorCode.USER_NO_LOCK);
+
+        lockUserRepository.deleteById(userID);
+
+        return true;
+    }
+
+
 
 }

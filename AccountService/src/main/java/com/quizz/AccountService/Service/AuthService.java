@@ -12,6 +12,7 @@ import com.quizz.AccountService.Entity.MySql.User;
 import com.quizz.AccountService.Exception.AppException;
 import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Mapper.UserMapper;
+import com.quizz.AccountService.Repository.Redis.LockUserRepository;
 import com.quizz.AccountService.Repository.Redis.TokenRepository;
 import com.quizz.AccountService.Repository.MySql.UserRepository;
 import lombok.AccessLevel;
@@ -49,10 +50,14 @@ public class AuthService {
     UserMapper userMapper;
     PasswordEncoder passwordEncoder;
     TokenRepository tokenRepository;
+    LockUserRepository lockUserRepository;
 
     public String login(LoginRequest request) throws JOSEException {
         User user = userRepository.findByName(request.getUsername())
                 .orElseThrow(()-> new AppException(ErrorCode.USER_NO_EXIST));
+
+        if(lockUserRepository.existsById(user.getUserID()))
+            throw new AppException(ErrorCode.USER_LOCK);
 
         boolean check = passwordEncoder.matches(request.getPassword(), user.getPassword());
 
