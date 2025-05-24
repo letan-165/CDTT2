@@ -35,8 +35,6 @@ public class UserService {
     }
 
     public UserResponse signUp(UserSignUpRequest request) {
-        otpService.verify(request.getEmail(), request.getOtp());
-
         if(userRepository.existsByName(request.getName()))
             throw new AppException(ErrorCode.USER_EXIST);
 

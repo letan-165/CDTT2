@@ -13,6 +13,5 @@ public class UserSignUpRequest {
     String password;
     String email;
     String phone;
-    int otp;
     String role;
 }

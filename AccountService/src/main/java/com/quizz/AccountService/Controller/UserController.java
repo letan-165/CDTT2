@@ -22,7 +22,7 @@ import java.util.List;
 public class UserController {
     UserService userService;
 
-    @GetMapping
+    @GetMapping("/public")
     ApiResponse<List<User>> findAll(){
         return ApiResponse.<List<User>>builder()
                 .result(userService.findAll())
