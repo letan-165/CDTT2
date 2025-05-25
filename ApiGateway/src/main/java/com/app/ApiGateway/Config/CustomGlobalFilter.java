@@ -35,10 +35,6 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
     ObjectMapper objectMapper;
 
     @NonFinal
-    @Value("${app.api-prefix}")
-    String apiPrefix;
-
-    @NonFinal
     String[] publicEntryPoint = {"/account_service/auth/.*","/.*"};
 
     @Override
@@ -70,7 +66,7 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
     }
 
     boolean isPublicEntryPoint(ServerHttpRequest request){
-        return Arrays.stream(publicEntryPoint).anyMatch(s-> request.getURI().getPath().matches(apiPrefix+s));
+        return Arrays.stream(publicEntryPoint).anyMatch(s-> request.getURI().getPath().matches(s));
     }
 
     Mono<Void> unauthenticated(ServerHttpResponse response) {
