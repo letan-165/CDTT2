@@ -1,4 +1,4 @@
-package com.app.ChatService.Config.WebSocket;
+package com.app.ChatService.Config;
 
 import com.app.ChatService.Service.ChatBotService;
 import lombok.RequiredArgsConstructor;

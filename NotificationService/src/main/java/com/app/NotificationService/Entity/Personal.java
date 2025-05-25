@@ -16,6 +16,6 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Personal {
     @Id
-    String userID;
+    String name;
     List<NotificationBase> notifications;
 }

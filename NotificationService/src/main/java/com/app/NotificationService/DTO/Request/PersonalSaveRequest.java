@@ -11,7 +11,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PersonalSaveRequest {
-    String userID;
+    String name;
     String subject;
     String content;
     Instant displayTime;

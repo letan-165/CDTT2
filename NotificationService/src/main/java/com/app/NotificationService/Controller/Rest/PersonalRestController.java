@@ -1,4 +1,4 @@
-package com.app.NotificationService.Controller;
+package com.app.NotificationService.Controller.Rest;
 
 import com.app.NotificationService.DTO.ApiResponse;
 import com.app.NotificationService.DTO.Request.PersonalSaveRequest;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/personal")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
-public class PersonalController {
+public class PersonalRestController {
     PersonalService personalService;
     @PostMapping("/send")
     ApiResponse<PersonalResponse> save(@RequestBody PersonalSaveRequest request){
         return ApiResponse.<PersonalResponse>builder()
-                .message("Gửi thông báo đến người dùng " + request.getUserID() +" Thành công")
+                .message("Gửi thông báo đến người dùng " + request.getName() +" Thành công")
                 .result(personalService.save(request))
                 .build();
     }

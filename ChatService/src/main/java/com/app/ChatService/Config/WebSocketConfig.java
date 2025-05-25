@@ -1,4 +1,4 @@
-package com.app.ChatService.Config.WebSocket;
+package com.app.ChatService.Config;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +14,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
-
-    private final CustomHandshakeHandler customHandshakeHandler;
+    CustomHandshakeHandler customHandshakeHandler;
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {

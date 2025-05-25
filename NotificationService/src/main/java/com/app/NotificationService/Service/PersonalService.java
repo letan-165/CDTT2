@@ -13,6 +13,8 @@ import com.app.NotificationService.Repository.PersonalRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -27,14 +29,16 @@ public class PersonalService {
     PersonalMapper personalMapper;
     NotificationMapper notificationMapper;
     UserClient userClient;
+    SimpMessagingTemplate messagingTemplate;
+    TaskScheduler taskScheduler;
 
-    PersonalResponse getNotificationPersonal(String userID){
+    public PersonalResponse getNotificationPersonal(String name){
         try{
-            userClient.findById(userID);
+            userClient.findByName(name);
         } catch (Exception e) {
             throw new AppException(ErrorCode.USER_NO_EXIST);
         }
-        Personal personal = personalRepository.findById(userID)
+        Personal personal = personalRepository.findById(name)
                 .orElseThrow(()-> new RuntimeException("Thông báo chưa khởi tạo"));
 
         return personalMapper.toPersonalResponse(personal);
@@ -42,13 +46,13 @@ public class PersonalService {
 
     public PersonalResponse save(PersonalSaveRequest request){
         try{
-            userClient.findById(request.getUserID());
+            userClient.findByName(request.getName());
         } catch (Exception e) {
             throw new AppException(ErrorCode.USER_NO_EXIST);
         }
-        Personal personal = personalRepository.findById(request.getUserID())
+        Personal personal = personalRepository.findById(request.getName())
                 .orElse(Personal.builder()
-                        .userID(request.getUserID())
+                        .name(request.getName())
                         .notifications(new ArrayList<>())
                         .build());
         int index = personal.getNotifications().stream()
@@ -57,7 +61,7 @@ public class PersonalService {
                 .orElse(-1);
 
         if(request.getDisplayTime()==null)
-            request.setDisplayTime(Instant.now());
+            request.setDisplayTime(Instant.now().plus(5,ChronoUnit.SECONDS));
 
         NotificationBase notificationBase = notificationMapper.toNotificationBase(request);
 
@@ -68,8 +72,22 @@ public class PersonalService {
                 .isRead(false)
                 .build());
 
-        return personalMapper.toPersonalResponse(personalRepository.save(personal));
+        taskScheduler.schedule(()->delay_save(personal), request.getDisplayTime());
+
+        return personalMapper.toPersonalResponse(personal);
     }
+
+    void delay_save(Personal personal){
+        Personal response = personalRepository.save(personal);
+        messagingTemplate.convertAndSendToUser(personal.getName(), "/queue/notification",
+                personalMapper.toPersonalResponse(response));
+    }
+
+
+
+
+
+
 
 
 
