@@ -1,4 +1,4 @@
-package com.app.NotificationService.Config;
+package com.app.NotificationService.Config.Security;
 
 import com.nimbusds.jwt.SignedJWT;
 import org.springframework.security.oauth2.jwt.Jwt;

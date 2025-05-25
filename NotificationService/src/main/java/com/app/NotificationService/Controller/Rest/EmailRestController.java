@@ -1,4 +1,4 @@
-package com.app.NotificationService.Controller;
+package com.app.NotificationService.Controller.Rest;
 
 import com.app.NotificationService.DTO.ApiResponse;
 import com.app.NotificationService.DTO.Request.Email.SendEmailRequest;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 @Slf4j
-public class EmailController {
+public class EmailRestController {
     EmailService emailService;
 
     @PostMapping("/send")

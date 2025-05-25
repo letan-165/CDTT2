@@ -1,4 +1,4 @@
-package com.app.NotificationService.Config;
+package com.app.NotificationService.Config.Security;
 
 import com.app.NotificationService.DTO.ApiResponse;
 import com.app.NotificationService.Exception.ErrorCode;

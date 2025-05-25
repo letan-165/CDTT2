@@ -1,7 +1,5 @@
 package com.app.ChatService.Controller;
 
-import com.app.ChatService.DTO.BaseDTO.MessageDTO;
-import com.app.ChatService.DTO.Request.Chat.CreateChatRequest;
 import com.app.ChatService.DTO.Request.Chat.RecallMessageRequest;
 import com.app.ChatService.DTO.Request.Chat.SenderMessageRequest;
 import com.app.ChatService.DTO.Response.Chat.ChatResponse;
