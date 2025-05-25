@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
+    NOTIFICATION_NO_EXISTS(1022,"Lỗi thông báo chưa đươợc khởi tạo", HttpStatus.BAD_REQUEST),
     USER_NO_EXIST(1003,"Lỗi không tìm thấy người dùng (user)", HttpStatus.BAD_REQUEST),
     AUTHENTICATION(1010,"Token not authentication ", HttpStatus.UNAUTHORIZED),
     AUTHORIZED(1009,"You don't have permission", HttpStatus.FORBIDDEN),

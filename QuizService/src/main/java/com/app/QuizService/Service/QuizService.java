@@ -1,7 +1,5 @@
 package com.app.QuizService.Service;
 
-import com.app.QuizService.DTO.BaseDTO.Question;
-import com.app.QuizService.DTO.BaseDTO.QuestionSave;
 import com.app.QuizService.DTO.Request.SaveQuizRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.Entity.Elastic.SearchQuiz;
@@ -20,13 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.Named;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor

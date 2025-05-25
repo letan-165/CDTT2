@@ -17,6 +17,7 @@ spring:
 app:
   service:
     account: ${ACCOUNT_URL:http://localhost:8080}/account_service
+    notification: ${NOTIFICATION_URL:http://localhost:8083}/notification_service
 
 key:
   jwt:

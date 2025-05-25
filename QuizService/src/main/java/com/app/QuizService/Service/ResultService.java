@@ -1,8 +1,10 @@
 package com.app.QuizService.Service;
 
 import com.app.QuizService.DTO.BaseDTO.Question;
+import com.app.QuizService.DTO.Request.Client.SendNotificationRequest;
 import com.app.QuizService.DTO.Request.JoinQuizRequest;
 import com.app.QuizService.DTO.Request.SubmitQuizRequest;
+import com.app.QuizService.DTO.Response.Client.UserResponse;
 import com.app.QuizService.DTO.Response.Statistics.StatisticsResponse;
 import com.app.QuizService.DTO.Response.TodoQuiz.ResultResponse;
 import com.app.QuizService.DTO.Response.TodoQuiz.SubmitQuizResponse;
@@ -12,6 +14,7 @@ import com.app.QuizService.Exception.AppException;
 import com.app.QuizService.Exception.ErrorCode;
 import com.app.QuizService.Mapper.QuestionMapper;
 import com.app.QuizService.Mapper.ResultMapper;
+import com.app.QuizService.Repository.HttpClient.NotificationClient;
 import com.app.QuizService.Repository.HttpClient.UserClient;
 import com.app.QuizService.Repository.QuizRepository;
 import com.app.QuizService.Repository.ResultRepository;
@@ -38,6 +41,7 @@ public class ResultService {
     ResultMapper resultMapper;
     QuestionMapper questionMapper;
     UserClient userClient;
+    NotificationClient notificationClient;
 
     SubmitQuizResponse toSubmitQuizResponse(Result result){
         var questions = result.getQuiz().getQuestions().values().stream()
@@ -51,8 +55,9 @@ public class ResultService {
     }
 
     public SubmitQuizResponse join(JoinQuizRequest request){
+        UserResponse userResponse = null;
         try{
-            userClient.findById(request.getStudentID());
+            userResponse = userClient.findById(request.getStudentID()).getResult();
         } catch (Exception e) {
             throw new AppException(ErrorCode.USER_NO_EXIST);
         }
@@ -67,6 +72,22 @@ public class ResultService {
                 .build();
 
         Result response = resultRepository.save(result);
+        if(Instant.now().plus(5,ChronoUnit.MINUTES).isBefore(quiz.getStartTime())){
+            notificationClient.sendNotification(SendNotificationRequest.builder()
+                            .name(userResponse.getName())
+                            .subject("Thông báo có bài quiz sắp diễn ra")
+                            .content("Bài quiz "+ quiz.getTitle() + "còn 5 phút sẽ bắt đầu làm bài vui lòng chuẩn bị.")
+                            .displayTime(quiz.getStartTime().minus(5,ChronoUnit.MINUTES))
+                    .build());
+        }
+        notificationClient.sendNotification(SendNotificationRequest.builder()
+                .name(userResponse.getName())
+                .subject("Thông báo bắt đầu làm bài")
+                .content("Bài quiz "+ quiz.getTitle() + " đã mở vui lòng tham gia")
+                .displayTime(quiz.getStartTime())
+                .build());
+
+
         return toSubmitQuizResponse(response);
     }
 

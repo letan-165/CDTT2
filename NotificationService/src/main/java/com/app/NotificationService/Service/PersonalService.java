@@ -13,6 +13,7 @@ import com.app.NotificationService.Repository.PersonalRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,12 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
+@Slf4j
 public class PersonalService {
     PersonalRepository personalRepository;
     PersonalMapper personalMapper;
@@ -39,8 +42,12 @@ public class PersonalService {
             throw new AppException(ErrorCode.USER_NO_EXIST);
         }
         Personal personal = personalRepository.findById(name)
-                .orElseThrow(()-> new RuntimeException("Thông báo chưa khởi tạo"));
+                .orElseThrow(()-> new AppException(ErrorCode.NOTIFICATION_NO_EXISTS));
 
+        List<NotificationBase> display_list = personal.getNotifications().stream()
+                .filter(notificationBase -> Instant.now().isAfter(notificationBase.getDisplayTime()))
+                .toList();
+        personal.setNotifications(display_list);
         return personalMapper.toPersonalResponse(personal);
     }
 
@@ -72,15 +79,16 @@ public class PersonalService {
                 .isRead(false)
                 .build());
 
+
+        Personal response = personalRepository.save(personal);
         taskScheduler.schedule(()->delay_save(personal), request.getDisplayTime());
 
         return personalMapper.toPersonalResponse(personal);
     }
 
     void delay_save(Personal personal){
-        Personal response = personalRepository.save(personal);
         messagingTemplate.convertAndSendToUser(personal.getName(), "/queue/notification",
-                personalMapper.toPersonalResponse(response));
+                personalMapper.toPersonalResponse(personal));
     }
 
 
