@@ -1,6 +1,9 @@
 package com.app.QuizService.Service;
 
-import com.app.QuizService.DTO.Request.SaveQuizRequest;
+import com.app.QuizService.DTO.BaseDTO.Question;
+import com.app.QuizService.DTO.Request.EditQuizRequest;
+import com.app.QuizService.DTO.Request.QuestionEditRequest;
+import com.app.QuizService.DTO.Request.QuestionDelRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.Entity.Elastic.SearchQuiz;
 import com.app.QuizService.Entity.Quiz;
@@ -15,11 +18,8 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.mapstruct.Named;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -35,12 +35,39 @@ public class QuizService {
     QuestionMapper questionMapper;
     UserClient userClient;
 
-    public QuizResponse save(SaveQuizRequest request){
+    public List<QuizResponse> findAllByTeacherID(String teacherID){
+        try{
+            userClient.findById(teacherID);
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.USER_NO_EXIST);
+        }
+        var list = quizRepository.findAllByTeacherID(teacherID);
+        return list.stream()
+                .map(quizMapper::toQuizResponse)
+                .toList();
+    }
+
+    public QuizResponse save(EditQuizRequest request){
         try{
             userClient.findById(request.getTeacherID());
         } catch (Exception e) {
             throw new AppException(ErrorCode.USER_NO_EXIST);
         }
+        Quiz quiz = quizMapper.toQuiz(request);
+        if(request.getQuizID()!=null){
+            Quiz update = quizRepository.findById(request.getQuizID())
+                    .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));
+            quiz.setQuestions(update.getQuestions());
+        }
+        Quiz response = quizRepository.save(quiz);
+        searchQuizRepository.save(quizMapper.toSearchQuiz(response));
+        return quizMapper.toQuizResponse(response);
+    }
+
+    public QuizResponse saveQuestion(QuestionEditRequest request){
+        Quiz quiz = quizRepository.findById(request.getQuizID())
+                .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));
+
         request.getQuestions().forEach(questionSave -> {
             int size = questionSave.getOptions().size();
             questionSave.getCorrects().forEach(correct -> {
@@ -48,12 +75,37 @@ public class QuizService {
                     throw new AppException(ErrorCode.CORRECT_INVALID);
             });
         });
-        Quiz response = quizRepository.save(quizMapper.toQuiz(request));
 
-        searchQuizRepository.save(quizMapper.toSearchQuiz(response));
-
-        return quizMapper.toQuizResponse(response);
+        var map = quiz.getQuestions();
+        int index = map.isEmpty() ? -1 : Collections.max(map.keySet());
+        for(var questionEdit : request.getQuestions()){
+            int key;
+            Question question = questionMapper.toQuestion(questionEdit);
+            if(questionEdit.getQuestionID() == null){
+                index +=1 ;
+                key = index;
+            }else{
+                key = questionEdit.getQuestionID();
+            }
+            question.setQuestionID(key);
+            quiz.getQuestions().put(key,question);
+        }
+        return quizMapper.toQuizResponse(quizRepository.save(quiz));
     }
+
+    public QuizResponse deleteQuestion(QuestionDelRequest request){
+        Quiz quiz = quizRepository.findById(request.getQuizID())
+                .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));
+
+        request.getQuestions().forEach(questionID->{
+            var check = quiz.getQuestions().remove(questionID);
+            if(check==null)
+                throw new AppException(ErrorCode.QUESTION_NO_EXISTS);
+        });
+
+        return quizMapper.toQuizResponse(quizRepository.save(quiz));
+    }
+
 
     public List<SearchQuiz> searchTagTitle(String title){
         return searchQuizRepository.findByTitleContainingOrTopicsContaining(title,title);

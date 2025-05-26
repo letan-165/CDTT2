@@ -1,17 +1,17 @@
 package com.app.QuizService.Mapper;
 
 import com.app.QuizService.DTO.BaseDTO.Question;
-import com.app.QuizService.DTO.BaseDTO.QuestionSave;
+import com.app.QuizService.DTO.BaseDTO.QuestionEdit;
 import com.app.QuizService.DTO.BaseDTO.QuestionSubmit;
-import com.app.QuizService.DTO.Request.SubmitQuizRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuestionResponse;
-import com.app.QuizService.Entity.Elastic.SearchQuiz;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface QuestionMapper {
     QuestionResponse toQuestionResponse(Question question);
-    Question toQuestion(QuestionSave questionSave);
+    @Mapping(target = "questionID", ignore = true)
+    Question toQuestion(QuestionEdit questionSave);
 
     QuestionSubmit toQuestionSubmit(Question question);
     Question toQuestion(QuestionSubmit question);

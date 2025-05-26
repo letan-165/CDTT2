@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,9 @@ public class Quiz {
     String title;
     List<String> topics;
     String description;
-    Map<Integer,Question> questions;
+
+    @Builder.Default
+    Map<Integer,Question> questions = new HashMap<>() ;
     Instant startTime;
     Instant endTime;
     Duration duration;

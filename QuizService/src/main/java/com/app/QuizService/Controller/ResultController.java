@@ -2,7 +2,6 @@ package com.app.QuizService.Controller;
 
 import com.app.QuizService.DTO.ApiResponse;
 import com.app.QuizService.DTO.Request.JoinQuizRequest;
-import com.app.QuizService.DTO.Request.SaveQuizRequest;
 import com.app.QuizService.DTO.Request.SubmitQuizRequest;
 import com.app.QuizService.DTO.Response.Statistics.StatisticsResponse;
 import com.app.QuizService.DTO.Response.TodoQuiz.ResultResponse;

@@ -10,10 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Question {
-    int questionID;
+public class QuestionEdit {
+    Integer questionID;
     String content;
     List<String> options;
     List<Integer> corrects;
-    List<Integer> answers;
 }

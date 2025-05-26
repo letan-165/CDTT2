@@ -1,15 +1,15 @@
 package com.app.QuizService.Validation;
 
-import com.app.QuizService.DTO.Request.SaveQuizRequest;
+import com.app.QuizService.DTO.Request.EditQuizRequest;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 import java.time.Duration;
 
-public class QuizTimeValidator implements ConstraintValidator<ValidQuizTime, SaveQuizRequest> {
+public class QuizTimeValidator implements ConstraintValidator<ValidQuizTime, EditQuizRequest> {
 
     @Override
-    public boolean isValid(SaveQuizRequest request, ConstraintValidatorContext context) {
+    public boolean isValid(EditQuizRequest request, ConstraintValidatorContext context) {
         if (request.getStartTime() == null || request.getEndTime() == null || request.getDuration() == null)
             return fail(context,"FIELD_TIME_NOTNULL");
 

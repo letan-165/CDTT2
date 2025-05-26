@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatusCode;
 @AllArgsConstructor
 @Getter
 public enum ErrorCode {
+    QUESTION_NO_EXISTS(1023,"Lỗi không có câu hỏi trong bài quiz", HttpStatus.BAD_REQUEST),
     TIME_TODO_INVALID(1021,"Lỗi chưa đến thời gian làm bài", HttpStatus.BAD_REQUEST),
     DURATION_FIELD_INVALID(1017,"Khoảng cách giữa 2 thời gian nhỏ hơn tổng thời gian làm bài", HttpStatus.BAD_REQUEST),
     BETWEEN_TIME_INVALID(1016,"Thời gian bắt đầu nằm sau thời gian kết thúc", HttpStatus.BAD_REQUEST),
