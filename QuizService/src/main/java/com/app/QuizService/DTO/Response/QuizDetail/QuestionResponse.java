@@ -13,6 +13,7 @@ import java.util.List;
 public class QuestionResponse {
     int questionID;
     String content;
+    String type;
     List<String> options;
-    List<Integer> corrects;
+    List<String> corrects;
 }

@@ -15,5 +15,5 @@ public class QuestionSubmit {
     int questionID;
 
     @Builder.Default
-    List<Integer> answers = new ArrayList<>();
+    List<String> answers = new ArrayList<>();
 }

@@ -68,19 +68,21 @@ public class QuizService {
         Quiz quiz = quizRepository.findById(request.getQuizID())
                 .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));
 
-        request.getQuestions().forEach(questionSave -> {
-            int size = questionSave.getOptions().size();
-            questionSave.getCorrects().forEach(correct -> {
-                if(correct >= size || correct < 0)
-                    throw new AppException(ErrorCode.CORRECT_INVALID);
-            });
-        });
-
         var map = quiz.getQuestions();
         int index = map.isEmpty() ? -1 : Collections.max(map.keySet());
         for(var questionEdit : request.getQuestions()){
             int key;
             Question question = questionMapper.toQuestion(questionEdit);
+            if(question.getType().equals("SELECT") && !question.checkSelect(question.getCorrects())){
+                throw new AppException(ErrorCode.CORRECT_INVALID);
+            }
+
+            if(question.getType().equals("ENTER")){
+                question.setOptions(Collections.emptyList());
+                if(!question.checkEnter(question.getCorrects()))
+                    throw new AppException(ErrorCode.CORRECT_INVALID);
+            }
+
             if(questionEdit.getQuestionID() == null){
                 index +=1 ;
                 key = index;

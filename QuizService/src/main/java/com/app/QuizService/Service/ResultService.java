@@ -104,10 +104,6 @@ public class ResultService {
             //Give question from ID request
             Question question = quiz.getQuestions().get(questionRequest.getQuestionID());
             var answers = questionRequest.getAnswers();
-            answers.forEach(answer-> {
-                if(answer >= quiz.getQuestions().size() || answer < 0)
-                    throw new AppException(ErrorCode.CORRECT_INVALID);
-            });
             //Update answer
             question.setAnswers(answers);
             result.getQuiz().getQuestions()
@@ -117,21 +113,12 @@ public class ResultService {
         return toSubmitQuizResponse(resultRepository.save(result));
     }
 
-    boolean checkResult(Question question){
-        var answers = question.getAnswers();
-        var corrects = question.getCorrects();
-        if(answers.size() != corrects.size())
-            return false;
-
-        return new HashSet<>(corrects).containsAll(answers);
-    }
-
     public ResultResponse finish(String resultID){
         Result result = resultRepository.findById(resultID)
                 .orElseThrow(()->new AppException(ErrorCode.RESULT_NO_EXISTS));
 
         int totalCorrectAnswers = (int) result.getQuiz().getQuestions().values().stream()
-                .filter(this::checkResult)
+                .filter(Question::checkAnswer)
                 .count();
         double score = (double) 10 /result.getQuiz().getQuestions().size() * totalCorrectAnswers;
 
