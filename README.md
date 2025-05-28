@@ -1,7 +1,7 @@
 # Backend
-*Java: Spring-Boot, Spring-Sercurity
+*Java: Spring-Boot, Spring-Sercurity, Spring Data
 
-*Database: MySQL
+*Database: MySQL, MongoDB, Redis, ElasticSearch
 
 
 DOCS - API:
