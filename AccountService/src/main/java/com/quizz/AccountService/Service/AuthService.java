@@ -105,7 +105,7 @@ public class AuthService {
 
 
     //Create Token
-    public String generate(User user) throws JOSEException {
+    String generate(User user) throws JOSEException {
         JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
                 .jwtID(UUID.randomUUID().toString())
                 .issuer("QUIZZ")
@@ -130,7 +130,7 @@ public class AuthService {
         return token;
     }
 
-    public String buildScope(User user){
+    String buildScope(User user){
         StringJoiner stringJoiner = new StringJoiner(" ");
         stringJoiner.add(user.getRole().getName());
         if (!CollectionUtils.isEmpty(user.getRole().getPermissions())) {
