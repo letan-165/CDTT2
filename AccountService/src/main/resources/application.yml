@@ -13,7 +13,7 @@ spring:
       ddl-auto: update
   data:
     redis:
-      url: redis://localhost:6379
+      url: ${REDIS_URL:redis://localhost:6379}
 
 app:
   services:

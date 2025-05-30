@@ -10,7 +10,7 @@ spring:
       uri: ${MONGODB_URL:mongodb://root:root@localhost:27017/QUIZZ?authSource=admin}
 
     elasticsearch:
-      uris: http://localhost:9200
+      uris: ${ELASTIC_URL:http://localhost:9200}
 
 
 
