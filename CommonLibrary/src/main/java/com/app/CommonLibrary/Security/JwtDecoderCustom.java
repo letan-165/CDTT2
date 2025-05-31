@@ -1,4 +1,4 @@
-package com.app.QuizService.Config;
+package com.app.CommonLibrary.Security;
 
 import com.nimbusds.jwt.SignedJWT;
 import org.springframework.security.oauth2.jwt.Jwt;

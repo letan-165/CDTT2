@@ -1,7 +1,7 @@
 package com.quizz.AccountService.Controller;
 
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.nimbusds.jose.JOSEException;
-import com.quizz.AccountService.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
 import com.quizz.AccountService.DTO.Request.TokenRequest;
 import com.quizz.AccountService.Service.AuthService;

@@ -1,6 +1,6 @@
 package com.app.NotificationService.Controller.Rest;
 
-import com.app.NotificationService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.app.NotificationService.DTO.Request.Email.SendEmailRequest;
 import com.app.NotificationService.DTO.Response.Email.EmailResponse;
 import com.app.NotificationService.Service.EmailService;

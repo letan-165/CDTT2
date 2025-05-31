@@ -1,6 +1,6 @@
 package com.app.QuizService.Controller;
 
-import com.app.QuizService.DTO.BaseDTO.QuestionEdit;
+import com.app.CommonLibrary.Exception.ErrorCode;
 import com.app.QuizService.DTO.Request.EditQuizRequest;
 import com.app.QuizService.DTO.Request.QuestionDelRequest;
 import com.app.QuizService.DTO.Request.QuestionEditRequest;
@@ -8,8 +8,6 @@ import com.app.QuizService.DTO.Request.SearchRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuestionResponse;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.Entity.Elastic.SearchQuiz;
-import com.app.QuizService.Entity.Quiz;
-import com.app.QuizService.Exception.ErrorCode;
 import com.app.QuizService.Service.QuizService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.when;

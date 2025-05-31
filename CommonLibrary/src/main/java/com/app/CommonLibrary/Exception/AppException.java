@@ -1,4 +1,4 @@
-package com.quizz.AccountService.Exception;
+package com.app.CommonLibrary.Exception;
 
 import lombok.Data;
 

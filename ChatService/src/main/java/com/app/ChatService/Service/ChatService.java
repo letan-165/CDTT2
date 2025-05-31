@@ -1,12 +1,9 @@
 package com.app.ChatService.Service;
 
 import com.app.ChatService.DTO.BaseDTO.ChatMessageDTO;
-import com.app.ChatService.DTO.BaseDTO.MessageDTO;
 import com.app.ChatService.DTO.Request.Chat.SenderMessageRequest;
 import com.app.ChatService.DTO.Response.Chat.ChatResponse;
 import com.app.ChatService.Entity.Chat;
-import com.app.ChatService.Exception.AppException;
-import com.app.ChatService.Exception.ErrorCode;
 import com.app.ChatService.Mapper.ChatMapper;
 import com.app.ChatService.Repository.ChatRepository;
 import com.app.ChatService.Repository.HttpClient.UserClient;
@@ -40,7 +37,7 @@ public class ChatService {
             userClient.findByName(user1);
             userClient.findByName(user2);
         } catch (Exception e) {
-            throw new AppException(ErrorCode.USER_NO_EXIST);
+            throw new RuntimeException("Người dùng không tồn tại");
         }
 
         return chatRepository.save(Chat.builder()
@@ -52,7 +49,7 @@ public class ChatService {
 
     Chat findChatID(String user1, String user2) {
         if(user1.equals(user2))
-            throw new AppException(ErrorCode.USERID_DUPLICATE);
+            throw new RuntimeException("Trùng id user");
 
         List<Chat> chats = chatRepository.findAll();
         for(Chat chat : chats){
@@ -83,13 +80,13 @@ public class ChatService {
 
     public ChatResponse recallMessage(String chatID,String userID, int index){
         Chat chat = chatRepository.findById(chatID)
-                .orElseThrow(()->new AppException(ErrorCode.CHAT_NO_EXISTS));
+                .orElseThrow(()->new RuntimeException("Chat không tồn tại"));
 
         if(!userID.equals(chat.getUser()) && !userID.equals(chat.getUser2()))
-            throw new AppException(ErrorCode.USER_NO_EXISTS_CHAT);
+            throw new RuntimeException("Người dùng không tồn tại trong chat");
 
         if(!userID.equals(chat.getMessages().get(index).getSender()))
-            throw new AppException(ErrorCode.USER_IMPOSSIBLE_RECALL_CHAT);
+            throw new RuntimeException("Người dùng không có quyền thu hồi chat");
 
         chat.getMessages().get(index).setContent("Tin nhắn đã bị thu hồi");
         return chatMapper.toChatResponse(chatRepository.save(chat)) ;

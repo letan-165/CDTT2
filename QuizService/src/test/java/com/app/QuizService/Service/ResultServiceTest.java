@@ -1,6 +1,8 @@
 package com.app.QuizService.Service;
 
-import com.app.QuizService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
+import com.app.CommonLibrary.Exception.AppException;
+import com.app.CommonLibrary.Exception.ErrorCode;
 import com.app.QuizService.DTO.BaseDTO.Question;
 import com.app.QuizService.DTO.BaseDTO.QuestionSubmit;
 import com.app.QuizService.DTO.Request.JoinQuizRequest;
@@ -10,8 +12,6 @@ import com.app.QuizService.DTO.Response.TodoQuiz.ResultResponse;
 import com.app.QuizService.DTO.Response.TodoQuiz.SubmitQuizResponse;
 import com.app.QuizService.Entity.Quiz;
 import com.app.QuizService.Entity.Result;
-import com.app.QuizService.Exception.AppException;
-import com.app.QuizService.Exception.ErrorCode;
 import com.app.QuizService.Mapper.QuestionMapper;
 import com.app.QuizService.Mapper.ResultMapper;
 import com.app.QuizService.Repository.HttpClient.NotificationClient;

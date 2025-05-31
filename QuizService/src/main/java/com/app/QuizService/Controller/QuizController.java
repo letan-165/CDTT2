@@ -1,6 +1,6 @@
 package com.app.QuizService.Controller;
 
-import com.app.QuizService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.app.QuizService.DTO.Request.QuestionEditRequest;
 import com.app.QuizService.DTO.Request.EditQuizRequest;
 import com.app.QuizService.DTO.Request.QuestionDelRequest;
@@ -34,7 +34,7 @@ public class QuizController {
     }
 
     @PostMapping("/public")
-    ApiResponse<QuizResponse>save(@Valid @RequestBody EditQuizRequest request){
+    ApiResponse<QuizResponse> save(@Valid @RequestBody EditQuizRequest request){
         return ApiResponse.<QuizResponse>builder()
                 .message("Khởi tạo quiz của: "+request.getTeacherID())
                 .result(quizService.save(request))

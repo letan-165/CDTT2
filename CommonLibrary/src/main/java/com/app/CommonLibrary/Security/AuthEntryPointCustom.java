@@ -1,16 +1,14 @@
-package com.quizz.AccountService.Config;
+package com.app.CommonLibrary.Security;
 
+import com.app.CommonLibrary.DTO.ApiResponse;
+import com.app.CommonLibrary.Exception.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.quizz.AccountService.DTO.ApiResponse;
-import com.quizz.AccountService.Exception.ErrorCode;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 

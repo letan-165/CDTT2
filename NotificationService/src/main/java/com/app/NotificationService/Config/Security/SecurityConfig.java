@@ -1,5 +1,7 @@
 package com.app.NotificationService.Config.Security;
 
+import com.app.CommonLibrary.Security.AuthEntryPointCustom;
+import com.app.CommonLibrary.Security.JwtDecoderCustom;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.TaskScheduler;
@@ -27,7 +29,7 @@ public class SecurityConfig {
         http.oauth2ResourceServer(oauth->oauth.jwt(jwt->jwt
                 .decoder(new JwtDecoderCustom())
                 .jwtAuthenticationConverter(jwtAuthenticationConverter()))
-                .authenticationEntryPoint(new AuthEntryPoint()));
+                .authenticationEntryPoint(new AuthEntryPointCustom()));
 
         http.csrf(AbstractHttpConfigurer::disable);
 

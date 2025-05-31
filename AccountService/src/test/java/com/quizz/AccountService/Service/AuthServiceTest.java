@@ -1,5 +1,7 @@
 package com.quizz.AccountService.Service;
 
+import com.app.CommonLibrary.Exception.AppException;
+import com.app.CommonLibrary.Exception.ErrorCode;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
@@ -9,8 +11,6 @@ import com.quizz.AccountService.DTO.Request.TokenRequest;
 import com.quizz.AccountService.Entity.MySql.Permission;
 import com.quizz.AccountService.Entity.MySql.Role;
 import com.quizz.AccountService.Entity.MySql.User;
-import com.quizz.AccountService.Exception.AppException;
-import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Mapper.UserMapper;
 import com.quizz.AccountService.Repository.MySql.UserRepository;
 import com.quizz.AccountService.Repository.Redis.LockUserRepository;

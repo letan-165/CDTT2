@@ -1,13 +1,12 @@
 package com.quizz.AccountService.Service;
 
+import com.app.CommonLibrary.Exception.AppException;
+import com.app.CommonLibrary.Exception.ErrorCode;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
-import com.quizz.AccountService.DTO.Request.SaveLockUserRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
 import com.quizz.AccountService.Entity.MySql.Role;
 import com.quizz.AccountService.Entity.MySql.User;
-import com.quizz.AccountService.Exception.AppException;
-import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Mapper.UserMapper;
 import com.quizz.AccountService.Repository.MySql.RoleRepository;
 import com.quizz.AccountService.Repository.MySql.UserRepository;

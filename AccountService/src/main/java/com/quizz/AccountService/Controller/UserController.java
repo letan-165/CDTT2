@@ -1,11 +1,10 @@
 package com.quizz.AccountService.Controller;
 
-import com.quizz.AccountService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.SaveLockUserRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
-import com.quizz.AccountService.Entity.MySql.User;
 import com.quizz.AccountService.Entity.Redis.LockUser;
 import com.quizz.AccountService.Service.UserService;
 import lombok.AccessLevel;

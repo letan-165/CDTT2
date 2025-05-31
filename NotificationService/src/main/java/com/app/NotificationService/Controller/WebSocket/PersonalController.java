@@ -1,4 +1,4 @@
-package com.app.NotificationService.Controller.WebSocket;
+package com.app.NotificationService.Controller;
 
 import com.app.NotificationService.Service.PersonalService;
 import lombok.AccessLevel;

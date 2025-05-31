@@ -1,6 +1,6 @@
 package com.quizz.AccountService.Repository.HttpCliend;
 
-import com.quizz.AccountService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.Client.SendEmailRequest;
 import com.quizz.AccountService.DTO.Response.Client.EmailResponse;
 import org.springframework.cloud.openfeign.FeignClient;

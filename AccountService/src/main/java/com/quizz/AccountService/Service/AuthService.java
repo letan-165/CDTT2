@@ -1,5 +1,7 @@
 package com.quizz.AccountService.Service;
 
+import com.app.CommonLibrary.Exception.AppException;
+import com.app.CommonLibrary.Exception.ErrorCode;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -9,8 +11,6 @@ import com.quizz.AccountService.DTO.Request.LoginRequest;
 import com.quizz.AccountService.DTO.Request.TokenRequest;
 import com.quizz.AccountService.Entity.Redis.Token;
 import com.quizz.AccountService.Entity.MySql.User;
-import com.quizz.AccountService.Exception.AppException;
-import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Mapper.UserMapper;
 import com.quizz.AccountService.Repository.Redis.LockUserRepository;
 import com.quizz.AccountService.Repository.Redis.TokenRepository;
@@ -72,7 +72,7 @@ public class AuthService {
             SignedJWT signedJWT = SignedJWT.parse(token);
             name = signedJWT.getJWTClaimsSet().getSubject();
         } catch (ParseException e) {
-            throw new AppException(ErrorCode.PARSE_TOKEN_FAIL);
+            throw new AppException(ErrorCode.AUTHENTICATION);
         }
 
         if(!userRepository.existsByName(name))

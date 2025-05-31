@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/QuizService/pom.xml" />
         <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
         <option value="$PROJECT_DIR$/NotificationService/pom.xml" />
+        <option value="$PROJECT_DIR$/CommonLibrary/pom.xml" />
       </list>
     </option>
   </component>

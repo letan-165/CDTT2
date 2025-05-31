@@ -1,27 +1,22 @@
 package com.quizz.AccountService.Controller;
 
 
+import com.app.CommonLibrary.Exception.AppException;
+import com.app.CommonLibrary.Exception.ErrorCode;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.SaveLockUserRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
 import com.quizz.AccountService.DTO.Response.UserResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.quizz.AccountService.Entity.MySql.Role;
 import com.quizz.AccountService.Entity.Redis.LockUser;
-import com.quizz.AccountService.Exception.AppException;
-import com.quizz.AccountService.Exception.ErrorCode;
 import com.quizz.AccountService.Service.UserService;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 

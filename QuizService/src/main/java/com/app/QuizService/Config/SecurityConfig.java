@@ -1,5 +1,7 @@
 package com.app.QuizService.Config;
 
+import com.app.CommonLibrary.Security.AuthEntryPointCustom;
+import com.app.CommonLibrary.Security.JwtDecoderCustom;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

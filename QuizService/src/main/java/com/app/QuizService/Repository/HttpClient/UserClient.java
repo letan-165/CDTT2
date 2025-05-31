@@ -1,6 +1,6 @@
 package com.app.QuizService.Repository.HttpClient;
 
-import com.app.QuizService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.app.QuizService.DTO.Response.Client.UserResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;

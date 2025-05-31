@@ -7,8 +7,6 @@ import com.app.ChatService.DTO.Response.Client.ChatBot.ChatBotResponse;
 import com.app.ChatService.Entity.ChatBot;
 import com.app.ChatService.Enum.ModelChatBot;
 import com.app.ChatService.Enum.RoleChatBot;
-import com.app.ChatService.Exception.AppException;
-import com.app.ChatService.Exception.ErrorCode;
 import com.app.ChatService.Mapper.ChatMapper;
 import com.app.ChatService.Repository.ChatBotRepository;
 import com.app.ChatService.Repository.HttpClient.ChatBotClient;
@@ -41,7 +39,7 @@ public class ChatBotService {
         try {
             userClient.findByName(name);
         } catch (Exception e) {
-            throw new AppException(ErrorCode.USER_NO_EXIST);
+            throw new RuntimeException("Tài khoản không tồn tại");
         }
 
         return chatBotRepository.save(ChatBot.builder()
@@ -52,7 +50,7 @@ public class ChatBotService {
 
     public ChatBot sendChatBot(String userID,SendChatBotRequest request){
         ChatBot chatBot = chatBotRepository.findById(userID)
-                .orElseThrow(()-> new AppException(ErrorCode.CHATBOT_NO_EXISTS));
+                .orElseThrow(()-> new RuntimeException("Chat không tồn tại"));
 
         chatBot.getMessages().add(MessageDTO.builder()
                         .role(RoleChatBot.USER.getRole())
@@ -79,7 +77,7 @@ public class ChatBotService {
         try {
             userClient.findByName(name);
         } catch (Exception e) {
-            throw new AppException(ErrorCode.USER_NO_EXIST);
+            throw new RuntimeException("Người dùng không tồn tại");
         }
         chatBotRepository.deleteById(name);
     }

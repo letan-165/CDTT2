@@ -1,7 +1,7 @@
 package com.app.NotificationService.Repository.HttpClient;
 
 
-import com.app.NotificationService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.app.NotificationService.DTO.Request.Client.TokenRequest;
 import com.app.NotificationService.DTO.Response.Client.UserResponse;
 import org.springframework.cloud.openfeign.FeignClient;

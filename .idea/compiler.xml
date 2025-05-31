@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="QuizService" />
         <module name="NotificationService" />
+        <module name="CommonLibrary" />
         <module name="AccountService" />
         <module name="ChatService" />
         <module name="ApiGateway" />
@@ -20,6 +21,7 @@
       <module name="AccountService" options="-parameters" />
       <module name="ApiGateway" options="-parameters" />
       <module name="ChatService" options="-parameters" />
+      <module name="CommonLibrary" options="-parameters" />
       <module name="NotificationService" options="-parameters" />
       <module name="QuizService" options="-parameters" />
     </option>

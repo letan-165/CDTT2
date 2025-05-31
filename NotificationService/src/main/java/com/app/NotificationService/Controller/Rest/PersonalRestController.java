@@ -1,6 +1,6 @@
 package com.app.NotificationService.Controller.Rest;
 
-import com.app.NotificationService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.app.NotificationService.DTO.Request.PersonalSaveRequest;
 import com.app.NotificationService.DTO.Response.PersonalResponse;
 import com.app.NotificationService.Service.PersonalService;

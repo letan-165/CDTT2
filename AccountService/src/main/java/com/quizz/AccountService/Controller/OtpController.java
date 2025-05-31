@@ -1,6 +1,6 @@
 package com.quizz.AccountService.Controller;
 
-import com.quizz.AccountService.DTO.ApiResponse;
+import com.app.CommonLibrary.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.EmailRequest;
 import com.quizz.AccountService.Service.OtpService;
 import lombok.AccessLevel;
