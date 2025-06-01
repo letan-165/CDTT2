@@ -47,7 +47,7 @@ public class ChatService {
                 .build());
     }
 
-    Chat findChatID(String user1, String user2) {
+    public Chat findChatID(String user1, String user2) {
         if(user1.equals(user2))
             throw new RuntimeException("Trùng id user");
 
@@ -56,12 +56,14 @@ public class ChatService {
             if((chat.getUser().equals(user1) && chat.getUser2().equals(user2) ) || ( chat.getUser().equals(user2) && chat.getUser2().equals(user1)))
                 return chat;
         }
-        return createChat(user1,user2);
+        return null;
     }
 
 
     public ChatResponse sendChat(String sender, SenderMessageRequest request){
         Chat chat = findChatID(sender,request.getReceiver());
+        if(chat==null)
+            chat = createChat(sender,request.getReceiver());
 
         long index = chat.getMessages().stream()
                 .mapToLong(ChatMessageDTO::getIndex)
