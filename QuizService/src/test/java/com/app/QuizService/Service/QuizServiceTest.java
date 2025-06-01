@@ -1,6 +1,5 @@
 package com.app.QuizService.Service;
 
-import co.elastic.clients.elasticsearch.core.SearchResponse;
 import com.app.CommonLibrary.Exception.AppException;
 import com.app.CommonLibrary.Exception.ErrorCode;
 import com.app.QuizService.DTO.BaseDTO.Question;
@@ -14,8 +13,8 @@ import com.app.QuizService.Entity.Quiz;
 import com.app.QuizService.Mapper.QuestionMapper;
 import com.app.QuizService.Mapper.QuizMapper;
 import com.app.QuizService.Repository.HttpClient.UserClient;
-import com.app.QuizService.Repository.QuizRepository;
-import com.app.QuizService.Repository.SearchQuizRepository;
+import com.app.QuizService.Repository.MongoDB.QuizRepository;
+import com.app.QuizService.Repository.ElasticSearch.SearchQuizRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

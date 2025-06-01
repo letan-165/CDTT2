@@ -16,8 +16,8 @@ import com.app.QuizService.Mapper.QuestionMapper;
 import com.app.QuizService.Mapper.ResultMapper;
 import com.app.QuizService.Repository.HttpClient.NotificationClient;
 import com.app.QuizService.Repository.HttpClient.UserClient;
-import com.app.QuizService.Repository.QuizRepository;
-import com.app.QuizService.Repository.ResultRepository;
+import com.app.QuizService.Repository.MongoDB.QuizRepository;
+import com.app.QuizService.Repository.MongoDB.ResultRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -28,7 +28,6 @@ import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Service

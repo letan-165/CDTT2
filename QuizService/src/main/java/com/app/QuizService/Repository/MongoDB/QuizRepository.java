@@ -1,4 +1,4 @@
-package com.app.QuizService.Repository;
+package com.app.QuizService.Repository.MongoDB;
 
 import com.app.QuizService.Entity.Quiz;
 import org.springframework.data.mongodb.repository.MongoRepository;

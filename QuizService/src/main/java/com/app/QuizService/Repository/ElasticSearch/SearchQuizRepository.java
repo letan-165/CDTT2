@@ -1,4 +1,4 @@
-package com.app.QuizService.Repository;
+package com.app.QuizService.Repository.ElasticSearch;
 
 import com.app.QuizService.Entity.Elastic.SearchQuiz;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
