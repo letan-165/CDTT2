@@ -15,11 +15,6 @@ body {
   height: 100vh;
 }
 
-.chat-wrapper {
-
-  height: 100%;
-}
-
 .sidebar-wrapper {
   width: 10%;
   background-color: #ffffff; 
@@ -31,6 +26,7 @@ body {
   padding: 20px;
   background-color: #f4f4f4; 
   overflow-y: auto;
+  margin-left: 100px;
 }
 
 .sidebar {
@@ -84,11 +80,6 @@ body {
   font-size: 20px;
 }
 
-
-
-
-
-
 /**********************************************/
 
 .main-content {
@@ -123,9 +114,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1070px;
+  width: 780px;
   height: 120px;
   margin-right: 30px;
+  margin-bottom: 20px;
 }
 
 .welcome-box .text p {
@@ -150,7 +142,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  
+  margin-left: 5px;
 }
 
 .status-box strong {
@@ -166,8 +158,9 @@ body {
   font-weight: bolder;
 }
 
-
-
+.status-form {
+  display: flex;
+}
 
 /****************************************************/
 
@@ -196,6 +189,7 @@ body {
   gap: 15px;
   width: 100%;
 }
+
 .current-course {
   display: flex;
   align-items: center;
@@ -222,6 +216,30 @@ body {
   align-items: center;
   gap: 10px;
 }
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(#000000 75%, #f4f4f4 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  position: relative;
+}
+
+.percent-text {
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .Next-back {
   display: flex;
   flex-direction: row;
@@ -235,8 +253,6 @@ body {
   padding: 15px;
   border: 1px solid black;
 }
-
-
 
 .progress button {
   padding: 20px;
@@ -340,9 +356,6 @@ body {
   font-size: 18px;
 }
 
-
-
-
 /*-------------------------------------*/
 .menu {
   display: flex;
@@ -366,166 +379,14 @@ body {
   margin-top: 5px;
 }
 
-/*--------------------------*/
+/*---------------- MỚI THÊM: Hover hiển thị tên chức năng ----------------*/
+.menu-item span {
+  display: none;
+  margin-top: 5px;
+  font-size: 12px;
+  color: black;
+}
 
- .chat-wrapper {
-      flex: 1;
-      display: flex;
-    }
-
-    .left-panel {
-      width: 280px;
-      background-color: #c6d8cc;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .search-bar {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      background-color: #dfe9e1;
-    }
-
-    .search-bar input {
-      flex: 1;
-      padding: 8px 12px;
-      border-radius: 20px;
-      border: none;
-      background-color: #ecf3ec;
-    }
-
-    .search-bar i {
-      margin-left: 10px;
-      font-size: 18px;
-    }
-
-    .tabs {
-      display: flex;
-      font-size: 14px;
-      padding: 8px 10px;
-    }
-
-    .tabs span {
-      margin-right: 10px;
-      cursor: pointer;
-    }
-
-    .tabs .active {
-      color: blue;
-      font-weight: bold;
-    }
-
-    .chat-list {
-      list-style: none;
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .chat-list li {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      background-color: #f1f1f1;
-      border-bottom: 1px solid #ccc;
-      cursor: pointer;
-    }
-
-    .chat-list li:hover {
-      background-color: #e1e1e1;
-    }
-
-    .chat-list img.avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .chat-info {
-      flex: 1;
-    }
-
-    .chat-info .name {
-      font-weight: bold;
-    }
-
-    .chat-info .last-msg {
-      font-size: 12px;
-      color: gray;
-    }
-
-    .chat-meta {
-      text-align: right;
-    }
-
-    .chat-meta .date {
-      font-size: 10px;
-      color: gray;
-    }
-
-    .chat-meta .badge {
-      background: red;
-      color: white;
-      border-radius: 50%;
-      font-size: 10px;
-      padding: 4px 7px;
-      display: inline-block;
-      margin-top: 5px;
-    }
-
-    /* Placeholder for right panel */
-    .right-panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: white;
-    }
-
-    .chat-header {
-      background-color: #d6e4da;
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .chat-messages {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
-    .message {
-      max-width: 60%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 10px;
-      display: inline-block;
-    }
-
-    .message.user {
-      background-color: #c9e4d6;
-      align-self: flex-end;
-    }
-
-    .time-divider {
-      text-align: center;
-      font-size: 12px;
-      margin: 10px 0;
-      color: gray;
-    }
-
-    .chat-input {
-      display: flex;
-      border-top: 1px solid #ccc;
-      padding: 10px;
-    }
-
-    .chat-input input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-    }
+.menu-item:hover span {
+  display: block;
+}

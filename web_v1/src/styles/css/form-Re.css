@@ -157,3 +157,32 @@ body, html {
   height: 18px;
   pointer-events: none; 
 }
+
+
+/******************************************/
+
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.toggle-password img {
+  width: 18px;
+  height: 18px;
+}
+
+.input-icon {
+  left: 10px; 
+}
+
+.form-left .form-group button {
+display: ;
+}
