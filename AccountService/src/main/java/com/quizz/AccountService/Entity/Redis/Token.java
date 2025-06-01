@@ -14,8 +14,8 @@ import org.springframework.data.redis.core.TimeToLive;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Token {
     @Id
-    String tokenID;
     String subject;
+    String jwtID;
     String value;
 
     @TimeToLive

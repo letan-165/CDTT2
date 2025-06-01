@@ -87,7 +87,7 @@ public class AuthService {
 
         boolean isVerify = jwt.verify(jwsVerifier);
         boolean isTime = expiryTime.after(Date.from(Instant.now()));
-        boolean isExists = tokenRepository.existsById(jwt.getJWTClaimsSet().getJWTID());
+        boolean isExists = tokenRepository.existsById(jwt.getJWTClaimsSet().getSubject());
 
         if(!isVerify || !isTime || !isExists)
             throw new AppException(ErrorCode.AUTHENTICATION);
@@ -121,8 +121,8 @@ public class AuthService {
         String token = jwsObject.serialize();
 
         tokenRepository.save(Token.builder()
-                        .tokenID(jwtClaimsSet.getJWTID())
                         .subject(user.getName())
+                        .jwtID(jwtClaimsSet.getJWTID())
                         .value(token)
                         .expiryTime(expiryTime)
                 .build());
