@@ -20,8 +20,4 @@ public class Role {
     @Id
     String name;
     String description;
-
-    @ManyToMany
-    @Builder.Default
-    List<Permission> permissions = new ArrayList<>(Collections.emptyList());
 }

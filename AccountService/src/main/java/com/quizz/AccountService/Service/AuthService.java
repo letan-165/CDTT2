@@ -29,7 +29,6 @@ import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.StringJoiner;
 import java.util.UUID;
 
 @Slf4j
@@ -112,7 +111,7 @@ public class AuthService {
                 .subject(user.getName())
                 .issueTime(Date.from(Instant.now()))
                 .expirationTime(Date.from(Instant.now().plus(expiryTime,ChronoUnit.SECONDS)))
-                .claim("scope", buildScope(user))
+                .claim("scope", user.getRole().getName())
                 .build();
 
         JWSHeader jwsHeader = new JWSHeader(JWSAlgorithm.HS256);
@@ -123,20 +122,11 @@ public class AuthService {
 
         tokenRepository.save(Token.builder()
                         .tokenID(jwtClaimsSet.getJWTID())
+                        .subject(user.getName())
                         .value(token)
                         .expiryTime(expiryTime)
                 .build());
 
         return token;
-    }
-
-    String buildScope(User user){
-        StringJoiner stringJoiner = new StringJoiner(" ");
-        stringJoiner.add(user.getRole().getName());
-        if (!CollectionUtils.isEmpty(user.getRole().getPermissions())) {
-            user.getRole().getPermissions().forEach(permission -> stringJoiner.add(permission.getName()));
-        }
-
-        return stringJoiner.toString();
     }
 }

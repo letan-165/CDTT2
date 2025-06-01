@@ -2,7 +2,6 @@ package com.quizz.AccountService.Config;
 
 import com.quizz.AccountService.Entity.MySql.Role;
 import com.quizz.AccountService.Enum.TypeRole;
-import com.quizz.AccountService.Repository.MySql.PermissionRepository;
 import com.quizz.AccountService.Repository.MySql.RoleRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +19,14 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class AppRunner {
     RoleRepository roleRepository;
-    PermissionRepository permissionRepository;
 
     @Bean
     ApplicationRunner applicationRunner(){
         return ApplicationRunner -> {
             List<Role> roles = new ArrayList<>(List.of(
-                    new Role(TypeRole.ADMIN.name(), "Quản lí hệ thống", Collections.emptyList()),
-                    new Role(TypeRole.TEACHER.name(), "Giáo viên đưa ra các chủ đề học tập", Collections.emptyList()),
-                    new Role(TypeRole.STUDENT.name(), "Học sinh ôn tập các chủ đề", Collections.emptyList())
+                    new Role(TypeRole.ADMIN.name(), "Quản lí hệ thống"),
+                    new Role(TypeRole.TEACHER.name(), "Giáo viên đưa ra các chủ đề học tập"),
+                    new Role(TypeRole.STUDENT.name(), "Học sinh ôn tập các chủ đề")
             ));
             if (!roleRepository.existsById(roles.get(0).getName())) {
                 roleRepository.saveAll(roles);

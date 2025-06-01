@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.TimeToLive;
 public class Token {
     @Id
     String tokenID;
+    String subject;
     String value;
 
     @TimeToLive

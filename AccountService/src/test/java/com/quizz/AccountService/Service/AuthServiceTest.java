@@ -8,7 +8,6 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
 import com.quizz.AccountService.DTO.Request.TokenRequest;
-import com.quizz.AccountService.Entity.MySql.Permission;
 import com.quizz.AccountService.Entity.MySql.Role;
 import com.quizz.AccountService.Entity.MySql.User;
 import com.quizz.AccountService.Mapper.UserMapper;
@@ -62,10 +61,7 @@ public class AuthServiceTest {
                 .userID("tanID")
                 .name("tan")
                 .role(Role.builder()
-                        .name("R1")
-                        .permissions(new ArrayList<>(List.of(Permission.builder().name("P1").build(),
-                                Permission.builder().name("P2").build())))
-                        .build())
+                        .name("R1").build())
                 .build();
     }
 
@@ -84,7 +80,7 @@ public class AuthServiceTest {
         assertThat(jwtClaimsSet.getIssuer()).isEqualTo("QUIZZ");
         assertThat(jwtClaimsSet.getSubject()).isEqualTo(user.getName());
         assertThat(jwtClaimsSet.getIssueTime()).isBefore(jwtClaimsSet.getExpirationTime());
-        assertThat(jwtClaimsSet.getClaim("scope")).isEqualTo("R1 P1 P2");
+        assertThat(jwtClaimsSet.getClaim("scope")).isEqualTo("R1");
     }
 
     @Test

@@ -13,7 +13,6 @@ spring:
       uris: ${ELASTIC_URL:http://localhost:9200}
 
 
-
 app:
   service:
     account: ${ACCOUNT_URL:http://localhost:8080}/account_service
