@@ -1,7 +1,5 @@
 package com.quizz.AccountService.Config;
 
-import com.app.CommonLibrary.Security.AuthEntryPointCustom;
-import com.app.CommonLibrary.Security.JwtDecoderCustom;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import quizz.library.common.Security.AuthEntryPointCustom;
+import quizz.library.common.Security.JwtDecoderCustom;
 
 
 @Configuration

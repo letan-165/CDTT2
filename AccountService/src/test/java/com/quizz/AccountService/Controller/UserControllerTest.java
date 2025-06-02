@@ -1,8 +1,7 @@
 package com.quizz.AccountService.Controller;
 
-
-import com.app.CommonLibrary.Exception.AppException;
-import com.app.CommonLibrary.Exception.ErrorCode;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.SaveLockUserRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;

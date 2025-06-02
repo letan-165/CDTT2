@@ -1,6 +1,5 @@
 package com.quizz.AccountService.Controller;
 
-import com.app.CommonLibrary.DTO.ApiResponse;
 import com.nimbusds.jose.JOSEException;
 import com.quizz.AccountService.DTO.Request.LoginRequest;
 import com.quizz.AccountService.DTO.Request.TokenRequest;
@@ -10,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import quizz.library.common.DTO.ApiResponse;
 
 import java.text.ParseException;
 

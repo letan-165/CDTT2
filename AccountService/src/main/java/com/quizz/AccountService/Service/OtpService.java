@@ -1,7 +1,6 @@
 package com.quizz.AccountService.Service;
 
-import com.app.CommonLibrary.Exception.AppException;
-import com.app.CommonLibrary.Exception.ErrorCode;
+
 import com.quizz.AccountService.DTO.Request.Client.SendEmailRequest;
 import com.quizz.AccountService.DTO.Request.Client.Sender;
 import com.quizz.AccountService.DTO.Request.EmailRequest;
@@ -13,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 
 import java.security.SecureRandom;
 

@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="QuizService" />
         <module name="NotificationService" />
-        <module name="CommonLibrary" />
         <module name="AccountService" />
         <module name="ChatService" />
         <module name="ApiGateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CommonLibrary" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

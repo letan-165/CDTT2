@@ -1,6 +1,6 @@
 package com.quizz.AccountService.Controller;
 
-import com.app.CommonLibrary.DTO.ApiResponse;
+
 import com.quizz.AccountService.DTO.Request.EmailRequest;
 import com.quizz.AccountService.Service.OtpService;
 import lombok.AccessLevel;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import quizz.library.common.DTO.ApiResponse;
 
 @RestController
 @RequestMapping("/otp")

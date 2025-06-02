@@ -1,6 +1,5 @@
 package com.app.NotificationService.Controller.Rest;
 
-import com.app.CommonLibrary.DTO.ApiResponse;
 import com.app.NotificationService.DTO.Request.PersonalSaveRequest;
 import com.app.NotificationService.DTO.Response.PersonalResponse;
 import com.app.NotificationService.Service.PersonalService;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import quizz.library.common.DTO.ApiResponse;
 
 @RestController
 @RequestMapping("/personal")

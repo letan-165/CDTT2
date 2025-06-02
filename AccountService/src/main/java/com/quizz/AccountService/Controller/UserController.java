@@ -1,6 +1,5 @@
 package com.quizz.AccountService.Controller;
 
-import com.app.CommonLibrary.DTO.ApiResponse;
 import com.quizz.AccountService.DTO.Request.ForgotPassRequest;
 import com.quizz.AccountService.DTO.Request.SaveLockUserRequest;
 import com.quizz.AccountService.DTO.Request.UserSignUpRequest;
@@ -12,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import quizz.library.common.DTO.ApiResponse;
 
 import java.util.List;
 

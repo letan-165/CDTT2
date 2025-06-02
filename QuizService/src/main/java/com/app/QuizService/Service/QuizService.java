@@ -1,7 +1,5 @@
 package com.app.QuizService.Service;
 
-import com.app.CommonLibrary.Exception.AppException;
-import com.app.CommonLibrary.Exception.ErrorCode;
 import com.app.QuizService.DTO.BaseDTO.Question;
 import com.app.QuizService.DTO.Request.EditQuizRequest;
 import com.app.QuizService.DTO.Request.QuestionEditRequest;
@@ -19,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 
 import java.util.Collections;
 import java.util.Comparator;

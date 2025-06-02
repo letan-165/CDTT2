@@ -1,7 +1,5 @@
 package com.quizz.AccountService.Service;
 
-import com.app.CommonLibrary.Exception.AppException;
-import com.app.CommonLibrary.Exception.ErrorCode;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -24,6 +22,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 
 import java.text.ParseException;
 import java.time.Instant;

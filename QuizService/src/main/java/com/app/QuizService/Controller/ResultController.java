@@ -1,6 +1,6 @@
 package com.app.QuizService.Controller;
 
-import com.app.CommonLibrary.DTO.ApiResponse;
+
 import com.app.QuizService.DTO.Request.JoinQuizRequest;
 import com.app.QuizService.DTO.Request.SubmitQuizRequest;
 import com.app.QuizService.DTO.Response.Statistics.StatisticsResponse;
@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import quizz.library.common.DTO.ApiResponse;
 
 import java.util.List;
 

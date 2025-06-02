@@ -1,8 +1,9 @@
 package com.app.QuizService.Service;
 
-import com.app.CommonLibrary.DTO.ApiResponse;
-import com.app.CommonLibrary.Exception.AppException;
-import com.app.CommonLibrary.Exception.ErrorCode;
+
+import quizz.library.common.DTO.ApiResponse;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 import com.app.QuizService.DTO.BaseDTO.Question;
 import com.app.QuizService.DTO.BaseDTO.QuestionSubmit;
 import com.app.QuizService.DTO.Request.JoinQuizRequest;

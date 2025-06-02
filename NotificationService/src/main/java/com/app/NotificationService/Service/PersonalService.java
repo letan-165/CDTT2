@@ -1,7 +1,5 @@
 package com.app.NotificationService.Service;
 
-import com.app.CommonLibrary.Exception.AppException;
-import com.app.CommonLibrary.Exception.ErrorCode;
 import com.app.NotificationService.DTO.BaseDTO.NotificationBase;
 import com.app.NotificationService.DTO.Request.PersonalSaveRequest;
 import com.app.NotificationService.DTO.Response.PersonalResponse;
@@ -17,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

@@ -1,7 +1,5 @@
 package com.app.NotificationService.Config.Security;
 
-import com.app.CommonLibrary.Security.AuthEntryPointCustom;
-import com.app.CommonLibrary.Security.JwtDecoderCustom;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.TaskScheduler;
@@ -13,6 +11,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import quizz.library.common.Security.AuthEntryPointCustom;
+import quizz.library.common.Security.JwtDecoderCustom;
 
 import java.util.concurrent.Executors;
 

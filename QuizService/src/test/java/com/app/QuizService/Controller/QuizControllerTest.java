@@ -1,6 +1,6 @@
 package com.app.QuizService.Controller;
 
-import com.app.CommonLibrary.Exception.ErrorCode;
+
 import com.app.QuizService.DTO.Request.EditQuizRequest;
 import com.app.QuizService.DTO.Request.QuestionDelRequest;
 import com.app.QuizService.DTO.Request.QuestionEditRequest;
@@ -18,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import quizz.library.common.Exception.ErrorCode;
 
 import java.time.Duration;
 import java.time.Instant;

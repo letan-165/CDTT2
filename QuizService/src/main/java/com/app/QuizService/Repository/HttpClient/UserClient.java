@@ -1,11 +1,12 @@
 package com.app.QuizService.Repository.HttpClient;
 
-import com.app.CommonLibrary.DTO.ApiResponse;
+
 import com.app.QuizService.DTO.Response.Client.UserResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import quizz.library.common.DTO.ApiResponse;
 
 @FeignClient(name = "user", url = "${app.service.account}")
 public interface UserClient {
