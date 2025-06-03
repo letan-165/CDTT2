@@ -24,7 +24,7 @@
         <server>
             <id>github</id>
             <username>letan-165</username>
-            <password>${env.GITHUB_TOKEN}</password>
+            <password>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</password>
         </server>
     </servers>
 </settings>
