@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  account_service:
+    build:
+      context: ./AccountService
+      dockerfile: Dockerfile
+    image: account_service:0.0.1
+
+  chat_service:
+    build:
+      context: ./ChatService
+      dockerfile: Dockerfile
+    image: chat_service:0.0.1
+
+  quiz_service:
+    build:
+      context: ./QuizService
+      dockerfile: Dockerfile
+    image: quiz_service:0.0.1
+
+  notification_service:
+    build:
+      context: ./NotificationService
+      dockerfile: Dockerfile
+    image: notification_service:0.0.1
+
+  api_gateway:
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    image: api_gateway:0.0.1
