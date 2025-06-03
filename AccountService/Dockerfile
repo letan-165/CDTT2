@@ -6,7 +6,6 @@ FROM maven:3.9.8-amazoncorretto-21 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-COPY maven-settings.xml /root/.m2/settings.xml
 
 # Build source code with maven
 RUN mvn clean install -DskipTests

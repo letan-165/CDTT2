@@ -4,8 +4,6 @@ import com.app.ChatService.DTO.BaseDTO.ChatMessageDTO;
 import com.app.ChatService.DTO.Request.Chat.SenderMessageRequest;
 import com.app.ChatService.DTO.Response.Chat.ChatResponse;
 import com.app.ChatService.Entity.Chat;
-import com.app.ChatService.Exception.AppException;
-import com.app.ChatService.Exception.ErrorCode;
 import com.app.ChatService.Mapper.ChatMapper;
 import com.app.ChatService.Repository.ChatRepository;
 import com.app.ChatService.Repository.HttpClient.UserClient;
@@ -16,6 +14,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 
 import java.util.ArrayList;
 import java.util.List;
