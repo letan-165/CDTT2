@@ -154,3 +154,39 @@ body, html {
   height: 18px;
   pointer-events: none; 
 }
+
+/***************************************************/
+
+.toggle-password-wrapper {
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 15px;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.toggle-password img {
+  width: 13px;
+  height: 13px;
+  filter: brightness(0) invert(1);
+}
+
+.toggle-password-wrapper button {
+
+  margin-top: 5px;
+  padding: 5px;
+  width: 50px;
+}

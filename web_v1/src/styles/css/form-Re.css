@@ -131,7 +131,7 @@ body, html {
 
 .form-group {
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 0px 15px 0px 20px;
 }
 
@@ -162,27 +162,36 @@ body, html {
 /******************************************/
 
 
+.toggle-password-wrapper {
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 15px;
+}
+
 .toggle-password {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
+  background: none;
   border: none;
+  color: white;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 14px;
 }
 
 .toggle-password img {
-  width: 18px;
-  height: 18px;
+  width: 13px;
+  height: 13px;
+  filter: brightness(0) invert(1);
 }
 
-.input-icon {
-  left: 10px; 
-}
+.toggle-password-wrapper button {
 
-.form-left .form-group button {
-display: ;
+  margin-top: 5px;
+  padding: 5px;
+  width: 50px;
 }

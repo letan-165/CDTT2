@@ -1,0 +1,408 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar-wrapper {
+  width: 10%;
+  background-color: #ffffff; 
+  color: white;
+}
+
+.content-wrapper {
+  width: 100%;
+  padding: 20px;
+  background-color: #f4f4f4; 
+  overflow-y: auto;
+  margin-left: 100px ;
+}
+
+.sidebar {
+  position: fixed;
+  width: 80px;
+  height: 650px;
+  background-color: #28c000;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.menu-item {
+  width: 40px;
+  height: 40px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
+.menu-item.active {
+  background-color: white;
+}
+
+.logout {
+  margin-bottom: 10px;
+  color: black;
+  font-size: 20px;
+}
+
+
+
+
+
+
+/**********************************************/
+
+.main-content {
+  padding: 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #e0e0e0;
+  font-size: 14px;
+  width: 480px;
+}
+
+.info-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.welcome-box {
+  background-color: #e0e0e0;
+  padding: 15px 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 780px;
+  height: 120px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.welcome-box .text p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.welcome-box img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.status-box {
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 20px;
+  width: 300px;
+  height: 120px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5px;
+  
+}
+
+.status-box strong {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 5px;
+  margin-right: 40px;
+}
+
+.status-box p {
+  font-size: 15px;
+  color: #333;
+  font-weight: bolder;
+}
+
+.status-form {
+  display: flex;
+
+}
+
+
+
+
+/****************************************************/
+
+.body-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.left-content {
+  width: 60%;
+}
+
+.right-content {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Khóa học đang học */
+.first-course {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+.current-course {
+  display: flex;
+  align-items: center;
+
+  border-radius: 40px;
+  padding: 15px;
+  gap: 78%;
+  width: 100%;
+}
+
+.current-course img {
+  width: 50px;
+  height: 50px;
+}
+
+.course-info p {
+  font-size: 13px;
+  margin: 5px 0 0;
+}
+
+
+
+.Next-back {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.Next-back button {
+  background: #e0e0e0;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid black;
+}
+
+
+
+.progress button {
+  padding: 20px;
+  border-radius: 40px;
+  border: none;
+  background: black;
+  color: white;
+}
+
+/* Tabs */
+.course-tabs {
+  margin: 20px 0 10px;
+}
+
+.course-tabs span {
+  margin-right: 15px;
+  color: gray;
+  cursor: pointer;
+}
+
+/* Danh sách khóa học */
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.course-item {
+  background: #e0e0e0;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 10px;
+}
+
+.course-item img {
+  width: 40px;
+  height: 40px;
+}
+
+.details {
+  flex-grow: 1;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+}
+
+.meta img {
+  width: 16px;
+  height: 16px;
+}
+
+.meta button {
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 40px;
+  border: none;
+}
+
+/* Right content */
+.chart-section {
+  background: white;
+}
+
+.chart-section strong {
+  font-size: 16px;
+}
+
+.chart-tabs {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.chart-image {
+  width: 450px;
+  height: 250px;
+  object-fit: contain;
+}
+
+/* Start learning box */
+.start-box {
+  background: #e0e0e0;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+
+
+/*-------------------------------------*/
+.menu {
+  display: flex;
+  gap: 15px;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-item.active {
+  background-color: #f0f0f0;
+}
+
+.menu-item .main-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+}
+/****************************************************/
+
+.notification-section {
+  background-color: #dcdcdc;
+  border-radius: 20px;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.notification-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #c5e0d6;
+  padding: 10px 10px;
+  align-items: flex-start;
+  width: 100%;
+  height: 85px;
+}
+
+.notification-item .text {
+  color: #000;
+  align-self: center;
+}
+
+.notification-item .text strong {
+  display: block;
+  font-weight: bold;
+}
+
+.notification-item .time {
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+}
