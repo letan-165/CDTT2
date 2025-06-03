@@ -1,0 +1,24 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /chat_service
+
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URL:mongodb://root:root@localhost:27017/QUIZZ?authSource=admin}
+
+app:
+  service:
+    account: ${ACCOUNT_URL:http://localhost:8080}/account_service
+
+
+models:
+  openRouter:
+    url: https://openrouter.ai/api/v1
+    key: ${KEY_OPENROUTER}
+
+chatbot:
+  url: "${models.openRouter.url}"
+  key: "${models.openRouter.key}"

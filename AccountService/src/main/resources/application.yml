@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /account_service
+
+
+spring:
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://root:root@localhost:3306/QUIZZ}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  data:
+    redis:
+      url: ${REDIS_URL:redis://localhost:6379}
+
+app:
+  services:
+    notification: ${NOTIFICATION_URL:http://localhost:8083}/notification_service
+
+  time:
+    expiryTime: 3600
+
+
+key:
+  jwt:
+    value: ${KEY_JWT:12345678901234567890123456789012}
+
