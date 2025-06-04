@@ -28,7 +28,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.QUIZZ_TOKEN }}
 
       - name: Convert service name to lowercase
         id: lowercase
