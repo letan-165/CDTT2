@@ -2,7 +2,7 @@
 # Start with a Maven image that includes JDK 21
 FROM maven:3.9.8-amazoncorretto-21 AS build
 
-ARG GITHUB_TOKEN
+ARG QUIZZ_TOKEN
 # Copy source code and pom.xml file to /app folder
 WORKDIR /app
 COPY pom.xml .
