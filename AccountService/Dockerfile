@@ -9,8 +9,6 @@ COPY pom.xml .
 COPY src ./src
 COPY maven-setting.xml /root/.m2/settings.xml
 
-ENV GITHUB_TOKEN=${GITHUB_TOKEN}
-
 # Build source code with maven
 RUN mvn clean install -DskipTests
 
