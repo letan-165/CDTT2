@@ -14,4 +14,4 @@
 ## Diagram
 ### https://app.diagrams.net/#G1joneCKRsnK7bKdCPZTuWSUeFF2qcE3o_#%7B%22pageId%22%3A%22Cs-Y9OvcGJfCXqtlrE38%22%7D
 ## Document
-### https://docs.google.com/document/d/1LHdampYaRbf8ucZoR2ouAIZe6X3ZGmQR7QVdGgBendQ/edit?usp=sharing
+### [https://docs.google.com/document/d/1LHdampYaRbf8ucZoR2ouAIZe6X3ZGmQR7QVdGgBendQ/edit?usp=sharing](https://1drv.ms/w/c/fe544cfa3886b669/EQ9Dot-gEqlNte3l7FFpBYYBllDv1BPfoU72IJj3IHaHAA?e=OKka0Y)
