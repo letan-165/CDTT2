@@ -12,6 +12,7 @@ spring:
 app:
   service:
     account: ${ACCOUNT_URL:http://localhost:8080}/account_service
+    quiz: ${QUIZ_URL:http://localhost:8082}/quiz_service
 
 
 models:

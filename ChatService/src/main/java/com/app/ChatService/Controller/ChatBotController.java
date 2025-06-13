@@ -1,8 +1,11 @@
 package com.app.ChatService.Controller;
 
+import com.app.ChatService.DTO.Request.ChatBot.CreateChatBotRequest;
 import com.app.ChatService.DTO.Request.ChatBot.SendChatBotRequest;
+import com.app.ChatService.DTO.Response.ChatBotResponse;
 import com.app.ChatService.Entity.ChatBot;
 import com.app.ChatService.Service.ChatBotService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,11 +23,18 @@ import java.security.Principal;
 public class ChatBotController {
     ChatBotService chatBotService;
     SimpMessagingTemplate simpMessagingTemplate;
-    @MessageMapping("/chatbot.send")
-    public void send(SendChatBotRequest request, Principal principal) {
-        String userName = principal.getName();
-        ChatBot response = chatBotService.sendChatBot(userName, request);
-        simpMessagingTemplate.convertAndSendToUser(userName,"/queue/message",response);
+
+    @MessageMapping("/chatbot.create")
+    public void create(CreateChatBotRequest request, Principal principal) throws JsonProcessingException {
+        String name = principal.getName();
+        ChatBotResponse response = chatBotService.createChatBot(name, request.getType());
+        simpMessagingTemplate.convertAndSendToUser(name,"/queue/message",response);
     }
 
+    @MessageMapping("/chatbot.send")
+    public void send(SendChatBotRequest request, Principal principal) throws JsonProcessingException {
+        String userName = principal.getName();
+        ChatBotResponse response = chatBotService.sendChatBot(userName, request);
+        simpMessagingTemplate.convertAndSendToUser(userName,"/queue/message",response);
+    }
 }

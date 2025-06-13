@@ -64,6 +64,14 @@ public class QuizService {
         return quizMapper.toQuizResponse(response);
     }
 
+    public QuizResponse findById(String quizID){
+        Quiz quiz =quizRepository.findById(quizID)
+                .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));
+        return quizMapper.toQuizResponse(quiz);
+    }
+
+
+    //Question
     public QuizResponse saveQuestion(QuestionEditRequest request){
         Quiz quiz = quizRepository.findById(request.getQuizID())
                 .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));

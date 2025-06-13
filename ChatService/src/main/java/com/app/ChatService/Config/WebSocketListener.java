@@ -14,18 +14,6 @@ public class WebSocketListener {
     private final ChatBotService chatBotService;
 
     @EventListener
-    public void handleConnect(SessionConnectEvent event) {
-        StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());
-        String connectionType = (String) accessor.getSessionAttributes().get("connectionType");
-        String userID = (String) accessor.getSessionAttributes().get("userName");
-
-        if (connectionType.equals("chatbot")) {
-            chatBotService.createChatBot(userID);
-        }
-    }
-
-
-    @EventListener
     public void handleDisconnect(SessionDisconnectEvent event) {
         StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());
         String connectionType = (String) accessor.getSessionAttributes().get("connectionType");

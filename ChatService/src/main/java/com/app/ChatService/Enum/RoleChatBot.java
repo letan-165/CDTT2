@@ -7,7 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum RoleChatBot {
     USER("user"),
-    ASSISTANT("assistant")
+    ASSISTANT("assistant"),
+    SYSTEM("system")
     ;
 
     String role;
