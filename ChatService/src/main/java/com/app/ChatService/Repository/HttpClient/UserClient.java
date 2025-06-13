@@ -1,6 +1,5 @@
 package com.app.ChatService.Repository.HttpClient;
 
-import com.app.ChatService.DTO.ApiResponse;
 import com.app.ChatService.DTO.Request.Client.TokenRequest;
 import com.app.ChatService.DTO.Response.Client.UserResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import quizz.library.common.DTO.ApiResponse;
 
 @FeignClient(name = "user",url = "${app.service.account}")
 public interface UserClient {

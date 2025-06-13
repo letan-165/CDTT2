@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ChatBotResponse {
+public class ChatBotClientResponse {
     String id;
     String provider;
     String model;

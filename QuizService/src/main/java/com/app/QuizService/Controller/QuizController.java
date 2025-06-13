@@ -6,6 +6,7 @@ import com.app.QuizService.DTO.Request.QuestionDelRequest;
 import com.app.QuizService.DTO.Request.SearchRequest;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.Entity.Elastic.SearchQuiz;
+import com.app.QuizService.Entity.Quiz;
 import com.app.QuizService.Service.QuizService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -40,6 +41,15 @@ public class QuizController {
                 .result(quizService.save(request))
                 .build();
     }
+
+    @GetMapping("/{quizID}")
+    ApiResponse<QuizResponse> findById(@PathVariable String quizID){
+        return ApiResponse.<QuizResponse>builder()
+                .message("Tìm quiz: "+quizID)
+                .result(quizService.findById(quizID))
+                .build();
+    }
+
 
     @PutMapping("/public/question")
     ApiResponse<QuizResponse>saveQuestion(@RequestBody QuestionEditRequest request){
