@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Save</title>
+  <link rel="stylesheet" href="../styles/css/quiz-save.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Vùng sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Vùng nội dung -->
+    <div class="content-wrapper" id="content-container">
+
+      <!-- Bắt đầu content1 -->
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" placeholder=" Tìm kiếm..." />
+        </div>
+
+        <div class="body-content">
+          <div class="left-content">
+
+            <div class="welcome-box">
+              <div class="text">
+                <strong>Xin chào Fushiree</strong>
+                <p>Thật vui vì được gặp lại bạn</p>
+              </div>
+              <img src="../styles/img/avatar.png" alt="avatar" />
+            </div>
+            <div class="question-box_form">
+                    <div class="quiz-Re" id="quiz-review"></div>
+            </div>
+            </div>
+
+
+
+
+    <section class="right-content">
+      <div class="question-nav">
+              <div class="question-header">
+                <strong>Câu hỏi:</strong>
+                <div class="timer" id="timer">10:00</div>
+              </div>
+              <div class="question-buttons" id="question-buttons">
+                <!-- Nút chuyển câu hỏi sẽ được tạo bằng JS -->
+              </div>
+            </div>
+      <button id="submit-btn">Xác nhận nộp bài</button>
+      <button onclick="window.location.href='quiz.html'">Quay lại bài làm</button>
+    </section>
+  </div>
+  </div>
+  </div>
+  </div>
+    <script src="../styles/js/quiz.js"></script>
+  <script src="../styles/js/main_course-form.js"></script>
+  <script src="../styles/js/courses.js"></script>
+  <script src="../styles/js/quiz-list.js"></script>
+  <script src="../styles/js/quiz-detail.js"></script>
+  <script src="../styles/js/quiz-save.js"></script>
+</body>
+</html>

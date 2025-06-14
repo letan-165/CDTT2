@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kết quả bài Quiz</title>
+  <link rel="stylesheet" href="../styles/css/quiz-answer-score.css" />
+</head>
+<body>
+  <div class="wrapper">
+     <!-- Vùng sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Vùng nội dung -->
+    <div class="content-wrapper" id="content-container">
+
+      <!-- Bắt đầu content1 -->
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" placeholder=" Tìm kiếm..." />
+        </div>
+
+        <div class="body-content">
+          <div class="left-content">
+
+            <div class="welcome-box">
+              <div class="text">
+                <strong>Xin chào Fushiree</strong>
+                <p>Thật vui vì được gặp lại bạn</p>
+              </div>
+              <img src="../styles/img/avatar.png" alt="avatar" />
+            </div>
+
+            <div class="question-box_form">
+              <div class="question-box-res" id="result-box">
+                <!-- Kết quả sẽ hiển thị tại đây -->
+              </div>
+            </div>
+          </div>
+
+          <div class="right-content">
+                <h2>Kết quả của bạn</h2>
+                
+                <div class="per-question" id="per-question-result">
+                    <!-- Câu 1: Câu trả lời của bạn đã đúng/sai -->
+                </div>
+
+                <div id="score-summary">
+                    <!-- Số câu đúng + điểm -->
+                </div>
+
+                <a href="main_quizz_course-form.html">
+                    <button>Quay về khoá học</button>
+                </a>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>   
+    
+    <script src="../styles/js/quiz-answer-score.js"></script>
+    <script src="../styles/js/quiz-save.js"></script>
+    <script src="../styles/js/quiz.js"></script>
+    <script src="../styles/js/main_course-form.js"></script>
+ 
+
+</body>
+</html>

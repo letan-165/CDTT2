@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm câu hỏi</title>
+  <link rel="stylesheet" href="../styles/css/add-question.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="sidebar-container"></div>
+    <div class="content-wrapper" id="content-container">
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" placeholder="Nhập mã bài Quizz ...">
+        </div>
+        <div class="body-content">
+          <div class="left-content">
+            <div class="welcome-box">
+              <div class="text">
+                <strong>Xin chào Fushiree</strong>
+                <p>Thật vui vì được gặp lại bạn</p>
+              </div>
+              <img src="../styles/img/avatar.png" alt="avatar">
+            </div>
+
+            <div class="quiz-form-c">
+              <div class="quiz-title">
+                <img src="../styles/img/logo-icon.png" class="quiz-icon">
+                <h3 id="quiz-title-heading"><i class="fas fa-clipboard-list"></i> Bài Quiz</h3>
+              </div>
+              <div class="quiz-content">
+                <div id="quiz-forms-container"></div>
+              </div>
+              <div class="save-but">
+                <button id="save-all-btn">Lưu bài</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-content">
+            <div class="quiz-summary">
+              <h4>Danh sách câu hỏi trắc nghiệm:</h4>
+              <ul id="question-list"></ul>
+            </div>
+            <div class="add-more">
+              <button id="add-question-btn">Thêm câu hỏi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gắn JS -->
+   <script src="../styles/js/main_course-form.js"></script>
+  <script src="../styles/js/add-question.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar-wrapper {
+  width: 10%;
+  background-color: #ffffff; 
+  color: white;
+}
+
+.content-wrapper {
+  width: 100%;
+  padding: 20px;
+  background-color: #f4f4f4; 
+  overflow-y: auto;
+  margin-left: 100px ;
+}
+
+.sidebar {
+  position: fixed;
+  width: 80px;
+  height: 650px;
+  background-color: #28c000;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.menu-item {
+  width: 40px;
+  height: 40px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
+.menu-item.active {
+  background-color: white;
+}
+
+.logout {
+  margin-bottom: 10px;
+  color: black;
+  font-size: 20px;
+}
+
+
+
+
+
+
+/**********************************************/
+
+.main-content {
+  padding: 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #e0e0e0;
+  font-size: 14px;
+  width: 480px;
+}
+
+.info-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+
+
+/****************************************************/
+
+.body-content {
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.left-content {
+  width: 60%;
+}
+
+.right-content {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Khóa học đang học */
+
+
+
+
+/*-------------------------------------*/
+.menu {
+  display: flex;
+  gap: 15px;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-item.active {
+  background-color: #f0f0f0;
+}
+
+.menu-item .main-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+}
+
+
+.quiz-header {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 20px;
+}
+
+.quiz-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;  
+  object-fit: cover; 
+}
+
+
+
+
+
+/**************************************/
+
+
+.quiz-create-box {
+  background-color: #e8e8e8;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-create-box h3 {
+  /*margin-bottom: 20px;
+  background-color: #cfe2cf;*/
+  padding: 15px;
+  border-radius: 15px;
+  color: #333;
+}
+
+.quiz-form {
+  background-color: #d5e3d5;
+  padding: 20px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+#save-quiz {
+  grid-column: span 2;
+  padding: 12px;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 250px;
+  height: 100px;
+}
+
+#save-quiz:hover {
+  background-color: #333;
+}
+
+#quiz-description {
+
+    margin-bottom: 20px;
+}
+
+
+.button-wrapper {
+  grid-column: span 2;
+  text-align: center;
+}

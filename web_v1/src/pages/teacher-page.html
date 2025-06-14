@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang Chính</title>
+  <link rel="stylesheet" href="../styles/css/main_course-form-teacher.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Vùng sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Vùng nội dung -->
+    <div class="content-wrapper" id="content-container">
+
+      <!-- Bắt đầu content1 -->
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" placeholder=" Tìm kiếm..." />
+        </div>
+
+        <div class="body-content">
+          <div class="left-content">
+
+            <div class="welcome-box">
+              <div class="text">
+                <strong>Xin chào Fushiree</strong>
+                <p>Thật vui vì được gặp lại bạn</p>
+              </div>
+              <img src="../styles/img/avatar.png" alt="avatar" />
+            </div>
+
+            <div class="first-course">
+              <div class="current-course">
+                <div class="course-info">
+                  <strong>Bài Quizz </strong>
+                </div>
+                <div class="Next-back">
+                  <button>˂</button>
+                  <button>˃</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="course-tabs">
+              <strong>Tất cả bài quiz</strong>
+            </div>
+
+            <div class="course-list" id="course-list">
+            <!-- Các khóa học sẽ được render bằng JavaScript -->
+            </div>
+
+          </div>
+
+          <div class="right-content">
+            <div class="status-form">
+              <div class="status-box">
+                <strong>11</strong>
+                <p>Bài Quiz<br />đã tạo</p>
+              </div>
+
+              <div class="status-box">
+                <strong>+</strong>
+                <p> <a href="course-create.html">Tạo bài<br />Quizz mới</a></p>
+              </div>
+            </div>
+
+            <div class="chart-section">
+              <img src="../styles/img/logo.png" class="chart-image" />
+            </div>
+
+            <div class="start-box">
+              <strong>Các tag phổ biến: </strong>
+              <p>#C++ 10phut #12phut #15phut<br /> #Python</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Kết thúc content1 -->
+
+    </div>
+  </div>
+
+  <!-- Gắn file JS -->
+  <script src="../styles/js/main_course-form.js"></script>
+  <script src="../styles/js/courses-te.js"></script>
+</body>
+</html>

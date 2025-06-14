@@ -1,3 +1,4 @@
+/* Reset & Common */
 * {
   margin: 0;
   padding: 0;
@@ -6,27 +7,21 @@
 
 body {
   height: 100vh;
-  background-color: #f4f4f4;
   font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
+/* Layout Wrapper */
 .wrapper {
   display: flex;
   height: 100vh;
 }
 
+/* Sidebar */
 .sidebar-wrapper {
   width: 10%;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   color: white;
-}
-
-.content-wrapper {
-  width: 100%;
-  padding: 20px;
-  background-color: #f4f4f4; 
-  overflow-y: auto;
-  margin-left: 100px ;
 }
 
 .sidebar {
@@ -51,6 +46,7 @@ body {
   object-fit: cover;
 }
 
+/* Menu */
 .menu {
   display: flex;
   flex-direction: column;
@@ -68,10 +64,18 @@ body {
   justify-content: center;
   font-size: 18px;
   border-radius: 50%;
+  cursor: pointer;
+  flex-direction: column;
 }
 
 .menu-item.active {
   background-color: white;
+}
+
+.menu-item .main-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
 }
 
 .logout {
@@ -80,17 +84,20 @@ body {
   font-size: 20px;
 }
 
-
-
-
-
-
-/**********************************************/
+/* Main Content */
+.content-wrapper {
+  width: 100%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+  margin-left: 100px;
+}
 
 .main-content {
   padding: 20px;
 }
 
+/* Search Bar */
 .search-bar {
   display: flex;
   justify-content: flex-end;
@@ -106,23 +113,25 @@ body {
   width: 480px;
 }
 
+/* Info Row */
 .info-row {
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
+/* Welcome Box (Shared) */
 .welcome-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #e0e0e0;
   padding: 15px 20px;
   border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   height: 120px;
-  margin-right: 30px;
   margin-bottom: 20px;
+  margin-right: 30px;
 }
 
 .welcome-box .text p {
@@ -137,6 +146,7 @@ body {
   object-fit: contain;
 }
 
+/* Status Box */
 .status-box {
   background-color: #e0e0e0;
   padding: 20px;
@@ -148,7 +158,6 @@ body {
   flex-direction: row;
   align-items: center;
   margin-left: 5px;
-  
 }
 
 .status-box strong {
@@ -166,15 +175,11 @@ body {
 
 .status-form {
   display: flex;
-
 }
 
-
-
-
-/****************************************************/
-
-.body-content {
+/* Body Content Layout */
+.body-content,
+.quiz-layout {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
@@ -183,6 +188,7 @@ body {
 
 .left-content {
   width: 60%;
+  padding-right: 20px;
 }
 
 .right-content {
@@ -190,19 +196,22 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 12px;
 }
 
-/* Khóa học đang học */
+/* Current Course */
 .first-course {
   display: flex;
   align-items: center;
   gap: 15px;
   width: 100%;
 }
+
 .current-course {
   display: flex;
   align-items: center;
-
   border-radius: 40px;
   padding: 15px;
   gap: 78%;
@@ -219,8 +228,7 @@ body {
   margin: 5px 0 0;
 }
 
-
-
+/* Navigation Buttons */
 .Next-back {
   display: flex;
   flex-direction: row;
@@ -235,8 +243,7 @@ body {
   border: 1px solid black;
 }
 
-
-
+/* Progress Button */
 .progress button {
   padding: 20px;
   border-radius: 40px;
@@ -256,7 +263,7 @@ body {
   cursor: pointer;
 }
 
-/* Danh sách khóa học */
+/* Course List */
 .course-list {
   display: flex;
   flex-direction: column;
@@ -307,7 +314,7 @@ body {
   border: none;
 }
 
-/* Right content */
+/* Right Content Chart */
 .chart-section {
   background: white;
 }
@@ -329,7 +336,7 @@ body {
   object-fit: contain;
 }
 
-/* Start learning box */
+/* Start Learning Box */
 .start-box {
   background: #e0e0e0;
   border-radius: 20px;
@@ -339,70 +346,100 @@ body {
   font-size: 18px;
 }
 
-
-
-
-/*-------------------------------------*/
-.menu {
-  display: flex;
-  gap: 15px;
+/* Quiz-Specific Section */
+.question-box_form {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  height: 600px;
+  display: flex;             
+  justify-content: center;    
+  align-items: center;        
 }
 
-.menu-item {
+.question-box {
+  background-color: #c6d8cc;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;                
+  max-height: 450px;
+  height: 200px;
+  margin: 20px;
+
+}
+
+.quiz-Re {
+  background-color: #e0e0e0 ;
+  border-radius: 10px;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow-y: auto; 
+  height: 450px;
+  width: 90%;
+}
+
+
+
+.code-block {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.answers {
+  margin-top: 20px;
+}
+.answers label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.submit-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.menu-item.active {
-  background-color: #f0f0f0;
-}
-
-.menu-item .main-icon {
-  width: 20px;
-  height: 20px;
-  margin-top: 5px;
-}
-/****************************************************/
-
-.notification-section {
-  background-color: #dcdcdc;
-  border-radius: 20px;
-  padding: 15px;
-  margin-top: 20px;
-  font-size: 16px;
-}
-
-.notification-list {
-  margin-top: 10px;
+.question-nav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-.notification-item {
+.question-buttons button {
+  margin-right: 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #dff0d8;
+  cursor: pointer;
+}
+
+.question-buttons button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.question-header {
   display: flex;
   justify-content: space-between;
-  background-color: #c5e0d6;
-  padding: 10px 10px;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
-  height: 85px;
 }
 
-.notification-item .text {
-  color: #000;
-  align-self: center;
-}
-
-.notification-item .text strong {
-  display: block;
+.timer {
+  font-size: 16px;
   font-weight: bold;
-}
-
-.notification-item .time {
-  font-size: 14px;
   color: #333;
-  white-space: nowrap;
+  border-radius: 1px;
+  background-color: #fff;
+  padding: 5px;
 }

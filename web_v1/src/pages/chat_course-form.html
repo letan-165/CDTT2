@@ -9,51 +9,21 @@
 </head>
 <body>
   <div class="wrapper">
-  
-    <div class="sidebar-wrapper">
-      <div class="sidebar">
-        <div class="logo">
-          <img src="../styles/img/logo-icon.png" alt="Logo" />
-        </div>
-        
-        <div class="menu">
-  <div class="menu-item active">
-    <i class="fas fa-home"></i>
-    <img src="../styles/img/home.png" class="main-icon" alt="home Icon" />
-  </div>
-  <div class="menu-item">
-    <i class="fas fa-user"></i>
-    <img src="../styles/img/user.png" class="main-icon" alt="user Icon" />
-  </div>
-  <div class="menu-item">
-    <i class="fas fa-comment-alt"></i>
-    <img src="../styles/img/comment.png" class="main-icon" alt="comment Icon" />
-  </div>
-  <div class="menu-item">
-    <i class="fas fa-envelope"></i>
-    <img src="../styles/img/sound.png" class="main-icon" alt="envelope Icon" />
-  </div>
-  <div class="menu-item">
-    <i class="fas fa-cog"></i>
-    <img src="../styles/img/settings.png" class="main-icon" alt="setting Icon" />
-  </div>
-</div>
+    <!-- Vùng sidebar -->
+        <div id="sidebar-container"></div>
 
-        <div class="menu-item">
-          <i class="fas fa-sign-out-alt"></i>
-          <img src="../styles/img/logout.png" class="main-icon" alt="setting Icon" />
-        </div>
-      </div>
-    </div>
+        <!-- Vùng nội dung -->
+        <div class="content-wrapper" id="content-container">
 
-<div class="chat-wrapper">
-    <div class="left-panel">
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Tìm kiếm..." />
-        <i class="fas fa-user-plus"></i>
-        <i class="fas fa-users-cog"></i>
-      </div>
+
+      <div class="chat-wrapper">
+          <div class="left-panel">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Tìm kiếm..." />
+              <i class="fas fa-user-plus"></i>
+              <i class="fas fa-users-cog"></i>
+            </div>
 
       <div class="tabs">
         <span class="active">Tất cả</span>
@@ -129,5 +99,9 @@
     </div>
     </div>
   </div>
+  </div>
+
+  <script src="../styles/js/main_course-form.js"></script>
+
 </body>
 </html>
