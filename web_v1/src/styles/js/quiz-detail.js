@@ -1,4 +1,3 @@
-// File: quiz-detail.js
 document.addEventListener("DOMContentLoaded", function () {
   const quizData = {
     1: {
@@ -25,66 +24,102 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "12/05/2025",
       end: "14/05/2025"
     }
-    // Thêm các bài khác nếu cần
   };
 
   const container = document.getElementById("quiz-detail");
 
+  // Kiểm tra nếu là lần đầu vào trang trong phiên trình duyệt này => reset trạng thái
+  if (!sessionStorage.getItem("hasVisited")) {
+    localStorage.removeItem("quizStatus");
+    sessionStorage.setItem("hasVisited", "true");
+  }
+
   function renderQuiz(id) {
     const quiz = quizData[id];
-    if (quiz && container) {
-      container.innerHTML = `
-        <div class="quiz-header">
-          <strong>${quiz.title}</strong>
-          <p>GV: ${quiz.teacher} • <a href="#">Liên hệ GV</a></p>
-          <span>⏰ ${quiz.time}</span>
-        </div>
-        <div class="quiz-body">
-          <strong>${quiz.title}</strong>
-          <p><strong>Nội dung buổi học:</strong></p>
-          <p>${quiz.content}</p>
-          <p><strong>Bắt đầu vào ngày:</strong> ${quiz.start}</p>
-          <p><strong>Kết thúc vào ngày:</strong> ${quiz.end}</p>
-          <button class="start-btn">Bắt đầu làm bài</button>
-        </div>
-      `;
-     const startBtn = container.querySelector(".start-btn");
-    if (startBtn) {
-      startBtn.addEventListener("click", function () {
-        window.location.href = "quiz.html?id=" + id;
-      });
-    }
-  } else if (container) {
-    container.innerHTML = `<p>Không tìm thấy bài học này.</p>`;
-  }
-}
+    const quizStatus = JSON.parse(localStorage.getItem("quizStatus")) || {};
 
-  // Gắn sự kiện click cho từng link
+    if (quiz && container) {
+      if (quizStatus[id] === "done") {
+        // Đã làm => hiển thị form kết quả
+        container.innerHTML = `
+        <div class="quiz-header">
+            <strong>${quiz.title}</strong>
+            <p>GV: ${quiz.teacher} • <a href="#">Liên hệ GV</a></p>
+            <span>⏰ ${quiz.time}</span>
+          </div>
+          <div class="quiz-result-form">
+            <strong>${quiz.title}</strong>
+            <p><strong>Nội dung buổi học:</strong><br>
+            ${quiz.content}</p>
+            <p><strong>Bắt đầu vào ngày:</strong> ${quiz.start}</p>
+            <p><strong>Kết thúc vào ngày:</strong> ${quiz.end}</p>
+            <p style="color: green; font-weight: bold;">Bạn đã hoàn thành bài trắc nghiệm này 1 lần</p>
+            <button class="retake-btn">Làm lại bài trắc nghiệm</button>
+            <button class="score-btn">Xem điểm</button>
+          </div>
+        `;
+
+        container.querySelector(".retake-btn").addEventListener("click", () => {
+          window.location.href = "quiz.html?id=" + id;
+        });
+
+        container.querySelector(".score-btn").addEventListener("click", () => {
+          window.location.href = "quiz-answer-score.html?id=" + id;
+        });
+
+      } else {
+        // Chưa làm => hiển thị form bắt đầu
+        container.innerHTML = `
+          <div class="quiz-header">
+            <strong>${quiz.title}</strong>
+            <p>GV: ${quiz.teacher} • <a href="#">Liên hệ GV</a></p>
+            <span>⏰ ${quiz.time}</span>
+          </div>
+          <div class="quiz-body">
+            <strong>${quiz.title}</strong>
+            <p><strong>Nội dung buổi học:</strong></p>
+            <p>${quiz.content}</p>
+            <p><strong>Bắt đầu vào ngày:</strong> ${quiz.start}</p>
+            <p><strong>Kết thúc vào ngày:</strong> ${quiz.end}</p>
+            <button class="start-btn">Bắt đầu làm bài</button>
+          </div>
+        `;
+
+        const startBtn = container.querySelector(".start-btn");
+        startBtn.addEventListener("click", function () {
+          const updatedStatus = JSON.parse(localStorage.getItem("quizStatus")) || {};
+          updatedStatus[id] = "done";
+          localStorage.setItem("quizStatus", JSON.stringify(updatedStatus));
+          window.location.href = "quiz.html?id=" + id;
+        });
+      }
+    } else {
+      container.innerHTML = `<p>Không tìm thấy bài học này.</p>`;
+    }
+  }
+
+  // Xử lý link các bài quiz khác
   const quizLinks = document.querySelectorAll(".related-quizzes a");
   quizLinks.forEach(link => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
-
       const url = new URL(link.href);
       const id = parseInt(url.searchParams.get("id"));
-
-      // Lưu vào localStorage
       localStorage.setItem("selectedQuizId", id);
-
       renderQuiz(id);
     });
   });
 
-  // Khi tải trang, kiểm tra xem có id đã được chọn không
+  // Khi tải trang, hiển thị bài đã chọn
   const savedId = localStorage.getItem("selectedQuizId");
-
   if (savedId && quizData[savedId]) {
     renderQuiz(savedId);
   } else {
-    // Nếu chưa chọn bài nào trước đó, mặc định hiển thị quiz id = 1
     renderQuiz(1);
     localStorage.setItem("selectedQuizId", 1);
   }
+
+  
 });
 
 

@@ -436,3 +436,28 @@ body {
 .result-question p{
   padding: 5px;
 }
+.fu-btn {
+  display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.done-btn {
+ border-radius: 10px;
+ background-color: #0e0e0e;
+ color: #e0e0e0;
+ padding: 10px 10px;
+}
+
+.prev-btn {
+ border-radius: 10px;
+ background-color: #0e0e0e;
+  color: #e0e0e0;
+  padding: 10px 10px;
+}
+
+.next-btn {
+  border-radius: 10px;
+ background-color: #0e0e0e;
+  color: #e0e0e0;
+  padding: 10px 10px;
+}
