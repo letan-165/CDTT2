@@ -1,1 +1,1 @@
-QUIZZ-Mobile
+Quizz Mobile App
