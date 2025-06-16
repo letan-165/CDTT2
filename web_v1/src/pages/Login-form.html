@@ -15,12 +15,12 @@
   </div>
   <div class="form-body">
 <div class="form-group">
-  <label for="email">Email</label>
+  <label for="username">Tên người dùng</label>
   <input 
-        type="email" 
+        type="text" 
         required 
-        id="email" 
-        placeholder="info@edu.vn" />
+        id="username" 
+        placeholder="name" />
   <img src="../styles/img/email.png" class="input-icon" alt="Email Icon" />
 </div>
 
@@ -43,7 +43,7 @@
       <a href="Register-form.html">Tạo tài khoản</a>
       <a href="Forget-Pass-form.html">Quên mật khẩu?</a>
     </div>
-    <button>Đăng nhập</button>
+    <button id="LoginBtn" >Đăng nhập</button>
   </div>
 </div>
       <div class="form-right">
@@ -53,5 +53,10 @@
   </div>
 
   <script src="../styles/js/log.js"></script>
+  <script type="module" src="../fetch/login-form.js"></script>
 </body>
 </html>
+
+
+
+<!-- onclick="window.location.href='main_quiz.html'" -->

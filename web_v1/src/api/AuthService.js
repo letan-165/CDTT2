@@ -1,7 +1,7 @@
 import fetchAPI from './router.js';
 
-const AUTH_SERVICE="/auth_service";
+const ACCOUNT_SERVICE = "/account_service";
 
 export const login = (data) => {
-  return fetchAPI(`${AUTH_SERVICE}/user/public`, "POST", data);
+  return fetchAPI(`${ACCOUNT_SERVICE}/auth/public/login`, "POST", data);
 };
