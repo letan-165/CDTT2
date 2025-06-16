@@ -20,7 +20,7 @@
             android:id="@+id/back_arrow"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_back"
+            android:src="@drawable/ic_turn_back"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:clickable="true"
@@ -171,7 +171,7 @@
             </RelativeLayout>
 
 
-            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
     <LinearLayout
@@ -211,7 +211,7 @@
             android:id="@+id/like_button"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_thumbs_up"
+            android:src="@drawable/ic_sent"
             android:layout_marginStart="8dp"
             android:clickable="true"
             android:focusable="true"
@@ -232,15 +232,15 @@
         android:padding="8dp"
         android:elevation="8dp"
         android:visibility="gone"> <ImageView
-            android:id="@+id/nav_home"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_home"
-            android:contentDescription="Home"
-            android:padding="4dp" />
+        android:id="@+id/nav_home"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_home"
+        android:contentDescription="Home"
+        android:padding="4dp" />
         <ImageView
             android:id="@+id/nav_settings"
             android:layout_width="0dp"
