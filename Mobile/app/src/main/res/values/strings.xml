@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">App E-Learning</string>
-    <!--  Global/Common Strings  -->
+
+    <!-- Global/Common Strings -->
     <string name="hint_search_quiz_code">Nhập mã bài Quizz ...</string>
-    <string name="hint_search_general">Tìm kiếm...</string>
+    <string name="hint_search_general">Tìm kiếm bằng ID</string>
     <string name="content_description_notification_icon">Biểu tượng thông báo</string>
     <string name="greeting_title">Xin chào Fushiree</string>
     <string name="greeting_message">Thật vui vì được gặp lại bạn</string>
@@ -15,7 +17,15 @@
     <string name="content_description_settings_icon">Biểu tượng Cài đặt</string>
     <string name="content_description_chat_icon">Biểu tượng Trò chuyện</string>
     <string name="content_description_profile_icon">Biểu tượng Hồ sơ</string>
-    <!--  Login Screen Strings  -->
+
+    <!-- New Strings for Quiz List Screen -->
+    <string name="section_quiz">Bài Quizz:</string>
+    <string name="all_quizzes">Tất cả bài Quizz:</string>
+    <string name="content_description_quiz_logo">Logo bài Quiz</string>
+    <string name="quiz_title_1_placeholder">Buổi 1. 08/05...</string>
+    <string name="quiz_duration_1_placeholder">10 phút</string>
+
+    <!-- Login Screen Strings -->
     <string name="label_account">Tài khoản</string>
     <string name="hint_email">Info@edu.vn</string>
     <string name="content_description_email_icon">Biểu tượng email</string>
@@ -26,7 +36,8 @@
     <string name="forgot_password_button">Quên mật khẩu?</string>
     <string name="login_button">Đăng Nhập</string>
     <string name="content_description_app_logo">Logo ứng dụng</string>
-    <!--  Register Screen Strings  -->
+
+    <!-- Register Screen Strings -->
     <string name="label_name">Tên</string>
     <string name="hint_name">Fushiree</string>
     <string name="content_description_user_icon">Biểu tượng người dùng</string>
@@ -35,16 +46,19 @@
     <string name="content_description_phone_icon">Biểu tượng điện thoại</string>
     <string name="label_confirm_password">Nhập lại mật khẩu</string>
     <string name="register_button">Đăng Ký</string>
-    <!--  Reset Password Screen Strings  -->
+
+    <!-- Reset Password Screen Strings -->
     <string name="label_verification_code">Mã xác nhận</string>
     <string name="reset_password_button">Đặt lại mật khẩu</string>
     <string name="label_new_password">Mật khẩu mới</string>
-    <!--  Profile Screen Strings  -->
+
+    <!-- Profile Screen Strings -->
     <string name="profile_name_value">Fushiree</string>
     <string name="profile_phone_value">0123456789</string>
     <string name="profile_email_value">ABC@gmail.com</string>
     <string name="content_description_bulbasaur_icon">Biểu tượng Bulbasaur</string>
-    <!--  Main Screen Strings  -->
+
+    <!-- Main Screen Strings -->
     <string name="completed_courses_count_label">%1$s Khóa học đã\nhoàn thành</string>
     <string name="ongoing_courses_count_label">%1$s Khóa học\nđang diễn ra</string>
     <string name="course_quiz_cplusplus">Quizz C++</string>
@@ -70,7 +84,9 @@
     <string name="content_description_js_logo">Logo JS</string>
     <string name="content_description_timer_icon">Biểu tượng hẹn giờ</string>
     <string name="contact_teacher">Liên hệ GV</string>
-    <!--  Chat List Screen Strings  -->
+
+
+    <!-- Chat List Screen Strings -->
     <string name="tab_all_chats">Tất cả</string>
     <string name="tab_unread_chats">Chưa đọc</string>
     <string name="message_hello">Hello</string>
@@ -83,7 +99,9 @@
     <string name="content_description_avatar_ngo_thinh">Ảnh đại diện Ngô Thịnh</string>
     <string name="content_description_avatar_quoc_dung">Ảnh đại diện Quốc Dũng</string>
     <string name="content_description_avatar_hoang_phu">Ảnh đại diện Hoàng Phú</string>
-    <!--  Individual Chat Screen Strings  -->
+
+
+    <!-- Individual Chat Screen Strings -->
     <string name="chat_status_online">Vừa truy cập</string>
     <string name="content_description_back_arrow">Mũi tên quay lại</string>
     <string name="content_description_call_icon">Biểu tượng gọi thoại</string>
@@ -95,7 +113,8 @@
     <string name="hint_type_message">Nhập tin nhắn...</string>
     <string name="content_description_emoji_button">Nút biểu tượng cảm xúc</string>
     <string name="content_description_like_button">Nút thích</string>
-    <!--  Quiz Question Screen Strings  -->
+
+    <!-- Quiz Question Screen Strings -->
     <string name="label_question">Câu hỏi:</string>
     <string name="quiz_timer_placeholder">10:00</string>
     <string name="button_done_quiz">Làm xong</string>
@@ -120,7 +139,8 @@
     <string name="question_text_4">Câu 4: Hãy viết 1 đoạn code in ra dòng chữ \"Hello world!\" bằng ngôn ngữ C++:</string>
     <string name="label_your_answer_input">Câu trả lời của bạn(tự nhập):</string>
     <string name="hint_your_answer">Nhập câu trả lời của bạn tại đây...</string>
-    <!--  Quiz Summary/Result Screen Strings  -->
+
+    <!-- Quiz Summary/Result Screen Strings -->
     <string name="question_status_saved">Câu %1$s: Câu trả lời đã được lưu</string>
     <string name="button_back_to_work">Quay lại bài làm</string>
     <string name="button_confirm_submit">Xác nhận nộp bài</string>
@@ -129,7 +149,8 @@
     <string name="question_status_correct">Câu %1$s: Câu trả lời của bạn đã đúng</string>
     <string name="your_answer_is">Câu trả lời của bạn là: %1$s</string>
     <string name="button_back_to_course">Quay lại khóa học</string>
-    <!--  See Score Screen Strings  -->
+
+    <!-- See Score Screen Strings -->
     <string name="course_session_title_placeholder">Buổi %1$s. %2$s: %3$s</string>
     <string name="done_on_date">Làm vào ngày: %1$s</string>
     <string name="attempts_count">Số lần làm: %1$s</string>
@@ -144,4 +165,11 @@
     <string name="button_redo_quiz">Làm lại bài</string>
     <string name="button_view_scores">Xem điểm</string>
     <string name="button_view_all_quizzes">Xem điểm các bài trắc nghiệm</string>
+    <!-- New Strings for Notification Screen -->
+    <string name="section_notifications">Thông báo:</string>
+    <string name="notification_title_upcoming_quiz">Sắp đến giờ làm bài</string>
+    <string name="notification_detail_5_minutes">Còn 5 phút nữa đến giờ làm bài</string>
+    <string name="notification_time_placeholder">2:13pm</string>
+    <string name="content_description_notification_bell">Biểu tượng chuông thông báo</string>
+
 </resources>

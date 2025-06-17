@@ -134,6 +134,39 @@
                     android:src="@drawable/ic_welcome_graphic" />
             </RelativeLayout>
 
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/search_bar_middle"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_toStartOf="@id/search_icon_middle"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_rounded_search_gray"
+                    android:hint="@string/hint_search_general"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="14sp"
+                    android:textColorHint="#888888"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/search_icon_middle"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_seach_id"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="@string/hint_search_general" />
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -204,7 +237,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-             <TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tất cả bài Quizz:"
@@ -244,7 +277,7 @@
                     android:layout_below="@id/quiz_title_1"
                     android:layout_alignStart="@id/quiz_title_1"
                     android:layout_marginTop="4dp"
-                    android:drawableStart="@drawable/ic_lock_white"
+                    android:drawableStart="@drawable/ic_oclock"
                     android:drawablePadding="4dp"
                     android:gravity="center"
                     android:text="10 phút"
@@ -265,7 +298,7 @@
             </RelativeLayout>
 
 
-             </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>

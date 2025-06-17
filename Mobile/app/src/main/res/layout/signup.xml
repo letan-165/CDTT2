@@ -16,7 +16,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="60dp"
-        android:src="@drawable/ic_Mask_group"
+        android:src="@drawable/ic_mask_group"
         app:tint="#FFFFFF" />
 
     <TextView
