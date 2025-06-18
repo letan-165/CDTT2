@@ -21,12 +21,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/account_service/user/public",
+									"raw": "http://localhost:8888/account_service/user/public",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "8888",
 									"path": [
 										"account_service",
 										"user",
@@ -46,7 +46,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"tan3\",\r\n    \"password\":\"1\",\r\n    \"phone\": \"2\",\r\n    \"email\": \"letan9536@gmail.com\",\r\n    \"role\": \"STUDENT\"\r\n}",
+									"raw": "{\r\n    \"name\":\"tan1\",\r\n    \"password\":\"1\",\r\n    \"phone\": \"2\",\r\n    \"email\": \"letan9536@gmail.com\",\r\n    \"role\": \"STUDENT\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -54,12 +54,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/account_service/user/public",
+									"raw": "http://localhost:8888/account_service/user/public",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "8888",
 									"path": [
 										"account_service",
 										"user",
@@ -104,7 +104,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/account_service/user/public/name/tan1",
+									"raw": "http://localhost:8080/account_service/user/public/name/tan2",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -115,7 +115,7 @@
 										"user",
 										"public",
 										"name",
-										"tan1"
+										"tan2"
 									]
 								}
 							},
@@ -255,7 +255,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"username\":\"tan3\",\r\n    \"password\":\"1\"\r\n}",
+									"raw": "{\r\n    \"username\":\"tan1\",\r\n    \"password\":\"1\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -263,12 +263,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/account_service/auth/public/login",
+									"raw": "http://localhost:8888/account_service/auth/public/login",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "8888",
 									"path": [
 										"account_service",
 										"auth",
@@ -289,7 +289,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJRVUlaWiIsInN1YiI6InRhbjIiLCJleHAiOjE3NDg2OTc1NjAsImlhdCI6MTc0ODY5Mzk2MCwianRpIjoiMDQ1YWZmNzEtZDg3Yi00NGI3LTgxYTctYzNjMmUzMDAyNTZiIiwic2NvcGUiOiJTVFVERU5UIn0.lFZwtyjdOPv3KHppDKTAGbPp8zmE3L6HuK76-2kdBy4\"\r\n}",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJRVUlaWiIsInN1YiI6InRhbjEiLCJleHAiOjE3NDg3NzM5MDUsImlhdCI6MTc0ODc3MDMwNSwianRpIjoiZjlkZjA1YTgtZTg3MS00NDdkLTkwYjYtZjVhMWRjYzhlYmI1Iiwic2NvcGUiOiJTVFVERU5UIn0.ePucUEQ8jkQ9ZrXQw8Ir6k4C1uQd3b5a60ZkGzBJ30c\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -356,7 +356,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJRVUlaWiIsInN1YiI6InRhbjIiLCJleHAiOjE3NDg2OTc1NjAsImlhdCI6MTc0ODY5Mzk2MCwianRpIjoiMDQ1YWZmNzEtZDg3Yi00NGI3LTgxYTctYzNjMmUzMDAyNTZiIiwic2NvcGUiOiJTVFVERU5UIn0.lFZwtyjdOPv3KHppDKTAGbPp8zmE3L6HuK76-2kdBy4\"\r\n}",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJRVUlaWiIsInN1YiI6InRhbjEiLCJleHAiOjE3NDg3NzM5MDUsImlhdCI6MTc0ODc3MDMwNSwianRpIjoiZjlkZjA1YTgtZTg3MS00NDdkLTkwYjYtZjVhMWRjYzhlYmI1Iiwic2NvcGUiOiJTVFVERU5UIn0.ePucUEQ8jkQ9ZrXQw8Ir6k4C1uQd3b5a60ZkGzBJ30c\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -392,7 +392,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"letan9536@gmail.com\"\r\n}",
+									"raw": "{\r\n    \"email\": \"letan165200@gmail.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -400,12 +400,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/account_service/otp/public",
+									"raw": "http://localhost:8888/account_service/otp/public",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
+									"port": "8888",
 									"path": [
 										"account_service",
 										"otp",
@@ -461,7 +461,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"studentID\": \"935c0084-1ce6-4324-969f-40f844e2ada9\",\r\n    \"quizID\": \"683af997da33e827fbac43b0\"\r\n}\r\n",
+									"raw": "{\r\n    \"studentID\": \"935c0084-1ce6-4324-969f-40f844e2ada9\",\r\n    \"quizID\": \"683c1e88371ee71a657290ab\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -492,7 +492,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"resultID\": \"683afa9dda33e827fbac43b1\",\r\n    \"questions\": [\r\n        {\r\n            \"questionID\": 0,\r\n            \"answers\": [\r\n                \"3\"\r\n            ]\r\n        },\r\n        {\r\n            \"questionID\": 1,\r\n            \"answers\": [\r\n                \"3\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"resultID\": \"683c1eab371ee71a657290ac\",\r\n    \"questions\": [\r\n        {\r\n            \"questionID\": 0,\r\n            \"answers\": [\r\n                \"3\"\r\n            ]\r\n        },\r\n        {\r\n            \"questionID\": 1,\r\n            \"answers\": [\r\n                \"3\"\r\n            ]\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -522,7 +522,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8082/quiz_service/result/public/683afa9dda33e827fbac43b1/finish",
+									"raw": "http://localhost:8082/quiz_service/result/public/683c1eab371ee71a657290ac/finish",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -532,7 +532,7 @@
 										"quiz_service",
 										"result",
 										"public",
-										"683afa9dda33e827fbac43b1",
+										"683c1eab371ee71a657290ac",
 										"finish"
 									]
 								}
@@ -567,7 +567,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8082/quiz_service/result/public/quiz/683af997da33e827fbac43b0/statistics",
+									"raw": "http://localhost:8082/quiz_service/result/public/quiz/683c1e88371ee71a657290ab/statistics",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -578,7 +578,7 @@
 										"result",
 										"public",
 										"quiz",
-										"683af997da33e827fbac43b0",
+										"683c1e88371ee71a657290ab",
 										"statistics"
 									]
 								}
@@ -650,7 +650,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"quizID\": \"683af997da33e827fbac43b0\",\r\n  \"questions\": [\r\n    {\r\n      \"content\": \"2+1 = ?\",\r\n      \"type\": \"SELECT\",\r\n      \"options\": [\"2\", \"3\"],\r\n      \"corrects\": [\"3\"]\r\n    },\r\n    {\r\n      \"content\": \"1+1 = =@= , 1+2 = =@=\",\r\n      \"type\": \"ENTER\",\r\n      \"corrects\": [\"2\",\"3\"]\r\n    }\r\n  ]\r\n}\r\n",
+											"raw": "{\r\n  \"quizID\": \"683c1e88371ee71a657290ab\",\r\n  \"questions\": [\r\n    {\r\n      \"content\": \"2+1 = ?\",\r\n      \"type\": \"SELECT\",\r\n      \"options\": [\"2\", \"3\"],\r\n      \"corrects\": [\"3\"]\r\n    },\r\n    {\r\n      \"content\": \"1+1 = =@= , 1+2 = =@=\",\r\n      \"type\": \"ENTER\",\r\n      \"corrects\": [\"2\",\"3\"]\r\n    }\r\n  ]\r\n}\r\n",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -714,12 +714,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8082/quiz_service/quiz/public/teacher/935c0084-1ce6-4324-969f-40f844e2ada9",
+									"raw": "http://localhost:8888/quiz_service/quiz/public/teacher/935c0084-1ce6-4324-969f-40f844e2ada9",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8082",
+									"port": "8888",
 									"path": [
 										"quiz_service",
 										"quiz",
@@ -732,13 +732,34 @@
 							"response": []
 						},
 						{
+							"name": "getQuizsPublic",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8888/quiz_service/quiz/public",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"quiz_service",
+										"quiz",
+										"public"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "CreateQuiz",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{  \r\n  \"teacherID\": \"935c0084-1ce6-4324-969f-40f844e2ada9\",\r\n  \"title\": \"Bài cuối kì 1\",\r\n  \"topics\": [\"HOA\",\"toan\"],\r\n  \"description\": \"Java core\",\r\n  \"startTime\": \"2025-05-25T14:27:00Z\",\r\n  \"endTime\": \"2025-05-25T14:28:00Z\",\r\n  \"duration\": \"PT1M\"\r\n}\r\n",
+									"raw": "{  \r\n  \"teacherID\": \"935c0084-1ce6-4324-969f-40f844e2ada9\",\r\n  \"title\": \"Bài cuôi kì 2\",\r\n  \"topics\": [\"LI\"],\r\n  \"description\": \"Java core\",\r\n  \"startTime\": \"2025-05-25T14:27:00Z\",\r\n  \"endTime\": \"2025-05-25T14:28:00Z\",\r\n  \"duration\": \"PT1M\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -768,7 +789,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"search\":\"a\"\r\n}",
+									"raw": "{\r\n    \"search\":\"l\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -800,7 +821,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"search\":\"cuối\"\r\n}",
+									"raw": "{\r\n    \"search\":\"\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -847,12 +868,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/notification_service/email/send",
-							"protocol": "http",
+							"raw": "https://cdtt2-notification-service.onrender.com/notification_service/email/send",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"cdtt2-notification-service",
+								"onrender",
+								"com"
 							],
-							"port": "8083",
 							"path": [
 								"notification_service",
 								"email",
@@ -877,16 +899,103 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/notification_service/personal/send",
-							"protocol": "http",
+							"raw": "https://cdtt2-notification-service.onrender.com/notification_service/personal/send",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"cdtt2-notification-service",
+								"onrender",
+								"com"
 							],
-							"port": "8083",
 							"path": [
 								"notification_service",
 								"personal",
 								"send"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ChatBot",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/chat_service/chat/tan1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"chat_service",
+								"chat",
+								"tan1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quizID\": \"68469771174efc0793ba2b84\",\r\n    \"content\": \"tạo cho tôi 10 câu hỏi 3 câu đầu chọn 1, 3 câu tiếp chọn nhiều, 4 câu cuối nhập đáp án\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/chat_service/chat/tan1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"chat_service",
+								"chat",
+								"tan1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quizID\": \"68469771174efc0793ba2b84\",\r\n    \"content\": \"tạo cho tôi 5 câu hỏi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/chat_service/chat/tan1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"chat_service",
+								"chat",
+								"tan1"
 							]
 						}
 					},

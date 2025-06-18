@@ -23,6 +23,8 @@ import quizz.library.common.Exception.ErrorCode;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +36,14 @@ public class QuizService {
     QuizMapper quizMapper;
     QuestionMapper questionMapper;
     UserClient userClient;
+
+    public List<QuizResponse> findAllPublic(){
+        var list = quizRepository.findAll();
+        return list.stream()
+                .filter(quiz -> !quiz.getTopics().isEmpty())
+                .map(quizMapper::toQuizResponse)
+                .toList();
+    }
 
     public List<QuizResponse> findAllByTeacherID(String teacherID){
         try{
@@ -116,16 +126,18 @@ public class QuizService {
         return quizMapper.toQuizResponse(quizRepository.save(quiz));
     }
 
-
     public List<SearchQuiz> searchTagTitle(String title){
-        return searchQuizRepository.findByTitleContainingOrTopicsContaining(title,title);
+        var lists = searchQuizRepository.findByTitleContainingOrTopicsContaining(title,title);
+        return lists.stream()
+                .filter(searchQuiz -> !searchQuiz.getTopics().isEmpty())
+                .toList();
     }
 
-    public List<String> searchTagTopic(String topic){
+    public Set<String> searchTagTopic(String topic){
         var searchQuizs = searchQuizRepository.findByTopicsContaining(topic);
         return searchQuizs.stream()
                 .sorted(Comparator.comparing(SearchQuiz::getStartTime))
                 .flatMap(searchQuiz -> searchQuiz.getTopics().stream())
-                .toList();
+                .collect(Collectors.toSet());
     }
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import quizz.library.common.DTO.ApiResponse;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/quiz")
@@ -25,6 +26,14 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 public class QuizController {
     QuizService quizService;
+
+    @GetMapping("/public")
+    ApiResponse<List<QuizResponse>>findAllPublic(){
+        return ApiResponse.<List<QuizResponse>>builder()
+                .message("Lấy danh sách bài quiz công khai: ")
+                .result(quizService.findAllPublic())
+                .build();
+    }
 
     @GetMapping("/public/teacher/{teacherID}")
     ApiResponse<List<QuizResponse>>findAllByTeacher(@PathVariable String teacherID){
@@ -77,8 +86,8 @@ public class QuizController {
     }
 
     @PostMapping("/public/topic/search")
-    ApiResponse<List<String>>statisticsTopic(@RequestBody SearchRequest request){
-        return ApiResponse.<List<String>>builder()
+    ApiResponse<Set<String>>statisticsTopic(@RequestBody SearchRequest request){
+        return ApiResponse.<Set<String>>builder()
                 .message("Thống kê chủ đề "+ request.getSearch())
                 .result(quizService.searchTagTopic(request.getSearch()))
                 .build();
