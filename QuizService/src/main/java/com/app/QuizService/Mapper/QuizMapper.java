@@ -27,10 +27,8 @@ public abstract class QuizMapper {
     public abstract SearchQuiz toSearchQuiz(Quiz quiz);
 
     @Named("toListQuestions")
-    List<QuestionResponse> toListQuestions(Map<Integer, Question> questions){
-        return questions.values().stream()
-                .map(questionMapper::toQuestionResponse)
-                .toList();
+    List<Question> toListQuestions(Map<Integer, Question> questions){
+        return questions.values().stream().toList();
     }
 
 }

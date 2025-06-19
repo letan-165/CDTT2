@@ -1,5 +1,6 @@
 package com.app.QuizService.DTO.Response.QuizDetail;
 
+import com.app.QuizService.DTO.BaseDTO.Question;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -18,7 +19,7 @@ public class QuizResponse {
     String title;
     List<String> topics;
     String description;
-    List<QuestionResponse> questions;
+    List<Question> questions;
     Instant startTime;
     Instant endTime;
     Duration duration;

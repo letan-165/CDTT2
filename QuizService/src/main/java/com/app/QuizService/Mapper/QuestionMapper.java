@@ -9,7 +9,6 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface QuestionMapper {
-    QuestionResponse toQuestionResponse(Question question);
     @Mapping(target = "questionID", ignore = true)
     Question toQuestion(QuestionEdit questionSave);
 
