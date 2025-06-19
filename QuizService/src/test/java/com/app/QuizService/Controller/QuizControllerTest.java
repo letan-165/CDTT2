@@ -1,6 +1,7 @@
 package com.app.QuizService.Controller;
 
 
+import com.app.QuizService.DTO.BaseDTO.Question;
 import com.app.QuizService.DTO.Request.EditQuizRequest;
 import com.app.QuizService.DTO.Request.QuestionDelRequest;
 import com.app.QuizService.DTO.Request.QuestionEditRequest;
@@ -23,6 +24,7 @@ import quizz.library.common.Exception.ErrorCode;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -48,7 +50,7 @@ public class QuizControllerTest {
                 .title("title")
                 .topics(List.of("T1","T2"))
                 .description("description")
-                .questions(List.of( new QuestionResponse(),new QuestionResponse()))
+                .questions(List.of( new Question(),new Question()))
                 .startTime(Instant.parse("2025-05-31T11:00:00.00Z"))
                 .endTime(Instant.parse("2025-05-31T12:00:00.00Z"))
                 .duration(Duration.ofMinutes(20))
@@ -234,10 +236,10 @@ public class QuizControllerTest {
     void statisticsTopic_success() throws Exception{
         String search = "hello";
         SearchRequest request = SearchRequest.builder().search(search).build();
-        List<String> list = List.of("hello1","hello2");
+        Set<String> set = Set.of("hello1","hello2");
         String content = objectMapper.writeValueAsString(request);
 
-        when(quizService.searchTagTopic(search)).thenReturn(list);
+        when(quizService.searchTagTopic(search)).thenReturn(set);
 
         mockMvc.perform(post("/quiz/public/topic/search")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -245,8 +247,8 @@ public class QuizControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("code").value(1000))
                 .andExpect(jsonPath("result.length()").value(2))
-                .andExpect(jsonPath("result[0]").value(list.get(0)))
-                .andExpect(jsonPath("result[1]").value(list.get(1)));
+                .andExpect(jsonPath("result[0]").value("hello1"))
+                .andExpect(jsonPath("result[1]").value("hello2"));
 
     }
 

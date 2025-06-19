@@ -3,6 +3,7 @@ package com.app.QuizService.Controller;
 import com.app.QuizService.DTO.BaseDTO.QuestionSubmit;
 import com.app.QuizService.DTO.Request.JoinQuizRequest;
 import com.app.QuizService.DTO.Request.SubmitQuizRequest;
+import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.DTO.Response.Statistics.StatisticsResponse;
 import com.app.QuizService.DTO.Response.Statistics.StatisticsResultResponse;
 import com.app.QuizService.DTO.Response.TodoQuiz.ResultResponse;
@@ -48,7 +49,7 @@ public class ResultControllerTest {
 
         resultResponse = ResultResponse.builder()
                 .resultID("resultID")
-                .quiz(new Quiz())
+                .quiz(new QuizResponse())
                 .studentID("studentID")
                 .totalCorrectAnswers(10)
                 .score(9.5)
