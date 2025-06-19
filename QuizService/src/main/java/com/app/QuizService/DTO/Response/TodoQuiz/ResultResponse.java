@@ -1,5 +1,6 @@
 package com.app.QuizService.DTO.Response.TodoQuiz;
 
+import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.Entity.Quiz;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -13,7 +14,7 @@ import java.time.Instant;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ResultResponse {
     String resultID;
-    Quiz quiz;
+    QuizResponse quiz;
     String studentID;
     int totalCorrectAnswers;
     double score;
