@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import quizz.library.common.DTO.ApiResponse;
 
 @RestController
-@RequestMapping("/chat")
+@RequestMapping("/chatbot")
 @RequiredArgsConstructor
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)

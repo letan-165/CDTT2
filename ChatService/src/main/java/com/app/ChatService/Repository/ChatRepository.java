@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ChatRepository extends MongoRepository<Chat,String> {
-    List<Chat> findAllByUser(String userID);
+    List<Chat> findAllByUserOrUser2(String user, String user2);
 }

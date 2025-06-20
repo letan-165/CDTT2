@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import quizz.library.common.Exception.AppException;
+import quizz.library.common.Exception.ErrorCode;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -27,17 +29,17 @@ public class ChatService {
     UserClient userClient;
 
 
-    public List<Chat> findAllByUser(String user1){
-        return chatRepository.findAllByUser(user1);
+    public List<Chat> findAllByUser(String name){
+        return chatRepository.findAllByUserOrUser2(name,name);
     }
 
 
-    Chat createChat(String user1,String user2){
+    public Chat createChat(String user1,String user2){
         try {
             userClient.findByName(user1);
             userClient.findByName(user2);
         } catch (Exception e) {
-            throw new RuntimeException("Người dùng không tồn tại");
+            throw new AppException(ErrorCode.USER_NO_EXIST);
         }
 
         return chatRepository.save(Chat.builder()
@@ -68,7 +70,7 @@ public class ChatService {
         long index = chat.getMessages().stream()
                 .mapToLong(ChatMessageDTO::getIndex)
                 .max()
-                .orElse(0);
+                .orElse(-1);
 
         chat.getMessages().add(ChatMessageDTO.builder()
                 .index(index+1)
