@@ -11,6 +11,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +21,10 @@ public abstract class QuizMapper {
     private QuestionMapper questionMapper;
 
     @Mapping(target = "questions", source = "questions", qualifiedByName = "toListQuestions")
+    @Mapping(target = "duration", source = "duration", qualifiedByName = "toMinute")
     public abstract QuizResponse toQuizResponse(Quiz quiz);
 
+    @Mapping(target = "duration", source = "duration", qualifiedByName = "toDuration")
     public abstract Quiz toQuiz(EditQuizRequest request);
 
     public abstract SearchQuiz toSearchQuiz(Quiz quiz);
@@ -29,6 +32,16 @@ public abstract class QuizMapper {
     @Named("toListQuestions")
     List<Question> toListQuestions(Map<Integer, Question> questions){
         return questions.values().stream().toList();
+    }
+
+    @Named("toDuration")
+    Duration toDuration(long duration){
+        return Duration.ofMinutes(duration);
+    }
+
+    @Named("toMinute")
+    long toMinute(Duration duration){
+        return duration.toMinutes();
     }
 
 }

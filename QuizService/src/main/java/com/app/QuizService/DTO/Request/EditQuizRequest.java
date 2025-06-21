@@ -22,5 +22,5 @@ public class EditQuizRequest {
     String description;
     Instant startTime;
     Instant endTime;
-    Duration duration;
+    long duration;
 }

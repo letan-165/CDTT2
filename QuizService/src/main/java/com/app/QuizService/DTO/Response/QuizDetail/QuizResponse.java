@@ -23,5 +23,5 @@ public class QuizResponse {
     List<Question> questions;
     Instant startTime;
     Instant endTime;
-    Duration duration;
+    long duration;
 }
