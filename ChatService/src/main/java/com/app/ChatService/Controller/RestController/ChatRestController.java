@@ -27,7 +27,7 @@ public class ChatRestController {
                 .build();
     }
 
-    @PostMapping("/{name}/{name2}")
+    @PostMapping("/public/{name}/{name2}")
     ApiResponse<Chat> findAllByUser(@PathVariable String name,@PathVariable String name2){
         return ApiResponse.<Chat>builder()
                 .result(chatService.createChat(name,name2))

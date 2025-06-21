@@ -53,7 +53,7 @@ public class QuizControllerTest {
                 .questions(List.of( new Question(),new Question()))
                 .startTime(Instant.parse("2025-05-31T11:00:00.00Z"))
                 .endTime(Instant.parse("2025-05-31T12:00:00.00Z"))
-                .duration(Duration.ofMinutes(20))
+                .duration(20)
                 .build();
     }
 
@@ -75,7 +75,7 @@ public class QuizControllerTest {
                 .andExpect(jsonPath("result[0].questions.length()").value(2))
                 .andExpect(jsonPath("result[0].startTime").value(quizResponse.getStartTime().toString()))
                 .andExpect(jsonPath("result[0].endTime").value(quizResponse.getEndTime().toString()))
-                .andExpect(jsonPath("result[0].duration").value(quizResponse.getDuration().toString()));
+                .andExpect(jsonPath("result[0].duration").value(quizResponse.getDuration()));
 
     }
 
@@ -85,7 +85,7 @@ public class QuizControllerTest {
         EditQuizRequest request = EditQuizRequest.builder()
                 .startTime(Instant.parse("2025-05-31T11:00:00.00Z"))
                 .endTime(Instant.parse("2025-05-31T12:00:00.00Z"))
-                .duration(Duration.ofMinutes(20))
+                .duration(20)
                 .build();
         String content = objectMapper.writeValueAsString(request);
         when(quizService.save(request)).thenReturn(quizResponse);
@@ -103,7 +103,7 @@ public class QuizControllerTest {
                 .andExpect(jsonPath("result.questions.length()").value(2))
                 .andExpect(jsonPath("result.startTime").value(quizResponse.getStartTime().toString()))
                 .andExpect(jsonPath("result.endTime").value(quizResponse.getEndTime().toString()))
-                .andExpect(jsonPath("result.duration").value(quizResponse.getDuration().toString()));
+                .andExpect(jsonPath("result.duration").value(quizResponse.getDuration()));
 
     }
 
@@ -113,7 +113,7 @@ public class QuizControllerTest {
         ErrorCode errorCode = ErrorCode.FIELD_TIME_NOTNULL;
         EditQuizRequest request = EditQuizRequest.builder()
                 .endTime(Instant.parse("2025-05-31T12:00:00.00Z"))
-                .duration(Duration.ofMinutes(20))
+                .duration(20)
                 .build();
         String content = objectMapper.writeValueAsString(request);
 
@@ -133,7 +133,7 @@ public class QuizControllerTest {
         EditQuizRequest request = EditQuizRequest.builder()
                 .startTime(Instant.parse("2025-05-31T12:00:00.00Z"))
                 .endTime(Instant.parse("2025-05-31T11:00:00.00Z"))
-                .duration(Duration.ofMinutes(20))
+                .duration(20)
                 .build();
         String content = objectMapper.writeValueAsString(request);
 
@@ -153,7 +153,7 @@ public class QuizControllerTest {
         EditQuizRequest request = EditQuizRequest.builder()
                 .startTime(Instant.parse("2025-05-31T12:00:00.00Z"))
                 .endTime(Instant.parse("2025-05-31T11:00:00.00Z"))
-                .duration(Duration.ofMinutes(70))
+                .duration(20)
                 .build();
         String content = objectMapper.writeValueAsString(request);
 
@@ -186,7 +186,7 @@ public class QuizControllerTest {
                 .andExpect(jsonPath("result.questions.length()").value(2))
                 .andExpect(jsonPath("result.startTime").value(quizResponse.getStartTime().toString()))
                 .andExpect(jsonPath("result.endTime").value(quizResponse.getEndTime().toString()))
-                .andExpect(jsonPath("result.duration").value(quizResponse.getDuration().toString()));
+                .andExpect(jsonPath("result.duration").value(quizResponse.getDuration()));
 
     }
 
@@ -210,7 +210,7 @@ public class QuizControllerTest {
                 .andExpect(jsonPath("result.questions.length()").value(2))
                 .andExpect(jsonPath("result.startTime").value(quizResponse.getStartTime().toString()))
                 .andExpect(jsonPath("result.endTime").value(quizResponse.getEndTime().toString()))
-                .andExpect(jsonPath("result.duration").value(quizResponse.getDuration().toString()));
+                .andExpect(jsonPath("result.duration").value(quizResponse.getDuration()));
 
     }
 

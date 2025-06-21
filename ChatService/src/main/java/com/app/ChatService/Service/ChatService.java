@@ -35,6 +35,8 @@ public class ChatService {
 
 
     public Chat createChat(String user1,String user2){
+        if(user1.equals(user2))
+            throw new RuntimeException("Trùng id user");
         try {
             userClient.findByName(user1);
             userClient.findByName(user2);
