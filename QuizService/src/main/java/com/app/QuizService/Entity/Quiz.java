@@ -22,6 +22,7 @@ public class Quiz {
     @Id
     String quizID;
     String teacherID;
+    String teacherName;
     String title;
     List<String> topics;
     String description;

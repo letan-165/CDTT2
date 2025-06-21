@@ -16,6 +16,7 @@ import java.util.List;
 public class QuizResponse {
     String quizID;
     String teacherID;
+    String teacherName;
     String title;
     List<String> topics;
     String description;

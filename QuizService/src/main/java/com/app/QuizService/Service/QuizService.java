@@ -4,6 +4,7 @@ import com.app.QuizService.DTO.BaseDTO.Question;
 import com.app.QuizService.DTO.Request.EditQuizRequest;
 import com.app.QuizService.DTO.Request.QuestionEditRequest;
 import com.app.QuizService.DTO.Request.QuestionDelRequest;
+import com.app.QuizService.DTO.Response.Client.UserResponse;
 import com.app.QuizService.DTO.Response.QuizDetail.QuizResponse;
 import com.app.QuizService.Entity.Elastic.SearchQuiz;
 import com.app.QuizService.Entity.Quiz;
@@ -58,12 +59,14 @@ public class QuizService {
     }
 
     public QuizResponse save(EditQuizRequest request){
+        UserResponse user = null;
         try{
-            userClient.findById(request.getTeacherID());
+            user = userClient.findById(request.getTeacherID()).getResult();
         } catch (Exception e) {
             throw new AppException(ErrorCode.USER_NO_EXIST);
         }
         Quiz quiz = quizMapper.toQuiz(request);
+        quiz.setTeacherName(user.getName());
         if(request.getQuizID()!=null){
             Quiz update = quizRepository.findById(request.getQuizID())
                     .orElseThrow(()->new AppException(ErrorCode.QUIZ_NO_EXISTS));
