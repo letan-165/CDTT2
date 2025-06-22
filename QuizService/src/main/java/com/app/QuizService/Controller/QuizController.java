@@ -51,7 +51,7 @@ public class QuizController {
                 .build();
     }
 
-    @GetMapping("/{quizID}")
+    @GetMapping("/public/{quizID}")
     ApiResponse<QuizResponse> findById(@PathVariable String quizID){
         return ApiResponse.<QuizResponse>builder()
                 .message("Tìm quiz: "+quizID)

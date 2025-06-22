@@ -68,7 +68,6 @@ public class ChatService {
 
     public ChatResponse sendChat(String sender, SenderMessageRequest request){
         Chat chat = createChat(sender,request.getReceiver());
-        log.info("chatBefore{}",chat.toString());
         long index = chat.getMessages().stream()
                 .mapToLong(ChatMessageDTO::getIndex)
                 .max()
@@ -80,7 +79,6 @@ public class ChatService {
                 .sender(sender)
                 .content(request.getContent())
                 .build());
-        log.info("chatApter{}",chat.toString());
         return chatMapper.toChatResponse(chatRepository.save(chat));
     }
 
