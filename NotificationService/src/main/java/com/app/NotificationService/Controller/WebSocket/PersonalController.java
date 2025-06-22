@@ -1,4 +1,4 @@
-package com.app.NotificationService.Controller;
+package com.app.NotificationService.Controller.WebSocket;
 
 import com.app.NotificationService.Service.PersonalService;
 import lombok.AccessLevel;
@@ -19,7 +19,7 @@ public class PersonalController {
     PersonalService personalService;
     SimpMessagingTemplate messagingTemplate;
 
-    @MessageMapping("/public/personal.list")
+    @MessageMapping("/personal.list")
     public void list(Principal principal) {
         String name = principal.getName();
 

@@ -35,8 +35,10 @@ public class ChatService {
 
 
     public Chat createChat(String user1,String user2){
-        if(user1.equals(user2))
-            throw new RuntimeException("Trùng id user");
+        Chat chat = findChatID(user1,user2);
+        if(chat!=null)
+            return chat;
+
         try {
             userClient.findByName(user1);
             userClient.findByName(user2);
@@ -65,10 +67,8 @@ public class ChatService {
 
 
     public ChatResponse sendChat(String sender, SenderMessageRequest request){
-        Chat chat = findChatID(sender,request.getReceiver());
-        if(chat==null)
-            chat = createChat(sender,request.getReceiver());
-
+        Chat chat = createChat(sender,request.getReceiver());
+        log.info("chatBefore{}",chat.toString());
         long index = chat.getMessages().stream()
                 .mapToLong(ChatMessageDTO::getIndex)
                 .max()
@@ -80,7 +80,7 @@ public class ChatService {
                 .sender(sender)
                 .content(request.getContent())
                 .build());
-
+        log.info("chatApter{}",chat.toString());
         return chatMapper.toChatResponse(chatRepository.save(chat));
     }
 

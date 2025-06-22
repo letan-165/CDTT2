@@ -83,7 +83,6 @@ public class ResultService {
                 .name(userResponse.getName())
                 .subject("Thông báo bắt đầu làm bài")
                 .content("Bài quiz "+ quiz.getTitle() + " đã mở vui lòng tham gia")
-                .displayTime(quiz.getStartTime())
                 .build());
 
 
