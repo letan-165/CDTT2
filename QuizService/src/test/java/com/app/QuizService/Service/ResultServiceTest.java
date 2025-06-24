@@ -134,7 +134,7 @@ public class ResultServiceTest {
 
         when(quiz.getQuestions()).thenReturn(new HashMap<>(Map.of(1,question,2,question)));
 
-        when(question.checkAnswer()).thenReturn(true);
+        when(question.checkQuestion()).thenReturn(true);
         when(resultRepository.save(any())).thenReturn(result);
         when(resultMapper.toResultResponse(result)).thenReturn(resultResponse);
 
