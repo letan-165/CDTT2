@@ -17,3 +17,5 @@
 ### [https://docs.google.com/document/d/1LHdampYaRbf8ucZoR2ouAIZe6X3ZGmQR7QVdGgBendQ/edit?usp=sharing](https://1drv.ms/w/c/fe544cfa3886b669/EQ9Dot-gEqlNte3l7FFpBYYBllDv1BPfoU72IJj3IHaHAA?e=OKka0Y)
 ## Báo cáo
 ### https://onedrive.live.com/:w:/g/personal/FE544CFA3886B669/ETT_oYDDtK1Esj3LawlbqC0BfcQqWtGDcf1F1odry9Tj9w?resid=FE544CFA3886B669!s80a1ff34b4c344adb23dcb6b095ba82d&ithint=file%2Cdocx&e=UC34gb&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy9mZTU0NGNmYTM4ODZiNjY5L0VUVF9vWUREdEsxRXNqM0xhd2xicUMwQmZjUXFXdEdEY2YxRjFvZHJ5OVRqOXc_ZT1VQzM0Z2I
+## Thuyết trình
+### https://1drv.ms/p/c/fe544cfa3886b669/Ed2zMQ9S0hJGrblY-0LZS9YBaO263DO6reVBYL3LvQyoBg?e=hje2gp
