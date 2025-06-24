@@ -116,8 +116,12 @@ public class ResultService {
                 .orElseThrow(()->new AppException(ErrorCode.RESULT_NO_EXISTS));
 
         int totalCorrectAnswers = (int) result.getQuiz().getQuestions().values().stream()
-                .filter(Question::checkAnswer)
+                .filter(question -> {
+                    question.checkAnswer();
+                    return question.isCorrect();
+                })
                 .count();
+
         double score = (double) 10 /result.getQuiz().getQuestions().size() * totalCorrectAnswers;
 
         Result response = resultRepository.save(result.toBuilder()

@@ -19,21 +19,28 @@ public class Question {
     List<String> options;
     List<String> corrects;
     List<String> answers;
+    boolean isCorrect;
 
-    public boolean checkSelect(List<String> check){
-        return new HashSet<>(options).containsAll(check);
+    public boolean checkQuestion(){
+        if(type.equals("ENTER")){
+            int count = content.split("=@=", -1).length - 1;
+            return count == corrects.size();
+        } else {
+            return new HashSet<>(options).containsAll(corrects);
+        }
     }
 
-    public boolean checkEnter(List<String> check){
-        int count = content.split("=@=", -1).length - 1;
-        return count==check.size();
-    }
+    public void checkAnswer(){
+        if(answers.size()!=corrects.size()){
+            isCorrect = false;
+            return ;
+        }
 
-    public boolean checkAnswer(){
-        if(answers.size()!=corrects.size())
-            return false;
-
-        return new HashSet<>(corrects).containsAll(answers);
+        if(type.equals("ENTER")){
+            isCorrect = corrects.equals(answers);
+        }else{
+            isCorrect = new HashSet<>(answers).equals(new HashSet<>(corrects));
+        }
     }
 
 

@@ -94,19 +94,12 @@ public class QuizService {
         for(var questionEdit : request.getQuestions()){
             int key;
             Question question = questionMapper.toQuestion(questionEdit);
-            if(question.getType().equals("SELECT") && !question.checkSelect(question.getCorrects())){
+            if(!question.checkQuestion()){
                 throw new AppException(ErrorCode.CORRECT_INVALID);
             }
-
-            if(question.getType().equals("ENTER")){
-                question.setOptions(Collections.emptyList());
-                if(!question.checkEnter(question.getCorrects()))
-                    throw new AppException(ErrorCode.CORRECT_INVALID);
-            }
-
             if(questionEdit.getQuestionID() == null){
                 index +=1 ;
-                key = index;
+                key = index+1;
             }else{
                 key = questionEdit.getQuestionID();
             }
