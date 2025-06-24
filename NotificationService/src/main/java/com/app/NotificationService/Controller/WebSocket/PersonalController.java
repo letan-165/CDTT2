@@ -19,7 +19,7 @@ public class PersonalController {
     PersonalService personalService;
     SimpMessagingTemplate messagingTemplate;
 
-    @MessageMapping("/personal.list")
+    @MessageMapping("/personal-ws.list")
     public void list(Principal principal) {
         String name = principal.getName();
 

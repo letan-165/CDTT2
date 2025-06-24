@@ -28,7 +28,7 @@ public class ChatController {
     SimpMessagingTemplate messagingTemplate;
     ChatMapper chatMapper;
 
-    @MessageMapping("/chat.get")
+    @MessageMapping("/chat-ws.get")
     public void get(GetChatRequest request, Principal principal) {
         String name = principal.getName();
         Chat chat = chatService.findChatID(name,request.getReceiver());
@@ -45,7 +45,7 @@ public class ChatController {
         messagingTemplate.convertAndSendToUser(name, "/queue/messages", chatResponse);
     }
 
-    @MessageMapping("/chat.send")
+    @MessageMapping("/chat-ws.send")
     public void send(SenderMessageRequest request, Principal principal) {
         String name = principal.getName();
         ChatResponse chatResponse = chatService.sendChat(name,request);
@@ -55,7 +55,7 @@ public class ChatController {
     }
 
 
-    @MessageMapping("/chat.recall")
+    @MessageMapping("/chat-ws.recall")
     public void recall(RecallMessageRequest request, Principal principal) {
         String name = principal.getName();
 

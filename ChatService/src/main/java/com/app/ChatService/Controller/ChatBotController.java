@@ -24,14 +24,14 @@ public class ChatBotController {
     ChatBotService chatBotService;
     SimpMessagingTemplate simpMessagingTemplate;
 
-    @MessageMapping("/chatbot.create")
+    @MessageMapping("/chatbot-ws.create")
     public void create(CreateChatBotRequest request, Principal principal) throws JsonProcessingException {
         String name = principal.getName();
         ChatBotResponse response = chatBotService.createChatBot(name, request.getType());
         simpMessagingTemplate.convertAndSendToUser(name,"/queue/message",response);
     }
 
-    @MessageMapping("/chatbot.send")
+    @MessageMapping("/chatbot-ws.send")
     public void send(SendChatBotRequest request, Principal principal) throws JsonProcessingException {
         String userName = principal.getName();
         ChatBotResponse response = chatBotService.sendChatBot(userName, request);
