@@ -9,7 +9,7 @@ import quizz.library.common.DTO.ApiResponse;
 
 @FeignClient(name = "quiz", url = "${app.service.quiz}")
 public interface QuizClient {
-    @GetMapping(value = "/quiz/{quizID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/quiz/public/{quizID}", produces = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<QuizResponse> findById(@PathVariable String quizID);
 
     @PutMapping("/quiz/public/question")
