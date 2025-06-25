@@ -21,7 +21,7 @@ public class QuizResponse {
     List<String> topics;
     String description;
     List<Question> questions;
-    Instant startTime;
-    Instant endTime;
+    String startTime;
+    String endTime;
     long duration;
 }

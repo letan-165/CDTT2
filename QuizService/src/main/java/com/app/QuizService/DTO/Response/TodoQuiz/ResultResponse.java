@@ -18,6 +18,6 @@ public class ResultResponse {
     String studentID;
     int totalCorrectAnswers;
     double score;
-    Instant startTime;
-    Instant endTime;
+    String startTime;
+    String endTime;
 }

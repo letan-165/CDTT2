@@ -14,6 +14,6 @@ public class NotificationResponse {
     int index;
     String subject;
     String content;
-    Instant displayTime;
+    String displayTime;
     boolean isRead;
 }
