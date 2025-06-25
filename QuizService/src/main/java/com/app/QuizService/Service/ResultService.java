@@ -160,6 +160,7 @@ public class ResultService {
         var resultsByStudent = resultRepository.findAllByStudentID(studentID);
         return resultsByStudent.stream()
                 .map(resultMapper::toResultResponse)
+                .sorted((n1, n2) -> n2.getEndTime().compareTo(n1.getEndTime()))
                 .toList();
     }
 

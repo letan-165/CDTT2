@@ -43,6 +43,7 @@ public class QuizService {
         return list.stream()
                 .filter(quiz -> !quiz.getTopics().isEmpty())
                 .map(quizMapper::toQuizResponse)
+                .sorted((n1, n2) -> n2.getStartTime().compareTo(n1.getEndTime()))
                 .toList();
     }
 
@@ -55,6 +56,7 @@ public class QuizService {
         var list = quizRepository.findAllByTeacherID(teacherID);
         return list.stream()
                 .map(quizMapper::toQuizResponse)
+                .sorted((n1, n2) -> n2.getStartTime().compareTo(n1.getEndTime()))
                 .toList();
     }
 

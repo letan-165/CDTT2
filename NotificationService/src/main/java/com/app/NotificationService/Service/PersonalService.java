@@ -46,7 +46,9 @@ public class PersonalService {
 
         List<NotificationBase> display_list = personal.getNotifications().stream()
                 .filter(notificationBase -> Instant.now().isAfter(notificationBase.getDisplayTime()))
+                .sorted((n1, n2) -> n2.getDisplayTime().compareTo(n1.getDisplayTime()))
                 .toList();
+
         personal.setNotifications(display_list);
         return personalMapper.toPersonalResponse(personal);
     }
