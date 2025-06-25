@@ -51,8 +51,8 @@ public class QuizControllerTest {
                 .topics(List.of("T1","T2"))
                 .description("description")
                 .questions(List.of( new Question(),new Question()))
-                .startTime(Instant.parse("2025-05-31T11:00:00.00Z"))
-                .endTime(Instant.parse("2025-05-31T12:00:00.00Z"))
+                .startTime("2025-05-31T11:00:00.00Z")
+                .endTime("2025-05-31T12:00:00.00Z")
                 .duration(20)
                 .build();
     }

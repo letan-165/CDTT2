@@ -53,8 +53,8 @@ public class ResultControllerTest {
                 .studentID("studentID")
                 .totalCorrectAnswers(10)
                 .score(9.5)
-                .startTime(Instant.parse("2025-05-31T11:00:00.00Z"))
-                .endTime(Instant.parse("2025-05-31T12:00:00.00Z"))
+                .startTime("2025-05-31T11:00:00.00Z")
+                .endTime("2025-05-31T12:00:00.00Z")
                 .build();
     }
 
