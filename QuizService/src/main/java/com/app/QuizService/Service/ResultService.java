@@ -158,10 +158,12 @@ public class ResultService {
 
     public List<ResultResponse> statisticStudents(String studentID){
         var resultsByStudent = resultRepository.findAllByStudentID(studentID);
-        return resultsByStudent.stream()
+        var list = resultsByStudent.stream()
                 .map(resultMapper::toResultResponse)
-                .sorted((n1, n2) -> n2.getEndTime().compareTo(n1.getEndTime()))
+                .sorted((n1, n2) -> n2.getStartTime().compareTo(n1.getStartTime()))
                 .toList();
+        log.info("list{}",list);
+        return list;
     }
 
     public List<Integer> statisticStudentResultTimes(String studentID,int lastWeek){

@@ -41,7 +41,7 @@ public abstract class ResultMapper {
         if (time == null) return null;
         ZoneId zoneVN = ZoneId.of("Asia/Ho_Chi_Minh");
         LocalDateTime vnTime = LocalDateTime.ofInstant(time, zoneVN);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
         return vnTime.format(formatter);
     }

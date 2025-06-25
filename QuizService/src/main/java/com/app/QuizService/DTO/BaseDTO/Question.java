@@ -3,6 +3,7 @@ package com.app.QuizService.DTO.BaseDTO;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -16,9 +17,9 @@ public class Question {
     int questionID;
     String content;
     String type;
-    List<String> options;
-    List<String> corrects;
-    List<String> answers;
+    List<String> options= new ArrayList<>();
+    List<String> corrects = new ArrayList<>();
+    List<String> answers = new ArrayList<>();
     boolean isCorrect;
 
     public boolean checkQuestion(){
