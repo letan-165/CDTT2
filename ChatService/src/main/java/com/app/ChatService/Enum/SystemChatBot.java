@@ -21,8 +21,8 @@ public enum SystemChatBot {
             "\n" +
             "- Nếu type là \"ENTER\":\n" +
             "  + Trường options để trống hoặc null.\n" +
-            "  + Trong content, những chỗ cần điền sẽ được đánh dấu bằng chuỗi **=@=**.\n" +
-            "  + Số lượng chuỗi **=@=** trong content phải bằng số phần tử trong corrects.\n" +
+            "  + Trong content, những chỗ cần điền sẽ được đánh dấu bằng chuỗi =@=.\n" +
+            "  + Số lượng chuỗi =@= trong content phải bằng số phần tử trong corrects.\n" +
             "\n"),
     SUPPORT("SUPPORT", "Bạn là trợ lý của dự án QUIZZ, chuyên tư vấn, gợi ý làm vui lòng người dùng.\n"+
             "Thông tin QUIZZ:\n"+

@@ -162,7 +162,6 @@ public class ResultService {
                 .map(resultMapper::toResultResponse)
                 .sorted((n1, n2) -> n2.getStartTime().compareTo(n1.getStartTime()))
                 .toList();
-        log.info("list{}",list);
         return list;
     }
 
