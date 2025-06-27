@@ -70,7 +70,6 @@ public class ChatBotService {
     public ChatBotResponse sendChatBot(String name,SendChatBotRequest request) throws JsonProcessingException {
         ChatBot chatBot = chatBotRepository.findById(name)
                 .orElseThrow(()-> new RuntimeException("Chat không tồn tại"));
-
         if(chatBot.getType().equals("QUESTION")){
             return sendChatBotTypeQuestion(name,request);
         }else{
@@ -105,23 +104,20 @@ public class ChatBotService {
 
         ChatBot chatBot = chatBotRepository.findById(name)
                 .orElseThrow(()-> new AppException(ErrorCode.CHAT_NO_EXISTS));
-
         String content = "Thông tin bài quiz: "
                 + quizResponse.getTitle()
                 + quizResponse.getDescription()
                 + Arrays.toString(quizResponse.getTopics().toArray())
-                + "Yêu cầu khác hàng: "+request.getContent();
+                + "Yêu cầu khác hàng: "+ request.getContent();
 
         chatBot.getMessages().add(MessageDTO.builder()
                 .role(RoleChatBot.USER.getRole())
                 .content(content)
                 .build());
-
         ChatBotRequest chatBotRequest = ChatBotRequest.builder()
                 .model(ModelChatBot.DEEPSEAK_V3.getModel())
                 .messages(chatBot.getMessages())
                 .build();
-
         ChatBotClientResponse chatBotResponse = chatBotClient.sendChatBot("Bearer " + keyChatBot,chatBotRequest);
 
         String contentChatBotResponse = chatBotResponse.getChoices().get(0).getMessage().getContent();

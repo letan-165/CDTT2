@@ -98,7 +98,7 @@ public class AuthService {
     public Boolean logout(TokenRequest request) throws ParseException, JOSEException {
         instropect(request);//Exception
         SignedJWT jwt = SignedJWT.parse(request.getToken());
-        tokenRepository.deleteById(jwt.getJWTClaimsSet().getJWTID());
+        tokenRepository.deleteById(jwt.getJWTClaimsSet().getSubject());
         return true;
     }
 

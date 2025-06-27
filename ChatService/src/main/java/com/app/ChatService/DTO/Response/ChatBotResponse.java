@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ChatBotResponse {
-
     String user;
     String type;
     List<MessageDTO> messages;
