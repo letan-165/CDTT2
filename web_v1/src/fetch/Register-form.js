@@ -19,21 +19,29 @@ function handlerRegister() {
     alert("Mật khẩu không khớp!");
     return;
   }
-  const role ="STUDENT";
+
+  const selectedRole = document.querySelector('input[name="role"]:checked');
+  if (!selectedRole) {
+    alert("Vui lòng chọn vai trò!");
+    return;
+  }
+
+  const role = selectedRole.value === 'giaovien' ? 'TEACHER' : 'STUDENT';
 
   const data = {
     name,
     email,
     phone,
     password,
-    role 
+    role
   };
-
 
   signUp(data)
     .then(res => {
       alert("Đăng ký thành công!");
       console.log(res);
+
+      window.location.href = "login-form.html";
     })
     .catch(err => {
       alert("Có lỗi xảy ra!");

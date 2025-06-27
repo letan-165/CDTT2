@@ -9,3 +9,12 @@ export const signUp = (data) => {
 export const forgotPassword = (data) => {
   return fetchAPI(`${ACCOUNT_SERVICE}/user/public/forgotPassword`, "PUT", data);
 };
+
+
+export const requestOtp = (data) => {
+  return fetchAPI(`${ACCOUNT_SERVICE}/otp`, "POST", data);
+};
+
+export const findbyname = (data) => {
+  return fetchAPI(`${ACCOUNT_SERVICE}/user/public/name/${data}`, "GET");
+};

@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sidebar UI</title>
   <link rel="stylesheet" href="../styles/css/quiz.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body data-sidebar-active="main_quizz_course-form.html">
   <div class="wrapper">
     <!-- Vùng sidebar -->
     <div id="sidebar-container"></div>
@@ -27,7 +26,7 @@
 
             <div class="welcome-box">
               <div class="text">
-                <strong>Xin chào Fushiree</strong>
+                <strong id="welcome-name">Xin chào</strong>
                 <p>Thật vui vì được gặp lại bạn</p>
               </div>
               <img src="../styles/img/avatar.png" alt="avatar" />
@@ -49,7 +48,7 @@
             <div class="question-nav">
               <div class="question-header">
                 <strong>Câu hỏi:</strong>
-                <div class="timer" id="timer">10:00</div>
+                <div class="timer" id="timer">00:00</div>
               </div>
               <div class="question-buttons" id="question-buttons">
                 <!-- Nút chuyển câu hỏi sẽ được tạo bằng JS -->
@@ -64,17 +63,33 @@
 
 
   <!-- Gắn file JS -->
-   <script src="../styles/js/quiz.js"></script>
+   <script type="module" src="../styles/js/quiz.js"></script>
   <script src="../styles/js/main_course-form.js"></script>
-  <script src="../styles/js/courses.js"></script>
-  <script src="../styles/js/quiz-list.js"></script>
-  <script src="../styles/js/quiz-detail.js"></script>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const quizId = params.get("id");
     console.log("Quiz ID:", quizId);
-  </script>
 
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const username = localStorage.getItem("username");
+    if (username) {
+      const welcomeEl = document.getElementById("welcome-name");
+      if (welcomeEl) {
+        welcomeEl.textContent = `Xin chào ${username}`;
+      }
+    }
+  });
+
+
+  </script>
+<div id="loading-overlay" style="display: none;">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>Đang xử lý...</p>
+  </div>
+</div>
 
 </body>
 </html>

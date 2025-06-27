@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { getQuiz, createQuiz } from '../../api/QuizService.js';
+
+document.addEventListener("DOMContentLoaded", async () => {
   const titleInput = document.getElementById("quiz-title");
   const durationInput = document.getElementById("quiz-duration");
   const endInput = document.getElementById("quiz-end");
@@ -7,49 +9,64 @@ document.addEventListener("DOMContentLoaded", () => {
   const descriptionInput = document.getElementById("quiz-description");
 
   const queryParams = new URLSearchParams(window.location.search);
-  const quizId = parseInt(queryParams.get("quizId"));
+  const quizID = queryParams.get("id") || queryParams.get("quizId");
 
-  if (isNaN(quizId)) {
-    alert("ID bài Quizz không hợp lệ.");
+  if (!quizID) {
+    alert("Không có quizID trong URL!");
     return;
   }
 
-  let quizList = JSON.parse(localStorage.getItem("quizList")) || [];
-  let quizIndex = quizList.findIndex(q => q.quizId === quizId);
+  console.log("Quiz ID từ URL:", quizID);
 
-  if (quizIndex === -1) {
-    alert("Không tìm thấy bài Quizz!");
-    return;
+  try {
+    const response = await getQuiz(quizID);
+    const quiz = response.result;
+
+    if (!quiz) {
+      alert("Không tìm thấy quiz từ server!");
+      return;
+    }
+
+    console.log("Nội dung quiz từ server:", quiz);
+
+    // Gán dữ liệu vào form
+    titleInput.value = quiz.title || "";
+
+    durationInput.value = String(quiz.duration ?? "");
+
+    endInput.value = quiz.endTime?.slice(0, 16) || "";
+    startInput.value = quiz.startTime?.slice(0, 16) || "";
+    topicInput.value = Array.isArray(quiz.topics) ? quiz.topics.join(", ") : "";
+    descriptionInput.value = quiz.description || "";
+
+    // Khi bấm nút lưu
+    document.getElementById("save-quiz").addEventListener("click", async () => {
+      const updatedQuiz = {
+        quizID: quiz.quizID,
+        teacherID: quiz.teacherID || localStorage.getItem("userID"),
+        title: titleInput.value.trim(),
+        topics: topicInput.value.split(",").map(t => t.trim()),
+        description: descriptionInput.value.trim(),
+        startTime: new Date(startInput.value.trim()).toISOString(),
+        endTime: new Date(endInput.value.trim()).toISOString(),
+        duration: parseInt(durationInput.value.trim()),
+        questions: quiz.questions || []
+      };
+
+      console.log("Quiz chuẩn bị gửi cập nhật:", updatedQuiz);
+
+      try {
+        const res = await createQuiz(updatedQuiz);
+        console.log("Cập nhật thành công:", res);
+        alert("Đã cập nhật bài Quizz thành công!");
+        window.location.href = `add-question-repair.html?id=${quizID}`;
+      } catch (err) {
+        console.error("Lỗi khi cập nhật quiz:", err);
+        alert("Cập nhật thất bại!");
+      }
+    });
+  } catch (err) {
+    console.error("Lỗi khi lấy quiz từ server:", err);
+    alert("Không thể tải thông tin quiz.");
   }
-
-  const quiz = quizList[quizIndex];
-
-  // Hiển thị dữ liệu lên form
-  titleInput.value = quiz.title || "";
-  durationInput.value = quiz.duration || "";
-  endInput.value = quiz.end || "";
-  startInput.value = quiz.start || "";
-  topicInput.value = quiz.topic || "";
-  descriptionInput.value = quiz.description || "";
-
-  // Khi người dùng bấm lưu cập nhật
-  document.getElementById("save-quiz").addEventListener("click", () => {
-    const updatedQuiz = {
-      ...quiz, // giữ lại quizId, teacher, img, rating
-      title: titleInput.value.trim(),
-      duration: durationInput.value.trim(),
-      end: endInput.value.trim(),
-      start: startInput.value.trim(),
-      topic: topicInput.value.trim(),
-      description: descriptionInput.value.trim(),
-      time: durationInput.value.trim()
-    };
-
-    quizList[quizIndex] = updatedQuiz;
-    localStorage.setItem("quizList", JSON.stringify(quizList));
-    alert("Đã cập nhật bài Quizz thành công!");
-
-    // Quay lại trang add-question-repair của quiz hiện tại
-    window.location.href = `add-question-repair.html?id=${quizId}`;
-  });
 });

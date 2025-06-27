@@ -32,7 +32,7 @@ body, html {
 }
 
 .form-header {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   align-self: center;
 
 }
@@ -131,7 +131,7 @@ body, html {
 
 .form-group {
   position: relative;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   padding: 0px 15px 0px 20px;
 }
 
@@ -150,8 +150,8 @@ body, html {
 
 .input-icon {
   position: absolute;
-  right: 15px;
-  top: 50%;
+  right: 20px;
+  top: 55%;
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
@@ -194,4 +194,44 @@ body, html {
   margin-top: 5px;
   padding: 5px;
   width: 50px;
+}
+
+
+
+.role-options {
+  display: flex;
+  gap: 15px; /* khoảng cách giữa 2 nút */
+  justify-content: flex-start; /* canh trái */
+  align-items: center;
+  padding: 0px 15px 0px 20px;
+}
+
+.role-options label {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 0;
+  height: 10px;
+}
+
+.role-options input[type="radio"] {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 0; /* Vuông */
+  margin-right: 8px;
+  cursor: pointer;
+  position: relative;
+  background-color: #ffffff;
+}
+
+.role-options input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 15px;
+  height: 15px;
+  background-color: #333;
 }

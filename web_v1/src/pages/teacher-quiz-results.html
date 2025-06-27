@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Điểm học sinh theo bài của giáo viên</title>
+  <link rel="stylesheet" href="../styles/css/teacher-view-scores.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Vùng sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Vùng nội dung -->
+    <div class="content-wrapper" id="content-container">
+
+      <!-- Bắt đầu content1 -->
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" placeholder=" Tìm kiếm..." />
+        </div>
+
+        <div class="body-content">
+          <div class="left-content">
+
+            <div class="welcome-box">
+              <div class="text">
+                <strong id="welcome-name">Xin chào</strong>
+                <p>Thật vui vì được gặp lại bạn</p>
+              </div>
+              <img src="../styles/img/avatar.png" alt="avatar" />
+            </div>
+                <div class="course-list" id="course-list">
+                    <h2>Danh sách điểm các bài trắc nghiệm bạn đã tạo</h2>
+                    <div id="quiz-result-container"></div>
+                </div>
+            </div>
+
+            <div class="right-content">
+
+            <div id="my-chatbox-container"></div>  <!-- chat AI-->
+
+            <div class="status-form">
+              <div class="status-box">
+                <strong id="quiz-count">0</strong>
+                <p>Bài Quiz<br />đã tạo</p>
+              </div>
+
+              <div class="status-box">
+                <strong>+</strong>
+                <p> <a href="course-create.html">Tạo bài<br />Quizz mới</a></p>
+              </div>
+            </div>
+
+            <div class="chart-section">
+              <img src="../styles/img/logo.png" class="chart-image" />
+            </div>
+
+            <div class="start-box">
+              <strong>Các tag phổ biến: </strong>
+              <p>#C++ 10phut #12phut #15phut<br /> #Python</p>
+            </div>
+          </div>
+    
+  </div>
+</div>
+</div>
+</div>
+
+
+  <script src="../styles/js/main_course-form.js"></script>
+  <script type="module" src="../styles/js/teacher-quiz-results.js"></script>
+  
+
+  <div id="loading-overlay" style="display: none;">
+  <div class="spinner"></div>
+</div>
+  
+</body>
+</html>

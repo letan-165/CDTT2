@@ -1,26 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const defaultCourses = {
-    1: {
-      img: "../styles/img/java.png",
-      title: "Khóa học Java",
-      teacher: "Ngô Thịnh",
-      time: "6h 30m",
-      rating: "4.9"
-    }
-  };
+import { getQuizsByTeacher } from '../../api/QuizService.js';
 
+document.addEventListener("DOMContentLoaded", async function () {
   const container = document.getElementById("course-list");
+  const loadingEl = document.getElementById("course-loading");
+  const teacherId = localStorage.getItem("userID");
 
-  // Render mặc định
-  for (let id in defaultCourses) {
-    renderCourseItem(defaultCourses[id]);
+  try {
+    const response = await getQuizsByTeacher(teacherId);
+    const quizList = response.result || [];
+
+    if (loadingEl) loadingEl.style.display = "none";
+
+    if (quizList.length === 0) {
+      container.innerHTML = "<p>Không có khóa học nào.</p>";
+      return;
+    }
+
+    quizList.forEach((quiz, index) => {
+      console.log(`Quiz #${index + 1}`);
+      console.log("quizID:", quiz.quizID);
+      console.log("teacherID:", quiz.teacherID);
+       console.log("teacherName:", quiz.teacherName);
+      console.log("title:", quiz.title);
+    });
+
+    quizList.forEach((quiz) => {
+      const course = {
+        img: quiz.img || "../styles/img/java.png",
+        title: quiz.title || "Không có tiêu đề",
+        teacher: quiz.teacherName || "Không rõ",
+        startTime: quiz.startTime || "Không rõ",
+        endTime: quiz.endTime || "Không rõ",
+        duration: quiz.duration ? `${quiz.duration} phút` : "Chưa rõ"
+      };
+      renderCourseItem(course, quiz.quizID);
+    });
+
+    updateQuizCount();
+
+  } catch (err) {
+    console.error("Lỗi khi gọi API:", err);
+    if (loadingEl) loadingEl.style.display = "none";
+    container.innerHTML = "<p>Lỗi khi tải khóa học.</p>";
   }
-
-  // Render các quiz đã lưu
-  const quizList = JSON.parse(localStorage.getItem("quizList")) || [];
-  quizList.forEach((quiz) => {
-    renderCourseItem(quiz, quiz.quizId); // Truyền quizId vào
-  });
 
   function renderCourseItem(course, quizId = null) {
     const buttonLink = quizId !== null
@@ -37,16 +59,35 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="meta">
           <span>
             <img src="../styles/img/clock.png" alt="clock" class="icon" />
-            ${course.time}
+            ${course.endTime}
           </span>
           <span>
-            <img src="../styles/img/pointed-star.png" alt="star" class="icon" />
-            ${course.rating}
+            ${course.duration}
           </span>
           <button onclick="window.location.href='${buttonLink}'">Xem</button>
         </div>
       </div>
     `;
     container.insertAdjacentHTML("beforeend", courseHTML);
+  }
+
+  function updateQuizCount() {
+    const count = container.querySelectorAll('.course-item').length;
+    const countElement = document.getElementById("quiz-count");
+    if (countElement) {
+      countElement.textContent = count;
+    }
+    localStorage.setItem("quizCreatedCount", count);
+  }
+});
+
+// Hiển thị tên giáo viên
+document.addEventListener("DOMContentLoaded", () => {
+  const username = localStorage.getItem("username");
+  if (username) {
+    const welcomeEl = document.getElementById("welcome-name");
+    if (welcomeEl) {
+      welcomeEl.textContent = `Xin chào ${username}`;
+    }
   }
 });

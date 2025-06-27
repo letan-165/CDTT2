@@ -16,12 +16,12 @@
         <div class="form-body">
 
           <div class="form-group">
-            <label for="name">Tên</label>
+            <label for="name">Tên người dùng</label>
             <input 
                   type="text" 
                   required 
                   id="name" 
-                  placeholder="Fushiree" />
+                  placeholder="Tên" />
             <img src="../styles/img/user.png" class="input-icon" alt="User Icon" />
           </div>
 
@@ -31,7 +31,7 @@
                   type="email" 
                   required 
                   id="email" 
-                  placeholder="info@edu.vn" />
+                  placeholder="@ut.edu.vn/@gmail" />
             <img src="../styles/img/email.png" class="input-icon" alt="Email Icon" />
           </div>
 
@@ -41,7 +41,7 @@
                   type="tel" 
                   required 
                   id="phone" 
-                  placeholder="0123456789" />
+                  placeholder="SĐT" />
             <img src="../styles/img/smartphone.png" class="input-icon" alt="Phone Icon" />
           </div>
 
@@ -51,7 +51,7 @@
                 type="password" 
                 required 
                 id="password" 
-                placeholder="***************" />
+                placeholder="Đặt Mật khẩu" />
           <img src="../styles/img/icons8-lock-48.png" class="input-icon" alt="Lock Icon" />
           
          
@@ -68,7 +68,7 @@
                 type="password" 
                 required 
                 id="confirm-password" 
-                placeholder="***************" />
+                placeholder="Nhập mật lại mật khẩu " />
           <img src="../styles/img/icons8-lock-48.png" class="input-icon" alt="Lock Icon" />
 
           
@@ -78,6 +78,17 @@
             <img src="../styles/img/eye.png" alt="Show Password" />
               </button>
               </div>
+
+          <div class="role-options">
+              <label>
+                <input type="radio" name="role" value="giaovien">
+                Giáo viên
+              </label><br>
+              <label>
+                <input type="radio" name="role" value="hocvien" checked>
+                Học viên
+              </label>
+            </div>
           <button id="registerBtn" >Đăng ký</button>
 
         </div>

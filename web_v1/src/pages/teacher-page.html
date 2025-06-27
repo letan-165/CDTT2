@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trang Chính</title>
   <link rel="stylesheet" href="../styles/css/main_course-form-teacher.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../styles/css/chat-widget.css"/>
 </head>
 <body>
   <div class="wrapper">
@@ -26,7 +26,7 @@
 
             <div class="welcome-box">
               <div class="text">
-                <strong>Xin chào Fushiree</strong>
+                <strong id="welcome-name">Xin chào</strong>
                 <p>Thật vui vì được gặp lại bạn</p>
               </div>
               <img src="../styles/img/avatar.png" alt="avatar" />
@@ -37,10 +37,6 @@
                 <div class="course-info">
                   <strong>Bài Quizz </strong>
                 </div>
-                <div class="Next-back">
-                  <button>˂</button>
-                  <button>˃</button>
-                </div>
               </div>
             </div>
 
@@ -49,15 +45,22 @@
             </div>
 
             <div class="course-list" id="course-list">
+               <div id="course-loading" class="course-loading">
+                <div class="spinner"></div>
+                <p>Đang tải bài quiz...</p>
+              </div>
             <!-- Các khóa học sẽ được render bằng JavaScript -->
             </div>
 
           </div>
 
           <div class="right-content">
+
+            <div id="my-chatbox-container"></div>  <!-- chat AI-->
+
             <div class="status-form">
               <div class="status-box">
-                <strong>11</strong>
+                <strong id="quiz-count">0</strong>
                 <p>Bài Quiz<br />đã tạo</p>
               </div>
 
@@ -85,6 +88,13 @@
 
   <!-- Gắn file JS -->
   <script src="../styles/js/main_course-form.js"></script>
-  <script src="../styles/js/courses-te.js"></script>
+  <script type="module" src="../styles/js/chat-widget.js"></script>
+  <script type="module" src="../styles/js/chat-widget2.js"></script>
+
+  <script type="module" src="../styles/js/courses-te.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
 </body>
 </html>

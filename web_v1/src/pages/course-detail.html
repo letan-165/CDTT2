@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sidebar UI</title>
   <link rel="stylesheet" href="../styles/css/main_course-form-quizz.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body data-sidebar-active="main_quizz_course-form.html">
   <div class="wrapper">
     <!-- Vùng sidebar -->
     <div id="sidebar-container"></div>
@@ -27,13 +26,18 @@
 
             <div class="welcome-box">
               <div class="text">
-                <strong>Xin chào Fushiree</strong>
+                <strong id="welcome-name">Xin chào</strong>
                 <p>Thật vui vì được gặp lại bạn</p>
               </div>
               <img src="../styles/img/avatar.png" alt="avatar" />
             </div>
               <div class="quiz-main">
              <div id="quiz-detail" class="quiz-detail">
+              <div id="quiz-detail-loading" class="loading-content">
+                  <div class="spinner"></div>
+                  <p>Đang tải thông tin bài quiz...</p>
+                </div>
+              
                 <!-- Nội dung sẽ được thêm bằng JavaScript -->
             </div>
             </div>
@@ -59,11 +63,28 @@
 
   <!-- Gắn file JS -->
   <script src="../styles/js/main_course-form.js"></script>
-  <script src="../styles/js/courses.js"></script>
-  <script src="../styles/js/quiz-list.js"></script>
-  <script src="../styles/js/quiz-detail.js"></script>
+  <script type="module" src="../styles/js/quiz-list.js"></script>
+  <script type="module" src="../styles/js/quiz-detail.js"></script>
+  <script>
+     document.addEventListener("DOMContentLoaded", () => {
+    const username = localStorage.getItem("username");
+    if (username) {
+      const welcomeEl = document.getElementById("welcome-name");
+      if (welcomeEl) {
+        welcomeEl.textContent = `Xin chào ${username}`;
+      }
+    }
+  });
+  </script>
+
+<div id="loading-overlay" style="display: none;">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>Đang chuẩn bị bài quiz...</p>
+  </div>
   
-
-
+</div>
 </body>
 </html>
+
+

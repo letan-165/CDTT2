@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trang Chính</title>
   <link rel="stylesheet" href="../styles/css/user-layout.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -26,12 +25,9 @@
 
             <div class="welcome-box">
             <div class="profile-card">
-              <div class="info">
-                <p><strong>Tên:</strong> Fushiree Trần</p>
-                <p><strong>ID:</strong> @fushiree</p>
-                <p><strong>Email:</strong> Fushiree@gmail.com</p>
-                <p><strong>SĐT:</strong> 0123456789</p>
-              </div>
+              <div class="info" id="user-info">
+              <!-- Dữ liệu người dùng sẽ được chèn bằng JavaScript -->
+            </div>
                </div>
               <img src="../styles/img/avatar.png" alt="avatar" />
             </div>
@@ -42,13 +38,12 @@
           <div class="right-content">
             <div class="status-form">
               <div class="status-box">
-                <strong>11</strong>
-                <p>Khóa học đã<br />hoàn thành</p>
+                <strong id="total-course-count">0</strong>
+                <p>Bài Quiz đang<br />diễn ra</p>
               </div>
-
               <div class="status-box">
-                <strong>8</strong>
-                <p>Khóa học đang<br />diễn ra</p>
+                <strong id="completed-count">0</strong>
+                <p>Bài Quiz đã<br />hoàn thành</p>
               </div>
             </div>
 
@@ -77,7 +72,22 @@
   </div>
 
   <!-- Gắn file JS -->
-  <script src="../styles/js/main_course-form1.js"></script>
+  <script src="../styles/js/main_course-form.js"></script>
   <script src="../styles/js/quizz-fun.js"></script>
+  <script type="module" src="../styles/js/courses.js"></script>
+
+<script>
+  window.addEventListener("load", () => {
+    const overlay = document.getElementById("loading-overlay");
+    if (overlay) overlay.style.display = "none";
+  });
+</script>
+
+<div id="loading-overlay">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>Đang tải dữ liệu...</p>
+  </div>
+</div>
 </body>
 </html>

@@ -4,18 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thêm câu hỏi</title>
+  <link rel="stylesheet" href="../styles/css/chat-widget.css"/>
   <link rel="stylesheet" href="../styles/css/add-question-repair.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </head>
-<body>
+<body data-sidebar-active="teacher-page.html">
   <div class="wrapper">
-    <!-- Vùng sidebar -->
     <div id="sidebar-container"></div>
 
-    <!-- Vùng nội dung -->
     <div class="content-wrapper" id="content-container">
-
-      <!-- Bắt đầu content1 -->
       <div class="main-content">
         <div class="search-bar">
           <input type="text" placeholder="Nhập mã bài Quizz ..." />
@@ -24,55 +21,154 @@
         <div class="body-content">
           <div class="left-content">
             <div class="welcome-box">
-                <div class="text">
-                <strong>Xin chào Fushiree</strong>
+              <div class="text">
+                <strong id="welcome-name">Xin chào</strong>
                 <p>Thật vui vì được gặp lại bạn</p>
-                </div>
-                <img src="../styles/img/avatar.png" alt="avatar" />
+              </div>
+              <img src="../styles/img/avatar.png" alt="avatar" />
             </div>
 
-            <!-- Tiêu đề quiz -->
-          <div class="course-create-detail">
-          <div class="quiz-header">
-            <img src="../styles/img/logo-icon.png" alt="Quiz Icon" class="quiz-icon" />
-            <h3 id="quiz-title-heading"><i class="fas fa-clipboard-list"></i> Tiêu đề bài Quizz</h3>
+            <!-- Thông tin bài Quiz -->
+            <div class="course-create-detail" id="quiz-detail">
+              <div class="quiz-header">
+                <img src="../styles/img/logo-icon.png" alt="Quiz Icon" class="quiz-icon" />
+                <div class="quiz-title-p">
+                <h3 id="quiz-title-heading"><i class="fas fa-clipboard-list"></i> Tiêu đề bài Quizz</h3>
+                <p><strong>ID bài quiz:</strong>
+                  <span id="quiz-ID" style="color: black; background-color: white; padding: 4px 8px; border-radius: 4px; margin-right: 8px;"></span>
+                  <button onclick="copyQuizID()" style="padding: 4px 8px; cursor: pointer;">Copy</button>
+                </p>
+                </div>
+              </div>
+              <div class="quiz-content-box" style="background-color: #d7f0e3; padding: 20px; border-radius: 8px;">
+                <p><strong>Nội dung bài quiz:</strong></p>
+                <p id="quiz-description"></p>
+                <p><strong>Bắt đầu vào ngày:</strong> <span id="quiz-start"></span></p>
+                <p><strong>Kết thúc vào ngày:</strong> <span id="quiz-end"></span></p>
+                <p><strong>Tổng thời gian làm:</strong> <span id="quiz-duration"></span></p>
+              </div>
+              <div class="button-wrapper">
+                <button id="edit-quiz-btn">Chỉnh sửa bài Quizz</button>
+                <button id="score-view-btn">Xem điểm các học sinh</button>
+              </div>
+            </div>
+            
+            <!-- Chỗ này -->
+
+
+
+            <!-- Form Thêm/Sửa Câu Hỏi -->
+          <div class="quiz-form-c" id="quiz-form-container" style="display:none">
+          <div class="quiz-title">
+            <img src="../styles/img/logo-icon.png" class="quiz-icon">
+            <h3 id="form-title-heading"><i class="fas fa-clipboard-list"></i> Bài Quiz</h3>
           </div>
+          <div class="quiz-content">
+            <div class="quiz-form" id="quiz-form">
+              <label>Tiêu đề:</label>
+              <input type="text" id="question-title" placeholder="Nhập tiêu đề..." />
 
-          <div class="quiz-content-box" style="background-color: #d7f0e3; padding: 20px; border-radius: 8px;">
-            <p><strong>Nội dung buổi học:</strong></p>
-            <p id="quiz-description"></p>
+              <label>Loại:</label>
+              <div class="question-type">
+                <label><input type="radio" name="type-question" value="SELECT-MULTI"> Chọn nhiều đáp án</label>
+                <label><input type="radio" name="type-question" value="SELECT-SINGLE"> Chọn 1 đáp án</label>
+                <label><input type="radio" name="type-question" value="ENTER"> Nhập đáp án</label>
+              </div>
 
-            <p><strong>Bắt đầu vào ngày:</strong> <span id="quiz-start"></span></p>
-            <p><strong>Kết thúc vào ngày:</strong> <span id="quiz-end"></span></p>
-            <p><strong>Tổng thời gian làm:</strong> <span id="quiz-duration"></span></p>
+              <div class="answer-group" id="answer-group">
+                <label>Các đáp án:</label>
+                <textarea id="answer" placeholder="Mỗi đáp án trên 1 dòng"></textarea>
+              </div>
+
+              <div class="correct-group" id="correct-group">
+                <label id="correct-label">Đáp án đúng:</label>
+                <textarea id="correct-textarea" style="display:none"></textarea>
+                <input type="text" id="correct-input" style="display:none" />
+              </div>
+            </div>
           </div>
-
-          <div class="button-wrapper">
-            <button onclick="window.location.href='course-create-upload.html'">Chỉnh sửa bài Quizz</button>
+          <div class="save-but">
+            <button id="save-all-btn">Lưu bài</button>
+            <button id="back-btn">Quay lại</button>
           </div>
         </div>
-          </div>
+        </div>
 
           <div class="right-content">
-             <div class="quiz-summary">
+            <div id="my-chatbox-container"></div>
+            
+            <div class="quiz-summary">
               <h4>Danh sách câu hỏi trắc nghiệm:</h4>
               <ul id="question-list"></ul>
             </div>
-
             <div class="add-more">
               <button id="add-question-btn">Thêm câu hỏi</button>
             </div>
+            
           </div>
         </div>
       </div>
-      <!-- Kết thúc content1 -->
     </div>
   </div>
 
   <!-- Gắn JS -->
    <script src="../styles/js/main_course-form.js"></script>
-  <script src="../styles/js/add-question-repair.js"></script>
+   <script type="module" src="../styles/js/chat-widget.js"></script> 
+   <script type="module" src="../styles/js/chat-widget2.js"></script> 
+  
+  <script type="module" src="../styles/js/add-question-repair-combined.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+  <script>
+    // Toggle hiển thị form và chi tiết quiz
+    document.addEventListener("DOMContentLoaded", () => {
+      const addBtn = document.getElementById("add-question-btn");
+      const backBtn = document.getElementById("back-btn");
+      const formContainer = document.getElementById("quiz-form-container");
+      const detailContainer = document.getElementById("quiz-detail");
+
+      if (addBtn && formContainer && detailContainer) {
+        addBtn.addEventListener("click", () => {
+          detailContainer.style.display = "none";
+          formContainer.style.display = "block";
+        });
+      }
+
+      if (backBtn && formContainer && detailContainer) {
+        backBtn.addEventListener("click", () => {
+          detailContainer.style.display = "block";
+          formContainer.style.display = "none";
+        });
+      }
+    });
 
 
+     function copyQuizID() {
+    const quizIDElement = document.getElementById("quiz-ID");
+    const quizID = quizIDElement.textContent.trim();
+
+    if (!quizID) {
+      alert("Không có ID để sao chép.");
+      return;
+    }
+
+    navigator.clipboard.writeText(quizID)
+      .then(() => {
+        alert("Đã sao chép ID: " + quizID);
+      })
+      .catch(err => {
+        console.error("Lỗi khi sao chép:", err);
+        alert("Không thể sao chép ID.");
+      });
+  }
+
+
+
+
+  </script>
+
+  <div id="loading-overlay">
+  <div class="spinner"></div>
+</div>
 </body>
 </html>

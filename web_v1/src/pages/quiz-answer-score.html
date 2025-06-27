@@ -6,7 +6,7 @@
   <title>Kết quả bài Quiz</title>
   <link rel="stylesheet" href="../styles/css/quiz-answer-score.css" />
 </head>
-<body>
+<body data-sidebar-active="main_quizz_course-form.html">
   <div class="wrapper">
      <!-- Vùng sidebar -->
     <div id="sidebar-container"></div>
@@ -25,7 +25,7 @@
 
             <div class="welcome-box">
               <div class="text">
-                <strong>Xin chào Fushiree</strong>
+                <strong id="welcome-name">Xin chào</strong>
                 <p>Thật vui vì được gặp lại bạn</p>
               </div>
               <img src="../styles/img/avatar.png" alt="avatar" />
@@ -45,13 +45,14 @@
                     <!-- Câu 1: Câu trả lời của bạn đã đúng/sai -->
                 </div>
 
-                <div id="score-summary">
+                <div class="score" id="score-summary">
                     <!-- Số câu đúng + điểm -->
                 </div>
-
-                <a href="main_quizz_course-form.html">
-                    <button>Quay về khoá học</button>
-                </a>
+                <div class="buton-save">
+                  <button onclick="window.location.href='main_quizz_course-form.html'">
+                    Quay về bài quiz
+                  </button>
+                </div>
                 </div>
         </div>
       </div>
@@ -62,6 +63,12 @@
 
     <script src="../styles/js/main_course-form.js"></script>
  
+    <div id="loading-overlay" style="display: none;">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>Đang xử lý kết quả...</p>
+  </div>
+</div>
 
 </body>
 </html>

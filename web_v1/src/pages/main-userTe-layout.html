@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang Chính</title>
+  <link rel="stylesheet" href="../styles/css/user-layout.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Vùng sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Vùng nội dung -->
+    <div class="content-wrapper" id="content-container">
+
+      <!-- Bắt đầu content1 -->
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" placeholder=" Tìm kiếm..." />
+        </div>
+
+        <div class="body-content">
+          <div class="left-content">
+
+            <div class="welcome-box">
+            <div class="profile-card">
+              <div class="info" id="user-info">
+              <!-- Dữ liệu người dùng sẽ được chèn bằng JavaScript -->
+              </div>
+               </div>
+              <img src="../styles/img/avatar.png" alt="avatar" />
+            </div>
+            </div>
+            
+
+
+          <div class="right-content">
+            <div class="status-form">
+              <div class="status-box">
+                <strong id="quiz-count">0</strong>
+                <p>Bài Quiz<br />đã tạo</p>
+              </div>
+
+              <div class="status-box">
+                <strong>+</strong>
+                <p> <a href="course-create.html">Tạo bài<br />Quizz mới</a></p>
+              </div>
+            </div>
+
+            <div class="chart-section">
+              <strong>Thống kê của bạn:</strong>
+              <div class="chart-tabs">
+                <span>Thời gian học</span>
+                <span>Khóa học của bạn</span>
+                <select>
+                  <option>Tuần</option>
+                  <option>Tháng</option>
+                </select>
+              </div>
+              <img src="../styles/img/chart-placeholder.png" class="chart-image" />
+            </div>
+
+            <div class="start-box">
+              <p>Hãy bắt đầu học ngay nào</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Kết thúc content1 -->
+
+    </div>
+  </div>
+
+  <!-- Gắn file JS -->
+  <script src="../styles/js/main_course-form.js"></script>
+  <script src="../styles/js/quizz-fun.js"></script>
+  <script type="module" src="../styles/js/courses.js"></script>
+
+  <script>
+  window.addEventListener("load", () => {
+    const overlay = document.getElementById("loading-overlay");
+    if (overlay) overlay.style.display = "none";
+  });
+</script>
+
+  <div id="loading-overlay">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>Đang tải trang, vui lòng chờ...</p>
+  </div>
+</div>
+
+
+</body>
+</html>

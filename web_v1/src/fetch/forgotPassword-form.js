@@ -7,30 +7,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function handleForgotPassword() {
-  const email = document.getElementById('email').value.trim();
-  const otp = document.getElementById('otp').value.trim();
+async function handleForgotPassword() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const otp = document.getElementById("otp").value.trim();
+  const email = localStorage.getItem("forgot_email");
 
-  if (!email || !otp) {
-    alert("Vui lòng nhập đầy đủ tên đăng nhập và mã OTP!");
+  if (!username || !password || !otp || !email) {
+    alert("Vui lòng nhập đầy đủ thông tin!");
     return;
   }
 
   const data = {
-    email,
-    otp
+    username,
+    password,
+    otp,
+    email
   };
 
-  forgotPassword(data)
-    .then(res => {
-      alert("Xác thực OTP thành công!");
-      console.log("Response:", res);
-     
-    })
-    .catch(err => {
-      alert("OTP không hợp lệ hoặc tên đăng nhập sai!");
-      console.error("Forgot password error:", err);
-    });
+  try {
+    const res = await forgotPassword(data);
+    alert("Đặt lại mật khẩu thành công!");
+    console.log("Server response:", res);
+
+    localStorage.removeItem("forgot_email");
+  } catch (err) {
+    console.error("Lỗi đặt lại mật khẩu:", err);
+    alert("Thông tin không chính xác hoặc OTP không hợp lệ!");
+  }
 }
 
 window.handleForgotPassword = handleForgotPassword;

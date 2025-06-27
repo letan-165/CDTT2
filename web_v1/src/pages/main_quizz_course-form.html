@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sidebar UI</title>
   <link rel="stylesheet" href="../styles/css/main_course-form1.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -17,29 +16,29 @@
 
       <!-- Bắt đầu content1 -->
       <div class="main-content">
-        <div class="search-bar">
-          <input type="text" placeholder=" Tìm kiếm..." />
+        <div class="search-bar-wrapper">
+          <div class="search-bar">
+            <input type="text" placeholder=" Tìm kiếm..." id="search-input" />
+            <div id="suggestion-box" style="display: none;" class="suggestion-box"></div>
+          </div>
         </div>
+
 
         <div class="body-content">
           <div class="left-content">
 
             <div class="welcome-box">
               <div class="text">
-                <strong>Xin chào Fushiree</strong>
+                <strong id="welcome-name">Xin chào</strong>
                 <p>Thật vui vì được gặp lại bạn</p>
               </div>
               <img src="../styles/img/avatar.png" alt="avatar" />
             </div>
 
-            <div class="first-course">
+              <div class="first-course">
               <div class="current-course">
                 <div class="course-info">
                   <strong>Bài Quizz </strong>
-                </div>
-                <div class="Next-back">
-                  <button>˂</button>
-                  <button>˃</button>
                 </div>
               </div>
             </div>
@@ -49,6 +48,12 @@
             </div>
 
             <div class="course-list" id="course-list">
+               <div id="course-loading" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+                <div class="loading-content">
+                  <div class="spinner"></div>
+                  <p>Đang tải bài quiz...</p>
+                </div>
+              </div>
             <!-- Các khóa học sẽ được render bằng JavaScript -->
             </div>
 
@@ -58,13 +63,12 @@
           <div class="right-content">
             <div class="status-form">
               <div class="status-box">
-                <strong>11</strong>
-                <p>Khóa học đã<br />hoàn thành</p>
+                <strong id="total-course-count">0</strong>
+                <p>Bài Quiz đang<br />diễn ra</p>
               </div>
-
               <div class="status-box">
-                <strong>8</strong>
-                <p>Khóa học đang<br />diễn ra</p>
+                <strong id="completed-count">0</strong>
+                <p>Bài Quiz đã<br />hoàn thành</p>
               </div>
             </div>
 
@@ -93,7 +97,9 @@
 
   <!-- Gắn file JS -->
   <script src="../styles/js/main_course-form.js"></script>
-  <script src="../styles/js/courses.js"></script>
+  <script type="module" src="../styles/js/search-bar-fun.js"></script>
+  <script type="module" src="../styles/js/courses.js"></script>
+
 
 
 </body>
