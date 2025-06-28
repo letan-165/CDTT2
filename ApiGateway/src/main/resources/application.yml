@@ -30,3 +30,13 @@ spring:
           predicates:
             - Path=/notification_service/**
 
+        - id: chat_service_ws
+          uri: ${CHAT_URL_WS:ws://localhost:8081}
+          predicates:
+            - Path=/chat_service/**
+
+        - id: notification_service_ws
+          uri: ${NOTIFICATION_URL_WS:ws://localhost:8083}
+          predicates:
+            - Path=/notification_service/**
+
