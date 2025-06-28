@@ -20,8 +20,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/personal-ws")
                 .setHandshakeHandler(customHandshakeHandler)
-                .setAllowedOriginPatterns("http://localhost:5500", "http://127.0.0.1:5500")
-                .withSockJS();
+                .setAllowedOrigins("*");
     }
 
     @Override
