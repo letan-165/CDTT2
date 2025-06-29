@@ -73,16 +73,15 @@
             </div>
 
             <div class="chart-section">
-              <strong>Thống kê của bạn:</strong>
-              <div class="chart-tabs">
-                <span>Thời gian học</span>
-                <span>Khóa học của bạn</span>
-                <select>
-                  <option>Tuần</option>
-                </select>
-              </div>
-              <img src="../styles/img/chart-placeholder.png" class="chart-image" />
+            <strong>Thống kê của bạn:</strong>
+            <div class="chart-tabs">
+              <span>Thời gian theo tuần</span>
+              <select>
+                <option>Tuần</option>
+              </select>
             </div>
+            <canvas id="studyTimeChart" width="400" height="300"></canvas>
+          </div>
 
             <div class="start-box">
               <p>Hãy bắt đầu học ngay nào</p>
@@ -99,6 +98,9 @@
   <script src="../styles/js/main_course-form.js"></script>
   <script type="module" src="../styles/js/search-bar-fun.js"></script>
   <script type="module" src="../styles/js/courses.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="../styles/js/chart.js"></script>
+
 
 
 

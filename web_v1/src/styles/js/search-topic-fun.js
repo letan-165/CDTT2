@@ -2,10 +2,22 @@ import { SearchTopic } from '../../api/quiz.js';
 
 const searchInput = document.getElementById('quiz-topic');
 const suggestionBox = document.getElementById('suggestion-box');
+export const topics = [];
+
 const quizTopicValue = document.getElementById('quiz-topi-value');
 
+// Cập nhật lại mảng topics từ input
+const topicString = quizTopicValue.value; // "#Toán #Lý #Hoá"
+const parsedTopics = topicString
+  .split('#')           // tách bằng dấu #
+  .map(t => t.trim())   // loại bỏ khoảng trắng
+  .filter(t => t);      // loại bỏ chuỗi rỗng
 
-export const topics = []
+topics.length = 0;        // Xóa toàn bộ phần tử cũ
+topics.push(...parsedTopics); // Thêm phần tử mới
+
+
+
 async function handlerSearchTopics() {
   const query = searchInput.value.trim().toLowerCase();
 
@@ -36,8 +48,8 @@ async function handlerSearchTopics() {
 
           item.onclick = () => {
             searchInput.value = "";
-            topics.push(topic)
-            quizTopicValue.value ="#" + topics.join(' #');
+            quizTopicValue.value += ` #${topic}`;
+            
             console.log(topics);
             suggestionBox.style.display = 'none';
           };

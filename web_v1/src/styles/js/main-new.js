@@ -1,13 +1,13 @@
 let stompClient = null;
 //Chú ý những cái "stompClient"
-const CONNECT = "http://localhost:8083/notification_service/personal-ws?token="
+const CONNECT = "http://localhost:8888/notification_service/personal-ws?token="
 const SUBSCRIVE = "/user/queue/notification"
 const GETCHAT = "/app/personal-ws.list"
 
 
 export const connect = () =>  {
   const token = localStorage.getItem("token");
-  const socket = new SockJS(
+  const socket = new WebSocket(
     `${CONNECT}${token}`
   );
   stompClient = Stomp.over(socket);

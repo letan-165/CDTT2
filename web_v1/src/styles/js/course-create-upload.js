@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const durationInput = document.getElementById("quiz-duration");
   const endInput = document.getElementById("quiz-end");
   const startInput = document.getElementById("quiz-start");
-  const topicInput = document.getElementById("quiz-topic");
+  const topicInput = document.getElementById("quiz-topi-value");
   const descriptionInput = document.getElementById("quiz-description");
 
   const queryParams = new URLSearchParams(window.location.search);
   const quizID = queryParams.get("id") || queryParams.get("quizId");
-
+  
   if (!quizID) {
     alert("Không có quizID trong URL!");
     return;
@@ -26,17 +26,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       alert("Không tìm thấy quiz từ server!");
       return;
     }
-
+    topicInput.value = "#" + quiz.topics.join(' #');
     console.log("Nội dung quiz từ server:", quiz);
+
+    const startTime = convertToDatetimeLocal(quiz.startTime);
+    const endTime = convertToDatetimeLocal(quiz.endTime);
+
+
 
     // Gán dữ liệu vào form
     titleInput.value = quiz.title || "";
 
     durationInput.value = String(quiz.duration ?? "");
 
-    endInput.value = quiz.endTime?.slice(0, 16) || "";
-    startInput.value = quiz.startTime?.slice(0, 16) || "";
-    topicInput.value = Array.isArray(quiz.topics) ? quiz.topics.join(", ") : "";
+    endInput.value = endTime;
+    startInput.value = startTime;
+    
     descriptionInput.value = quiz.description || "";
 
     // Khi bấm nút lưu
@@ -45,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         quizID: quiz.quizID,
         teacherID: quiz.teacherID || localStorage.getItem("userID"),
         title: titleInput.value.trim(),
-        topics: topicInput.value.split(",").map(t => t.trim()),
+        topics ,
         description: descriptionInput.value.trim(),
         startTime: new Date(startInput.value.trim()).toISOString(),
         endTime: new Date(endInput.value.trim()).toISOString(),
@@ -70,3 +75,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     alert("Không thể tải thông tin quiz.");
   }
 });
+
+
+
+
+
+
+
+
+ function convertToDatetimeLocal(input) {
+    const [day, month, yearAndTime] = input.split("-");
+    const [year, time] = yearAndTime.split(" ");
+    return `${year}-${month}-${day}T${time.slice(0, 5)}`;
+  }

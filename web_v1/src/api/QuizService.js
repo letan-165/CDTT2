@@ -38,6 +38,13 @@ export const StatisticsResultStudents = (data) => {
   return fetchAPI(`${QUIZ_SERVICE}/result/public/student/${data}/statistics`, "GET");
 };
 
+
+export const StatisticsResultTimes = (data) => {
+  return fetchAPI(`${QUIZ_SERVICE}/result/public/student/${data}/week/0/statistics`, "GET");
+};
+
+
+
 export const StatisticsQuiz = (data) => {
   return fetchAPI(`${QUIZ_SERVICE}/result/public/quiz/${data}/statistics`, "GET");
 };

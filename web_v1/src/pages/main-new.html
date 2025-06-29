@@ -40,34 +40,59 @@
     </div>
 
           <div class="right-content">
-            <div class="status-form">
-              <div class="status-box">
-                <strong id="total-course-count">0</strong>
-                <p>Bài Quiz đang<br />diễn ra</p>
-              </div>
-              <div class="status-box">
-                <strong id="completed-count">0</strong>
-                <p>Bài Quiz đã<br />hoàn thành</p>
-              </div>
+  <!-- Nội dung cho Student -->
+  <div class="student-view" style="display: none;">
+    <div class="status-form">
+      <div class="status-box">
+        <strong id="total-course-count">0</strong>
+        <p>Bài Quiz đang<br />diễn ra</p>
+      </div>
+      <div class="status-box">
+        <strong id="completed-count">0</strong>
+        <p>Bài Quiz đã<br />hoàn thành</p>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <strong>Thống kê của bạn:</strong>
+      <div class="chart-tabs">
+        <span>Thời gian theo tuần</span>
+        <select>
+          <option>Tuần</option>
+        </select>
+      </div>
+      <canvas id="studyTimeChart" width="400" height="300"></canvas>
+    </div>
+
+    <div class="start-box">
+      <p>Hãy bắt đầu học ngay nào</p>
+    </div>
+  </div>
+
+        <!-- Nội dung cho Teacher -->
+        <div class="teacher-view" style="display: none;">
+          <div class="status-form">
+            <div class="status-box">
+              <strong id="quiz-count">0</strong>
+              <p>Bài Quiz<br />đã tạo</p>
             </div>
 
-            <div class="chart-section">
-              <strong>Thống kê của bạn:</strong>
-              <div class="chart-tabs">
-                <span>Thời gian học</span>
-                <span>Khóa học của bạn</span>
-                <select>
-                  <option>Tuần</option>
-                  <option>Tháng</option>
-                </select>
-              </div>
-              <img src="../styles/img/chart-placeholder.png" class="chart-image" />
-            </div>
-
-            <div class="start-box">
-              <p>Hãy bắt đầu học ngay nào</p>
+            <div class="status-box">
+              <strong>+</strong>
+              <p><a href="course-create.html">Tạo bài<br />Quizz mới</a></p>
             </div>
           </div>
+
+          <div class="chart-section">
+            <img src="../styles/img/logo.png" class="chart-image" />
+          </div>
+
+          <div class="start-box">
+            <p>Hãy bắt đầu học ngay nào</p>
+          </div>
+        </div>
+      </div>
+
         </div>
       </div>
       <!-- Kết thúc content1 -->
@@ -80,6 +105,8 @@
   <script type="module" src="../styles/js/main-new.js"></script>
   <script type="module" src="../styles/js/main-new2.js"></script>
   <script type="module" src="../styles/js/courses.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="../styles/js/chart.js"></script>
 <!-- Thêm ngay trước các file main-new.js và main-new2.js -->
   <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
@@ -89,6 +116,23 @@
   window.addEventListener("load", () => {
     const overlay = document.getElementById("loading-overlay");
     if (overlay) overlay.style.display = "none";
+  });
+
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const role = localStorage.getItem("role"); // "STUDENT" hoặc "TEACHER"
+    
+    const studentView = document.querySelector(".student-view");
+    const teacherView = document.querySelector(".teacher-view");
+
+    if (role === "STUDENT") {
+      studentView.style.display = "block";
+    } else if (role === "TEACHER") {
+      teacherView.style.display = "block";
+    } else {
+      console.warn("Vai trò không xác định hoặc chưa đăng nhập.");
+    }
   });
 </script>
 

@@ -1,6 +1,6 @@
 let stompClient = null;
 //Chú ý những cái "stompClient"
-const CONNECT = "http://localhost:8081/chat_service/chat-ws?token="
+const CONNECT = "http://localhost:8888/chat_service/chat-ws?token="
 const SUBSCRIVE = "/user/queue/messages"
 const GETCHAT = "/app/chat-ws.get"
 const SENDCHAT = "/app/chat-ws.send"
@@ -10,7 +10,7 @@ const RECALLCHAT = "/app/chat-ws.recall"
 export const connect = () =>  {
   const token = localStorage.getItem("token");
   //Kết nối
-  const socket = new SockJS(
+  const socket = new WebSocket(
     `${CONNECT}${token}`
   );
   stompClient = Stomp.over(socket);

@@ -25,13 +25,13 @@ window.onload = function () {
 
       div.innerHTML = `
         <h3>Câu ${index + 1}: ${content}</h3>
-        <p><strong>Đáp án của bạn:</strong> ${Array.isArray(userAnswer) ? userAnswer.join(", ") : userAnswer} ${isCorrect ? "✅" : "❌"}</p>
+        <p><strong>Đáp án của bạn:</strong> ${Array.isArray(userAnswer) ? userAnswer.join(", ") : userAnswer} ${isCorrect ? "" : ""}</p>
         <p><strong>Đáp án đúng:</strong> ${Array.isArray(correctAnswer) ? correctAnswer.join(", ") : correctAnswer}</p>
       `;
       resultBox.appendChild(div);
 
       const resultText = document.createElement("p");
-      resultText.textContent = `Câu ${index + 1}: Bạn đã ${isCorrect ? "trả lời đúng ✅" : "trả lời sai ❌"}`;
+      resultText.textContent = `Câu ${index + 1}: Bạn đã ${isCorrect ? "trả lời đúng " : "trả lời sai "}`;
       resultText.style.color = isCorrect ? "green" : "red";
       perQuestionResult.appendChild(resultText);
     });
@@ -72,7 +72,7 @@ function arraysEqual(a, b) {
   return sortedA.every((val, index) => val === sortedB[index]);
 }
 
-// ✅ Loading overlay
+
 function showLoading() {
   const overlay = document.getElementById("loading-overlay");
   if (overlay) overlay.style.display = "flex";

@@ -166,7 +166,7 @@ body {
 
 .status-form {
   display: flex;
-
+  margin-bottom: 20px;
 }
 
 
@@ -445,4 +445,12 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+
+.chart-image {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
 }

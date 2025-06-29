@@ -108,7 +108,7 @@ function startCountdown() {
   }, 1000);
 }
 
-// ✅ Hiệu ứng loading
+// 
 function showLoading() {
   const overlay = document.getElementById("loading-overlay");
   if (overlay) overlay.style.display = "flex";
